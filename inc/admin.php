@@ -18,11 +18,12 @@ function orion26_register_admin_menu() {
 	$schema     = orion26_settings_schema();
 	add_menu_page( 'Orion Theme', 'Orion', $capability, 'orion26-identity', 'orion26_render_settings_page', 'dashicons-star-filled', 3 );
 	foreach ( $schema as $section => $config ) {
+		$section_capability = $config['capability'] ?? $capability;
 		add_submenu_page(
 			'orion26-identity',
 			'Orion — ' . $config['label'],
 			$config['label'],
-			$capability,
+			$section_capability,
 			'orion26-' . $section,
 			'orion26_render_settings_page'
 		);
@@ -100,6 +101,39 @@ function orion26_dynamic_choices( $type ) {
 	return $choices;
 }
 
+function orion26_render_checklist( $section, $key, $type, $value ) {
+	$choices  = orion26_dynamic_choices( $type );
+	$selected = array_map( 'absint', (array) $value );
+	?>
+	<fieldset class="orion-checklist" data-orion-checklist>
+		<div class="orion-checklist__tools"><input type="search" class="regular-text" placeholder="<?php esc_attr_e( 'Filtrer la liste…', 'orion26' ); ?>" data-orion-checklist-search><button type="button" class="button-link" data-orion-checklist-all><?php esc_html_e( 'Tout cocher', 'orion26' ); ?></button><button type="button" class="button-link" data-orion-checklist-none><?php esc_html_e( 'Tout décocher', 'orion26' ); ?></button></div>
+		<div class="orion-checklist__items">
+		<?php foreach ( $choices as $choice_value => $label ) : ?><label><input type="checkbox" name="<?php echo esc_attr( orion26_field_name( $section, $key ) ); ?>[]" value="<?php echo esc_attr( $choice_value ); ?>"<?php checked( in_array( absint( $choice_value ), $selected, true ) ); ?>><span><?php echo esc_html( $label ); ?></span></label><?php endforeach; ?>
+		</div>
+	</fieldset>
+	<?php
+}
+
+function orion26_render_headings_field( $section, $key, $value ) {
+	$fonts = array( 'system' => 'Système', 'condensed' => 'Condensée', 'source-serif-4' => 'Source Serif 4', 'atkinson-hyperlegible-next' => 'Atkinson Hyperlegible Next', 'lora' => 'Lora', 'merriweather' => 'Merriweather', 'literata' => 'Literata', 'ibm-plex-sans' => 'IBM Plex Sans' );
+	?>
+	<div class="orion-heading-styles">
+		<div class="orion-heading-styles__head"><span><?php esc_html_e( 'Niveau', 'orion26' ); ?></span><span><?php esc_html_e( 'Clair', 'orion26' ); ?></span><span><?php esc_html_e( 'Sombre', 'orion26' ); ?></span><span><?php esc_html_e( 'Police', 'orion26' ); ?></span><span><?php esc_html_e( 'Taille', 'orion26' ); ?></span><span><?php esc_html_e( 'Graisse', 'orion26' ); ?></span><span><?php esc_html_e( 'Casse', 'orion26' ); ?></span><span><?php esc_html_e( 'Interligne', 'orion26' ); ?></span></div>
+		<?php foreach ( array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) as $level ) : $style = (array) ( $value[ $level ] ?? array() ); $base = orion26_field_name( $section, $key ) . '[' . $level . ']'; ?>
+		<div class="orion-heading-style" data-heading-level="<?php echo esc_attr( $level ); ?>">
+			<strong><?php echo esc_html( strtoupper( $level ) ); ?></strong>
+			<input type="color" name="<?php echo esc_attr( $base ); ?>[color]" value="<?php echo esc_attr( $style['color'] ?? '#12151b' ); ?>" data-heading-prop="color" aria-label="<?php echo esc_attr( strtoupper( $level ) . ' ' . __( 'couleur', 'orion26' ) ); ?>">
+			<input type="color" name="<?php echo esc_attr( $base ); ?>[dark_color]" value="<?php echo esc_attr( $style['dark_color'] ?? '#f1eee7' ); ?>" aria-label="<?php echo esc_attr( strtoupper( $level ) . ' ' . __( 'couleur sombre', 'orion26' ) ); ?>">
+			<select name="<?php echo esc_attr( $base ); ?>[font]" data-heading-prop="font"><?php foreach ( $fonts as $font => $label ) : ?><option value="<?php echo esc_attr( $font ); ?>"<?php selected( $style['font'] ?? 'condensed', $font ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?></select>
+			<input type="number" min="12" max="96" name="<?php echo esc_attr( $base ); ?>[size]" value="<?php echo esc_attr( $style['size'] ?? 24 ); ?>" data-heading-prop="size" aria-label="<?php echo esc_attr( strtoupper( $level ) . ' ' . __( 'taille', 'orion26' ) ); ?>">
+			<select name="<?php echo esc_attr( $base ); ?>[weight]" data-heading-prop="weight"><?php foreach ( array( 400, 500, 600, 700, 800, 900 ) as $weight ) : ?><option value="<?php echo esc_attr( $weight ); ?>"<?php selected( absint( $style['weight'] ?? 800 ), $weight ); ?>><?php echo esc_html( $weight ); ?></option><?php endforeach; ?></select>
+			<select name="<?php echo esc_attr( $base ); ?>[case]" data-heading-prop="case"><option value="none"<?php selected( $style['case'] ?? 'none', 'none' ); ?>><?php esc_html_e( 'Normale', 'orion26' ); ?></option><option value="uppercase"<?php selected( $style['case'] ?? 'none', 'uppercase' ); ?>><?php esc_html_e( 'Majuscules', 'orion26' ); ?></option></select>
+			<input type="number" min="0.8" max="2" step="0.01" name="<?php echo esc_attr( $base ); ?>[line_height]" value="<?php echo esc_attr( $style['line_height'] ?? 1.2 ); ?>" data-heading-prop="line-height" aria-label="<?php echo esc_attr( strtoupper( $level ) . ' ' . __( 'interligne', 'orion26' ) ); ?>">
+		</div><?php endforeach; ?>
+	</div>
+	<?php
+}
+
 function orion26_render_field( $section, $key, $field, $value ) {
 	$type = $field['type'] ?? 'text';
 	$id   = orion26_field_id( $section, $key );
@@ -107,6 +141,14 @@ function orion26_render_field( $section, $key, $field, $value ) {
 	$preview = isset( $field['preview'] ) ? ' data-orion-preview-control="' . esc_attr( $field['preview'] ) . '"' : '';
 	if ( 'media' === $type ) {
 		orion26_render_media_field( $section, $key, $field, $value );
+		return;
+	}
+	if ( in_array( $type, array( 'categories', 'users' ), true ) ) {
+		orion26_render_checklist( $section, $key, $type, $value );
+		return;
+	}
+	if ( 'headings' === $type ) {
+		orion26_render_headings_field( $section, $key, $value );
 		return;
 	}
 	if ( 'checkbox' === $type ) {
@@ -121,9 +163,9 @@ function orion26_render_field( $section, $key, $field, $value ) {
 		echo '</div>';
 		return;
 	}
-	if ( in_array( $type, array( 'select', 'menus', 'tags', 'category', 'categories', 'users' ), true ) ) {
+	if ( in_array( $type, array( 'select', 'menus', 'tags', 'category' ), true ) ) {
 		$choices  = isset( $field['choices'] ) ? $field['choices'] : orion26_dynamic_choices( $type );
-		$multiple = in_array( $type, array( 'categories', 'users' ), true );
+		$multiple = false;
 		printf( '<select id="%1$s" name="%2$s%3$s"%4$s%5$s>', esc_attr( $id ), esc_attr( $name ), $multiple ? '[]' : '', $multiple ? ' multiple size="9"' : '', $preview );
 		if ( ! $multiple ) {
 			echo '<option value="">' . esc_html__( '— Sélectionner —', 'orion26' ) . '</option>';
@@ -159,7 +201,7 @@ function orion26_render_live_preview( $values ) {
 			<div class="orion-preview-browser__bar"><i></i><i></i><i></i></div>
 			<div class="orion-preview-page">
 				<p class="orion-preview-kicker"><?php esc_html_e( 'Prévisualisation en direct', 'orion26' ); ?></p>
-				<h2><?php esc_html_e( 'Un grand titre éditorial', 'orion26' ); ?></h2>
+				<div class="orion-preview-headings"><?php foreach ( array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ) as $level ) : ?><<?php echo esc_attr( $level ); ?> data-preview-heading="<?php echo esc_attr( $level ); ?>"><?php echo esc_html( strtoupper( $level ) . ' — ' . __( 'Titre éditorial', 'orion26' ) ); ?></<?php echo esc_attr( $level ); ?>><?php endforeach; ?></div>
 				<p class="orion-preview-article"><?php esc_html_e( 'Le corps de l’article doit rester agréable à lire, avec une hiérarchie claire et un rythme suffisamment aéré sur tous les écrans.', 'orion26' ); ?></p>
 				<blockquote><?php esc_html_e( 'Une citation importante mise en évidence sans casser la lecture.', 'orion26' ); ?></blockquote>
 				<pre><code>const orion = "personnalisable";</code></pre>
@@ -170,23 +212,36 @@ function orion26_render_live_preview( $values ) {
 	<?php
 }
 
+function orion26_render_about_page() {
+	?>
+	<div class="orion-about-grid">
+		<section class="orion-about-hero"><span class="orion-about-mark" aria-hidden="true">O</span><div><h2><?php esc_html_e( 'Un thème éditorial libre et ambitieux', 'orion26' ); ?></h2><p><?php esc_html_e( 'Orion associe vitesse, lisibilité, personnalisation et maîtrise des données pour construire des sites d’actualité singuliers.', 'orion26' ); ?></p></div></section>
+		<section class="orion-about-card"><h2><?php esc_html_e( 'Auteur', 'orion26' ); ?></h2><p><strong>SAS Jessy System</strong><br><?php esc_html_e( 'Conception, développement et maintenance du thème Orion.', 'orion26' ); ?></p><a class="button button-primary" href="https://jessysystem.com" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Découvrir Jessy System', 'orion26' ); ?></a></section>
+		<section class="orion-about-card"><svg class="orion-github-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7A11.5 11.5 0 0 0 8.4 23c.6.1.8-.3.8-.6v-2.2c-3.4.7-4.1-1.4-4.1-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.1 2 3 1.4 3.7 1.1.1-.8.4-1.4.8-1.7-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.6.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.5.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.8 5.4-5.5 5.7.4.4.8 1.1.8 2.2v3.5c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .7Z"/></svg><h2>GitHub</h2><p><?php esc_html_e( 'Consultez le code source, les versions, la feuille de route et proposez vos améliorations.', 'orion26' ); ?></p><a class="button" href="https://github.com/TheLibertyWolf/WP-Orion-template" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Ouvrir le dépôt Orion', 'orion26' ); ?></a></section>
+		<section class="orion-about-card"><h2><?php esc_html_e( 'Licence et version', 'orion26' ); ?></h2><p><strong>Orion <?php echo esc_html( ORION26_VERSION ); ?></strong><br>GPL-2.0-or-later</p><p><?php esc_html_e( 'Vous pouvez utiliser, étudier, modifier et redistribuer Orion selon les termes de sa licence.', 'orion26' ); ?></p></section>
+	</div>
+	<?php
+}
+
 function orion26_render_settings_page() {
-	if ( ! current_user_can( orion26_admin_capability() ) ) {
-		wp_die( esc_html__( 'Vous n’avez pas accès aux réglages Orion.', 'orion26' ) );
-	}
 	$section = orion26_current_admin_section();
 	$schema  = orion26_settings_schema();
 	$config  = $schema[ $section ];
+	$required_capability = $config['capability'] ?? orion26_admin_capability();
+	if ( ! current_user_can( $required_capability ) ) {
+		wp_die( esc_html__( 'Vous n’avez pas accès aux réglages Orion.', 'orion26' ) );
+	}
 	$settings= orion26_get_settings();
-	$values  = $settings[ $section ];
+	$values  = $settings[ $section ] ?? array();
 	?>
 	<div class="wrap orion-admin-wrap">
+		<?php if ( isset( $_GET['updated'] ) && '1' === sanitize_text_field( wp_unslash( $_GET['updated'] ) ) ) : ?><div class="notice notice-success is-dismissible orion-save-notice"><p><?php esc_html_e( 'Réglages enregistrés.', 'orion26' ); ?></p></div><?php endif; ?>
+		<?php if ( 'consent' === $section && ( defined( 'cmplz_plugin' ) || function_exists( 'cmplz_get_value' ) ) ) : ?><div class="notice notice-warning"><p><?php esc_html_e( 'Complianz est actif. N’activez pas simultanément les deux bandeaux de consentement : configurez Orion, puis désactivez l’autre gestionnaire avant d’activer celui-ci.', 'orion26' ); ?></p></div><?php endif; ?>
 		<header class="orion-admin-header">
 			<div><span class="orion-admin-brand">ORION</span><h1><?php echo esc_html( $config['label'] ); ?></h1><p><?php echo esc_html( $config['description'] ); ?></p></div>
 			<span class="orion-admin-version">v<?php echo esc_html( ORION26_VERSION ); ?></span>
 		</header>
-		<?php if ( isset( $_GET['updated'] ) ) : ?><div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'Réglages enregistrés.', 'orion26' ); ?></p></div><?php endif; ?>
-		<?php if ( 'consent' === $section && ( defined( 'cmplz_plugin' ) || function_exists( 'cmplz_get_value' ) ) ) : ?><div class="notice notice-warning"><p><?php esc_html_e( 'Complianz est actif. N’activez pas simultanément les deux bandeaux de consentement : configurez Orion, puis désactivez l’autre gestionnaire avant d’activer celui-ci.', 'orion26' ); ?></p></div><?php endif; ?>
+		<?php if ( ! empty( $config['about'] ) ) { orion26_render_about_page(); echo '</div>'; return; } ?>
 		<div class="orion-settings-layout<?php echo ! empty( $config['preview'] ) ? ' has-preview' : ''; ?>">
 			<form class="orion-settings-form" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
 				<input type="hidden" name="action" value="orion26_save_settings">
@@ -194,6 +249,7 @@ function orion26_render_settings_page() {
 				<?php wp_nonce_field( 'orion26_save_' . $section ); ?>
 				<div class="orion-settings-card">
 				<?php foreach ( $config['fields'] as $key => $field ) : ?>
+					<?php if ( ! empty( $field['capability'] ) && ! current_user_can( $field['capability'] ) ) { continue; } ?>
 					<div class="orion-field orion-field--<?php echo esc_attr( $field['type'] ); ?>">
 						<?php if ( ! in_array( $field['type'], array( 'checkbox', 'preset' ), true ) ) : ?><label for="<?php echo esc_attr( orion26_field_id( $section, $key ) ); ?>"><?php echo esc_html( $field['label'] ); ?></label><?php endif; ?>
 						<div class="orion-field__control"><?php orion26_render_field( $section, $key, $field, $values[ $key ] ?? '' ); ?><?php if ( ! empty( $field['description'] ) ) : ?><p class="description"><?php echo esc_html( $field['description'] ); ?></p><?php endif; ?></div>
@@ -217,10 +273,47 @@ function orion26_sanitize_setting( $value, $field, $old_value ) {
 		return empty( $value ) ? 0 : 1;
 	}
 	if ( in_array( $type, array( 'media', 'menus', 'tags', 'category' ), true ) ) {
-		return absint( $value );
+		$id = absint( $value );
+		if ( ! $id ) {
+			return 0;
+		}
+		if ( 'media' === $type ) {
+			return wp_attachment_is_image( $id ) ? $id : 0;
+		}
+		if ( 'menus' === $type ) {
+			return wp_get_nav_menu_object( $id ) ? $id : 0;
+		}
+		return term_exists( $id, 'tags' === $type ? 'post_tag' : 'category' ) ? $id : 0;
 	}
 	if ( in_array( $type, array( 'categories', 'users' ), true ) ) {
-		return array_values( array_unique( array_filter( array_map( 'absint', (array) $value ) ) ) );
+		$ids = array_values( array_unique( array_filter( array_map( 'absint', (array) $value ) ) ) );
+		return array_values(
+			array_filter(
+				$ids,
+				static function ( $id ) use ( $type ) {
+					return 'users' === $type ? (bool) get_user_by( 'id', $id ) : (bool) term_exists( $id, 'category' );
+				}
+			)
+		);
+	}
+	if ( 'headings' === $type ) {
+		$defaults = orion26_settings_defaults()['design']['headings'];
+		$output   = array();
+		$fonts    = array( 'system', 'condensed', 'source-serif-4', 'atkinson-hyperlegible-next', 'lora', 'merriweather', 'literata', 'ibm-plex-sans' );
+		foreach ( array_keys( $defaults ) as $level ) {
+			$row = isset( $value[ $level ] ) && is_array( $value[ $level ] ) ? $value[ $level ] : array();
+			$font = sanitize_key( (string) ( $row['font'] ?? $defaults[ $level ]['font'] ) );
+			$output[ $level ] = array(
+				'color'       => sanitize_hex_color( (string) ( $row['color'] ?? '' ) ) ?: $defaults[ $level ]['color'],
+				'dark_color'  => sanitize_hex_color( (string) ( $row['dark_color'] ?? '' ) ) ?: $defaults[ $level ]['dark_color'],
+				'font'        => in_array( $font, $fonts, true ) ? $font : $defaults[ $level ]['font'],
+				'size'        => max( 12, min( 96, absint( $row['size'] ?? $defaults[ $level ]['size'] ) ) ),
+				'weight'      => in_array( absint( $row['weight'] ?? 800 ), array( 400, 500, 600, 700, 800, 900 ), true ) ? absint( $row['weight'] ) : $defaults[ $level ]['weight'],
+				'case'        => 'uppercase' === ( $row['case'] ?? '' ) ? 'uppercase' : 'none',
+				'line_height' => max( .8, min( 2, (float) ( $row['line_height'] ?? $defaults[ $level ]['line_height'] ) ) ),
+			);
+		}
+		return $output;
 	}
 	if ( 'color' === $type ) {
 		return sanitize_hex_color( (string) $value ) ?: $old_value;
@@ -254,14 +347,21 @@ function orion26_sanitize_setting( $value, $field, $old_value ) {
 function orion26_save_settings() {
 	$section = isset( $_POST['section'] ) ? sanitize_key( wp_unslash( $_POST['section'] ) ) : '';
 	$schema  = orion26_settings_schema();
-	if ( ! current_user_can( orion26_admin_capability() ) || ! isset( $schema[ $section ] ) ) {
+	if ( ! isset( $schema[ $section ] ) ) {
+		wp_die( esc_html__( 'Enregistrement non autorisé.', 'orion26' ) );
+	}
+	$required_capability = $schema[ $section ]['capability'] ?? orion26_admin_capability();
+	if ( ! current_user_can( $required_capability ) || ! empty( $schema[ $section ]['about'] ) ) {
 		wp_die( esc_html__( 'Enregistrement non autorisé.', 'orion26' ) );
 	}
 	check_admin_referer( 'orion26_save_' . $section );
 	$posted   = isset( $_POST['orion26'][ $section ] ) && is_array( $_POST['orion26'][ $section ] ) ? wp_unslash( $_POST['orion26'][ $section ] ) : array();
 	$settings = orion26_get_settings();
 	foreach ( $schema[ $section ]['fields'] as $key => $field ) {
-		$value = 'checkbox' === $field['type'] ? ( $posted[ $key ] ?? 0 ) : ( $posted[ $key ] ?? ( $settings[ $section ][ $key ] ?? '' ) );
+		if ( ! empty( $field['capability'] ) && ! current_user_can( $field['capability'] ) ) {
+			continue;
+		}
+		$value = in_array( $field['type'], array( 'checkbox', 'categories', 'users' ), true ) ? ( $posted[ $key ] ?? ( 'checkbox' === $field['type'] ? 0 : array() ) ) : ( $posted[ $key ] ?? ( $settings[ $section ][ $key ] ?? '' ) );
 		$settings[ $section ][ $key ] = orion26_sanitize_setting( $value, $field, $settings[ $section ][ $key ] ?? '' );
 	}
 	$settings['_version'] = ORION26_SETTINGS_VERSION;

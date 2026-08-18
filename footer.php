@@ -13,7 +13,7 @@ $socials     = array(
 	'tiktok'    => array( 'TikTok', '♪' ),
 	'twitch'    => array( 'Twitch', '◈' ),
 );
-$target      = orion26_setting( 'social.new_tab', true ) ? ' target="_blank"' : '';
+$target      = orion26_setting( 'navigation.external_new_tab', true ) ? ' target="_blank"' : '';
 $count       = absint( orion26_setting( 'footer.category_count', 14 ) );
 $columns     = max( 1, absint( orion26_setting( 'footer.columns', 4 ) ) );
 $categories  = orion26_setting( 'footer.show_categories', true ) && $count ? get_categories( array( 'hide_empty' => true, 'orderby' => 'count', 'order' => 'DESC', 'number' => $count ) ) : array();

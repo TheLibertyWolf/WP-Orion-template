@@ -25,6 +25,17 @@
     }
   });
 
+  document.querySelectorAll('[data-orion-checklist]').forEach(function (list) {
+    var items = Array.from(list.querySelectorAll('.orion-checklist__items label'));
+    var search = list.querySelector('[data-orion-checklist-search]');
+    search.addEventListener('input', function () {
+      var query = search.value.toLocaleLowerCase().trim();
+      items.forEach(function (item) { item.hidden = query && item.textContent.toLocaleLowerCase().indexOf(query) === -1; });
+    });
+    list.querySelector('[data-orion-checklist-all]').addEventListener('click', function () { items.filter(function (item) { return !item.hidden; }).forEach(function (item) { item.querySelector('input').checked = true; }); });
+    list.querySelector('[data-orion-checklist-none]').addEventListener('click', function () { items.filter(function (item) { return !item.hidden; }).forEach(function (item) { item.querySelector('input').checked = false; }); });
+  });
+
   var preview = document.querySelector('[data-orion-preview] .orion-preview-page');
   if (!preview) return;
   var fontStacks = {
@@ -58,5 +69,25 @@
     control.addEventListener('input', function () { updatePreview(control); });
     control.addEventListener('change', function () { updatePreview(control); });
     updatePreview(control);
+  });
+
+  document.querySelectorAll('[data-heading-level]').forEach(function (row) {
+    var heading = preview.querySelector('[data-preview-heading="' + row.dataset.headingLevel + '"]');
+    if (!heading) return;
+    row.querySelectorAll('[data-heading-prop]').forEach(function (control) {
+      function updateHeading() {
+        var property = control.dataset.headingProp;
+        var value = control.value;
+        if (property === 'font') heading.style.fontFamily = fontStacks[value] || fontStacks.system;
+        if (property === 'size') heading.style.fontSize = Math.max(12, Number(value) * .62) + 'px';
+        if (property === 'weight') heading.style.fontWeight = value;
+        if (property === 'case') heading.style.textTransform = value;
+        if (property === 'line-height') heading.style.lineHeight = value;
+        if (property === 'color') heading.style.color = value;
+      }
+      control.addEventListener('input', updateHeading);
+      control.addEventListener('change', updateHeading);
+      updateHeading();
+    });
   });
 })();

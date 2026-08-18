@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.5.0 — 2026-08-18
+
+- Ajout de quatre presets : Velocity, Cosmos, Monolith et Aurora.
+- Ajout des sous-menus Header, Accès aux réglages et À propos.
+- Déplacement des logos et comportements du header dans leur écran dédié.
+- Styles détaillés et prévisualisables pour les titres H1 à H6.
+- Remplacement des sélecteurs multiples de rubriques et utilisateurs par des listes à cocher filtrables.
+- Centralisation de l’ouverture des liens externes dans une option globale.
+- Correction de la position de la notification d’enregistrement.
+- Durcissement des capacités, nonces, validations, sorties et scripts personnalisés.
+- Harmonisation du README avec les autres projets WordPress de SAS Jessy System.
+
 ## 3.0.0 — 2026-08-18
 
 - Fusion d’Orion 26 et Orion 26+ dans un thème unique à presets.

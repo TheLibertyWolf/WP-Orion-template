@@ -4,6 +4,24 @@
   var storageKey = 'orion26-theme';
   var searchTimer = null;
 
+  function secureExternalLinks(scope) {
+    if (!window.OrionThemeConfig || !window.OrionThemeConfig.externalNewTab) return;
+    var siteHost = String(window.OrionThemeConfig.homeHost || location.hostname).replace(/^www\./i, '').toLowerCase();
+    (scope || document).querySelectorAll('a[href]').forEach(function (link) {
+      var raw = link.getAttribute('href');
+      if (!raw || raw.charAt(0) === '#' || /^(mailto|tel|sms|javascript):/i.test(raw)) return;
+      try {
+        var url = new URL(raw, location.href);
+        if (!/^https?:$/.test(url.protocol)) return;
+        if (url.hostname.replace(/^www\./i, '').toLowerCase() === siteHost) return;
+        link.target = '_blank';
+        var rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+        ['noopener', 'noreferrer', 'external'].forEach(function (token) { rel.add(token); });
+        link.setAttribute('rel', Array.from(rel).join(' '));
+      } catch (error) {}
+    });
+  }
+
   function legacyTheme() {
     try {
       var match = document.cookie.match(/(?:^|; )wp_user_stylesheet_switcher_js=([^;]*)/);
@@ -43,6 +61,7 @@
   }
 
   applyTheme(preferredTheme());
+  secureExternalLinks(document);
 
   document.addEventListener('click', function (event) {
 	var date = event.target.closest('.orion-date');

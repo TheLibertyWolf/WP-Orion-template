@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 const ORION26_SETTINGS_OPTION = 'orion26_settings';
-const ORION26_SETTINGS_VERSION = 1;
+const ORION26_SETTINGS_VERSION = 2;
 
 /** Valeurs neutres permettant de distribuer Orion sur un autre site. */
 function orion26_settings_defaults() {
@@ -18,15 +18,9 @@ function orion26_settings_defaults() {
 		'_version' => ORION26_SETTINGS_VERSION,
 		'identity' => array(
 			'preset'            => 'minimal',
-			'logo_light_id'     => 0,
-			'logo_dark_id'      => 0,
-			'logo_footer_id'    => 0,
-			'logo_height'       => 40,
-			'footer_logo_height'=> 48,
 			'dark_mode'         => 1,
 			'default_scheme'    => 'auto',
 			'container_width'   => 1240,
-			'access_users'      => array(),
 		),
 		'design' => array(
 			'accent'              => '#ed2438',
@@ -57,17 +51,43 @@ function orion26_settings_defaults() {
 			'blockquote_style'    => 'italic',
 			'code_background'     => '#171b24',
 			'code_text'           => '#f1eee7',
+			'headings'            => array(
+				'h1' => array( 'color' => '#12151b', 'dark_color' => '#f1eee7', 'font' => 'condensed', 'size' => 52, 'weight' => 900, 'case' => 'uppercase', 'line_height' => 1.02 ),
+				'h2' => array( 'color' => '#12151b', 'dark_color' => '#f1eee7', 'font' => 'condensed', 'size' => 38, 'weight' => 900, 'case' => 'uppercase', 'line_height' => 1.08 ),
+				'h3' => array( 'color' => '#12151b', 'dark_color' => '#f1eee7', 'font' => 'condensed', 'size' => 30, 'weight' => 800, 'case' => 'none', 'line_height' => 1.15 ),
+				'h4' => array( 'color' => '#12151b', 'dark_color' => '#f1eee7', 'font' => 'condensed', 'size' => 24, 'weight' => 800, 'case' => 'none', 'line_height' => 1.2 ),
+				'h5' => array( 'color' => '#12151b', 'dark_color' => '#f1eee7', 'font' => 'system', 'size' => 20, 'weight' => 800, 'case' => 'none', 'line_height' => 1.25 ),
+				'h6' => array( 'color' => '#626873', 'dark_color' => '#a1a7b3', 'font' => 'system', 'size' => 16, 'weight' => 800, 'case' => 'uppercase', 'line_height' => 1.3 ),
+			),
 		),
 		'navigation' => array(
-			'primary_menu'       => 0,
-			'uppercase'          => 1,
-			'sticky'             => 0,
-			'show_search'        => 1,
-			'show_theme_toggle'  => 1,
+			'external_new_tab'   => 1,
 			'append_more'        => 1,
 			'more_label'         => 'Plus d’actualités',
 			'more_url'           => '/others/',
 			'mobile_breakpoint'  => 900,
+		),
+		'header' => array(
+			'logo_light_id'      => 0,
+			'logo_dark_id'       => 0,
+			'logo_height'        => 40,
+			'primary_menu'       => 0,
+			'layout'             => 'classic',
+			'height'             => 84,
+			'background'         => '#ffffff',
+			'dark_background'    => '#11141b',
+			'text'               => '#12151b',
+			'dark_text'          => '#f1eee7',
+			'border'             => '#d9d6cf',
+			'typography'         => 'system',
+			'font_size'          => 14,
+			'font_weight'        => 800,
+			'uppercase'          => 1,
+			'sticky'             => 0,
+			'show_search'        => 1,
+			'show_theme_toggle'  => 1,
+			'show_tagline'       => 1,
+			'shadow'             => 0,
 		),
 		'homepage' => array(
 			'featured_tag'       => 0,
@@ -84,6 +104,8 @@ function orion26_settings_defaults() {
 			'show_history'       => 1,
 		),
 		'footer' => array(
+			'logo_id'            => 0,
+			'logo_height'        => 48,
 			'show_description'   => 1,
 			'show_categories'    => 1,
 			'category_count'     => 14,
@@ -102,7 +124,9 @@ function orion26_settings_defaults() {
 			'tiktok'    => '',
 			'twitch'    => '',
 			'rss'       => 1,
-			'new_tab'   => 1,
+		),
+		'access' => array(
+			'users' => array(),
 		),
 		'consent' => array(
 			'enabled'                => 0,
@@ -156,16 +180,10 @@ function orion26_settings_schema() {
 			'label' => 'Identité et apparence', 'icon' => 'dashicons-admin-customizer',
 			'description' => 'Identité visuelle, preset global, logos et dimensions générales.',
 			'fields' => array(
-				'preset' => array( 'label' => 'Style visuel', 'type' => 'preset', 'choices' => array( 'minimal' => 'Orion Minimal', 'expressive' => 'Orion Expressif', 'editorial' => 'Orion Éditorial', 'contrast' => 'Orion Contraste' ) ),
-				'logo_light_id' => array( 'label' => 'Logo sur fond clair', 'type' => 'media' ),
-				'logo_dark_id' => array( 'label' => 'Logo sur fond sombre', 'type' => 'media' ),
-				'logo_footer_id' => array( 'label' => 'Logo du footer', 'type' => 'media' ),
-				'logo_height' => array( 'label' => 'Hauteur du logo du header', 'type' => 'number', 'min' => 20, 'max' => 180, 'suffix' => 'px' ),
-				'footer_logo_height' => array( 'label' => 'Hauteur du logo du footer', 'type' => 'number', 'min' => 20, 'max' => 180, 'suffix' => 'px' ),
+				'preset' => array( 'label' => 'Style visuel', 'type' => 'preset', 'choices' => array( 'minimal' => 'Orion Minimal', 'expressive' => 'Orion Expressif', 'editorial' => 'Orion Éditorial', 'contrast' => 'Orion Contraste', 'velocity' => 'Orion Velocity', 'cosmos' => 'Orion Cosmos', 'monolith' => 'Orion Monolith', 'aurora' => 'Orion Aurora' ) ),
 				'dark_mode' => array( 'label' => 'Activer les variantes claire et sombre', 'type' => 'checkbox' ),
 				'default_scheme' => array( 'label' => 'Mode initial', 'type' => 'select', 'choices' => array( 'auto' => 'Préférence du système', 'light' => 'Clair', 'dark' => 'Sombre' ) ),
 				'container_width' => array( 'label' => 'Largeur maximale du site', 'type' => 'number', 'min' => 960, 'max' => 1800, 'suffix' => 'px' ),
-				'access_users' => array( 'label' => 'Utilisateurs autorisés à régler Orion', 'type' => 'users' ),
 			),
 		),
 		'design' => array(
@@ -200,17 +218,14 @@ function orion26_settings_schema() {
 				'blockquote_style' => array( 'label' => 'Style des citations', 'type' => 'select', 'choices' => array( 'normal' => 'Normal', 'italic' => 'Italique' ), 'preview' => 'quote-style' ),
 				'code_background' => $color + array( 'label' => 'Fond des blocs de code' ),
 				'code_text' => $color + array( 'label' => 'Texte des blocs de code' ),
+				'headings' => array( 'label' => 'Styles des titres H1 à H6', 'type' => 'headings', 'description' => 'Couleur, police, taille, graisse, casse et interligne de chaque niveau de titre.' ),
 			),
 		),
 		'navigation' => array(
 			'label' => 'Navigation', 'icon' => 'dashicons-menu',
-			'description' => 'Sélection du menu WordPress et comportement du header.',
+			'description' => 'Comportement général des liens et navigation éditoriale.',
 			'fields' => array(
-				'primary_menu' => array( 'label' => 'Menu principal', 'type' => 'menus' ),
-				'uppercase' => array( 'label' => 'Afficher le menu en majuscules', 'type' => 'checkbox' ),
-				'sticky' => array( 'label' => 'Header fixe au défilement', 'type' => 'checkbox' ),
-				'show_search' => array( 'label' => 'Afficher la recherche', 'type' => 'checkbox' ),
-				'show_theme_toggle' => array( 'label' => 'Afficher le bouton clair/sombre', 'type' => 'checkbox' ),
+				'external_new_tab' => array( 'label' => 'Ouvrir tous les liens externes dans un nouvel onglet', 'type' => 'checkbox', 'description' => 'S’applique au contenu, aux menus, aux cartes, au footer et aux réseaux sociaux.' ),
 				'append_more' => array( 'label' => 'Ajouter un lien final automatiquement', 'type' => 'checkbox' ),
 				'more_label' => array( 'label' => 'Libellé du lien final', 'type' => 'text' ),
 				'more_url' => array( 'label' => 'URL du lien final', 'type' => 'url_or_path' ),
@@ -235,20 +250,6 @@ function orion26_settings_schema() {
 				'show_history' => array( 'label' => 'Afficher le bloc Historique', 'type' => 'checkbox' ),
 			),
 		),
-		'footer' => array(
-			'label' => 'Footer', 'icon' => 'dashicons-editor-insertmore',
-			'description' => 'Contenu, colonnes et mentions du pied de page.',
-			'fields' => array(
-				'show_description' => array( 'label' => 'Afficher la description du site', 'type' => 'checkbox' ),
-				'show_categories' => array( 'label' => 'Afficher les rubriques', 'type' => 'checkbox' ),
-				'category_count' => array( 'label' => 'Nombre de rubriques', 'type' => 'number', 'min' => 0, 'max' => 40 ),
-				'columns' => array( 'label' => 'Nombre de colonnes', 'type' => 'number', 'min' => 1, 'max' => 6 ),
-				'footer_menu' => array( 'label' => 'Menu du footer', 'type' => 'menus' ),
-				'copyright' => array( 'label' => 'Copyright', 'type' => 'text', 'description' => 'Variables : {year}, {site_name}.' ),
-				'version_label' => array( 'label' => 'Libellé de version', 'type' => 'text' ),
-				'show_login' => array( 'label' => 'Afficher le lien de connexion', 'type' => 'checkbox' ),
-			),
-		),
 		'social' => array(
 			'label' => 'Réseaux sociaux', 'icon' => 'dashicons-share',
 			'description' => 'Profils publics et comportement de leurs liens.',
@@ -261,7 +262,6 @@ function orion26_settings_schema() {
 				'tiktok' => array( 'label' => 'TikTok', 'type' => 'url' ),
 				'twitch' => array( 'label' => 'Twitch', 'type' => 'url' ),
 				'rss' => array( 'label' => 'Afficher le flux RSS', 'type' => 'checkbox' ),
-				'new_tab' => array( 'label' => 'Ouvrir les réseaux dans un nouvel onglet', 'type' => 'checkbox' ),
 			),
 		),
 		'consent' => array(
@@ -300,6 +300,60 @@ function orion26_settings_schema() {
 				'bing_verification' => array( 'label' => 'Bing Verification', 'type' => 'text' ),
 			),
 		),
+		'access' => array(
+			'label' => 'Accès aux réglages', 'icon' => 'dashicons-shield', 'capability' => 'manage_options',
+			'description' => 'Délégation contrôlée de l’accès au panneau Orion. Les administrateurs conservent toujours l’accès.',
+			'fields' => array(
+				'users' => array( 'label' => 'Utilisateurs autorisés', 'type' => 'users' ),
+			),
+		),
+		'header' => array(
+			'label' => 'Header', 'icon' => 'dashicons-align-wide',
+			'description' => 'Identité, disposition, menu, couleurs, typographie et comportement de l’en-tête.',
+			'fields' => array(
+				'logo_light_id' => array( 'label' => 'Logo sur fond clair', 'type' => 'media' ),
+				'logo_dark_id' => array( 'label' => 'Logo sur fond sombre', 'type' => 'media' ),
+				'logo_height' => array( 'label' => 'Hauteur du logo', 'type' => 'number', 'min' => 20, 'max' => 180, 'suffix' => 'px' ),
+				'primary_menu' => array( 'label' => 'Menu principal', 'type' => 'menus' ),
+				'layout' => array( 'label' => 'Disposition', 'type' => 'select', 'choices' => array( 'classic' => 'Logo à gauche, actions à droite', 'centered' => 'Logo centré', 'compact' => 'Header compact' ) ),
+				'height' => array( 'label' => 'Hauteur minimale', 'type' => 'number', 'min' => 56, 'max' => 180, 'suffix' => 'px' ),
+				'background' => $color + array( 'label' => 'Fond clair' ),
+				'dark_background' => $color + array( 'label' => 'Fond sombre' ),
+				'text' => $color + array( 'label' => 'Texte clair' ),
+				'dark_text' => $color + array( 'label' => 'Texte sombre' ),
+				'border' => $color + array( 'label' => 'Bordure' ),
+				'typography' => array( 'label' => 'Police du menu', 'type' => 'select', 'choices' => array( 'system' => 'Police système', 'condensed' => 'Condensée', 'ibm-plex-sans' => 'IBM Plex Sans', 'atkinson-hyperlegible-next' => 'Atkinson Hyperlegible Next' ) ),
+				'font_size' => array( 'label' => 'Taille du menu', 'type' => 'number', 'min' => 11, 'max' => 22, 'suffix' => 'px' ),
+				'font_weight' => array( 'label' => 'Graisse du menu', 'type' => 'select', 'choices' => array( '400' => 'Normale', '600' => 'Semi-grasse', '700' => 'Grasse', '800' => 'Extra-grasse', '900' => 'Noire' ) ),
+				'uppercase' => array( 'label' => 'Menu en majuscules', 'type' => 'checkbox' ),
+				'sticky' => array( 'label' => 'Header fixe au défilement', 'type' => 'checkbox' ),
+				'show_search' => array( 'label' => 'Afficher la recherche', 'type' => 'checkbox' ),
+				'show_theme_toggle' => array( 'label' => 'Afficher le bouton clair/sombre', 'type' => 'checkbox' ),
+				'show_tagline' => array( 'label' => 'Afficher la description sous le nom du site', 'type' => 'checkbox' ),
+				'shadow' => array( 'label' => 'Ajouter une ombre sous le header', 'type' => 'checkbox' ),
+			),
+		),
+		'footer' => array(
+			'label' => 'Footer', 'icon' => 'dashicons-editor-insertmore',
+			'description' => 'Contenu, colonnes et mentions du pied de page.',
+			'fields' => array(
+				'logo_id' => array( 'label' => 'Logo du footer', 'type' => 'media' ),
+				'logo_height' => array( 'label' => 'Hauteur du logo du footer', 'type' => 'number', 'min' => 20, 'max' => 180, 'suffix' => 'px' ),
+				'show_description' => array( 'label' => 'Afficher la description du site', 'type' => 'checkbox' ),
+				'show_categories' => array( 'label' => 'Afficher les rubriques', 'type' => 'checkbox' ),
+				'category_count' => array( 'label' => 'Nombre de rubriques', 'type' => 'number', 'min' => 0, 'max' => 40 ),
+				'columns' => array( 'label' => 'Nombre de colonnes', 'type' => 'number', 'min' => 1, 'max' => 6 ),
+				'footer_menu' => array( 'label' => 'Menu du footer', 'type' => 'menus' ),
+				'copyright' => array( 'label' => 'Copyright', 'type' => 'text', 'description' => 'Variables : {year}, {site_name}.' ),
+				'version_label' => array( 'label' => 'Libellé de version', 'type' => 'text' ),
+				'show_login' => array( 'label' => 'Afficher le lien de connexion', 'type' => 'checkbox' ),
+			),
+		),
+		'about' => array(
+			'label' => 'À propos', 'icon' => 'dashicons-info-outline', 'about' => true,
+			'description' => 'Informations sur Orion, ses auteurs, sa licence et son développement public.',
+			'fields' => array(),
+		),
 	);
 }
 
@@ -314,9 +368,13 @@ function orion26_array_merge_settings( $defaults, $values ) {
 	return $defaults;
 }
 
-function orion26_get_settings() {
-	$stored = get_option( ORION26_SETTINGS_OPTION, array() );
-	return orion26_array_merge_settings( orion26_settings_defaults(), is_array( $stored ) ? $stored : array() );
+function orion26_get_settings( $refresh = false ) {
+	static $settings = null;
+	if ( null === $settings || $refresh ) {
+		$stored   = get_option( ORION26_SETTINGS_OPTION, array() );
+		$settings = orion26_array_merge_settings( orion26_settings_defaults(), is_array( $stored ) ? $stored : array() );
+	}
+	return $settings;
 }
 
 function orion26_setting( $path, $fallback = null ) {
@@ -339,7 +397,7 @@ function orion26_legacy_image_id( $value ) {
 
 /** Convertit une seule fois les options historiques ACF vers le format natif. */
 function orion26_migrate_legacy_settings() {
-	if ( get_option( ORION26_SETTINGS_OPTION, null ) !== null ) {
+	if ( ! current_user_can( 'manage_options' ) || get_option( ORION26_SETTINGS_OPTION, null ) !== null ) {
 		return;
 	}
 
@@ -350,17 +408,17 @@ function orion26_migrate_legacy_settings() {
 	};
 
 	$settings['identity']['preset']             = 'orion-26-plus' === sanitize_key( (string) get_user_meta( get_current_user_id(), 'wp_simple_template_switch_theme', true ) ) ? 'expressive' : 'minimal';
-	$settings['identity']['logo_light_id']       = orion26_legacy_image_id( $legacy( 'logo_img' ) );
-	$settings['identity']['logo_dark_id']        = orion26_legacy_image_id( $legacy( 'logo_dark' ) );
-	$settings['identity']['logo_footer_id']      = orion26_legacy_image_id( $legacy( 'logo_footer' ) );
-	$settings['identity']['logo_height']         = absint( $legacy( 'logo_height', 40 ) );
-	$settings['identity']['footer_logo_height']  = absint( $legacy( 'logo_footer_height', 48 ) ) ?: 48;
+	$settings['header']['logo_light_id']         = orion26_legacy_image_id( $legacy( 'logo_img' ) );
+	$settings['header']['logo_dark_id']          = orion26_legacy_image_id( $legacy( 'logo_dark' ) );
+	$settings['footer']['logo_id']               = orion26_legacy_image_id( $legacy( 'logo_footer' ) );
+	$settings['header']['logo_height']           = absint( $legacy( 'logo_height', 40 ) );
+	$settings['footer']['logo_height']           = absint( $legacy( 'logo_footer_height', 48 ) ) ?: 48;
 	$settings['identity']['dark_mode']           = (int) (bool) $legacy( 'dark_mode', 1 );
-	$settings['identity']['access_users']        = array_values( array_filter( array_map( 'absint', (array) $legacy( 'orion26_settings_users', array() ) ) ) );
+	$settings['access']['users']                 = array_values( array_filter( array_map( 'absint', (array) $legacy( 'orion26_settings_users', array() ) ) ) );
 	$settings['design']['accent']                = sanitize_hex_color( (string) $legacy( 'color' ) ) ?: $settings['design']['accent'];
 	$settings['design']['accent_hover']          = sanitize_hex_color( (string) $legacy( 'color_hover' ) ) ?: $settings['design']['accent_hover'];
 	$settings['design']['article_font']          = sanitize_key( (string) $legacy( 'article_font', 'source-serif-4' ) );
-	$settings['navigation']['uppercase']         = (int) (bool) $legacy( 'menu_uppercase', 1 );
+	$settings['header']['uppercase']             = (int) (bool) $legacy( 'menu_uppercase', 1 );
 	$settings['homepage']['featured_tag']        = absint( $legacy( 'tag_une_article' ) );
 	$settings['homepage']['featured_categories']= array_values( array_filter( array_map( 'absint', (array) $legacy( 'homepage_disc_list', array() ) ) ) );
 	$settings['homepage']['hub_categories']      = array_values( array_filter( array_map( 'absint', (array) $legacy( 'homepage_discipline_hub', array() ) ) ) );
@@ -381,3 +439,33 @@ function orion26_migrate_legacy_settings() {
 	update_option( 'orion26_settings_migrated_at', time(), false );
 }
 add_action( 'admin_init', 'orion26_migrate_legacy_settings', 2 );
+
+/** Met à niveau sans perte les réglages enregistrés avant Orion 3.5. */
+function orion26_upgrade_settings() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	$stored = get_option( ORION26_SETTINGS_OPTION, array() );
+	if ( ! is_array( $stored ) || (int) ( $stored['_version'] ?? 0 ) >= ORION26_SETTINGS_VERSION ) {
+		return;
+	}
+	$stored = orion26_array_merge_settings( orion26_settings_defaults(), $stored );
+	$stored['header']['logo_light_id'] = absint( $stored['identity']['logo_light_id'] ?? $stored['header']['logo_light_id'] );
+	$stored['header']['logo_dark_id']  = absint( $stored['identity']['logo_dark_id'] ?? $stored['header']['logo_dark_id'] );
+	$stored['header']['logo_height']   = absint( $stored['identity']['logo_height'] ?? $stored['header']['logo_height'] );
+	$stored['footer']['logo_id']       = absint( $stored['identity']['logo_footer_id'] ?? $stored['footer']['logo_id'] );
+	$stored['footer']['logo_height']   = absint( $stored['identity']['footer_logo_height'] ?? $stored['footer']['logo_height'] );
+	$stored['header']['primary_menu']  = absint( $stored['navigation']['primary_menu'] ?? $stored['header']['primary_menu'] );
+	foreach ( array( 'uppercase', 'sticky', 'show_search', 'show_theme_toggle' ) as $key ) {
+		if ( isset( $stored['navigation'][ $key ] ) ) {
+			$stored['header'][ $key ] = (int) (bool) $stored['navigation'][ $key ];
+		}
+	}
+	$stored['access']['users'] = array_values( array_filter( array_map( 'absint', (array) ( $stored['identity']['access_users'] ?? array() ) ) ) );
+	$stored['navigation']['external_new_tab'] = isset( $stored['social']['new_tab'] ) ? (int) (bool) $stored['social']['new_tab'] : 1;
+	unset( $stored['identity']['logo_light_id'], $stored['identity']['logo_dark_id'], $stored['identity']['logo_height'], $stored['identity']['logo_footer_id'], $stored['identity']['footer_logo_height'], $stored['identity']['access_users'], $stored['navigation']['primary_menu'], $stored['navigation']['uppercase'], $stored['navigation']['sticky'], $stored['navigation']['show_search'], $stored['navigation']['show_theme_toggle'], $stored['social']['new_tab'] );
+	$stored['_version'] = ORION26_SETTINGS_VERSION;
+	update_option( ORION26_SETTINGS_OPTION, $stored, false );
+	orion26_get_settings( true );
+}
+add_action( 'admin_init', 'orion26_upgrade_settings', 3 );

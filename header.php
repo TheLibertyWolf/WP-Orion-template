@@ -8,7 +8,7 @@ $light_height = absint( $logos['light']['height'] ?? 92 );
 $dark_width = absint( $logos['dark']['width'] ?? $light_width );
 $dark_height = absint( $logos['dark']['height'] ?? $light_height );
 $default_scheme = orion26_setting( 'identity.default_scheme', 'auto' );
-$primary_menu   = absint( orion26_setting( 'navigation.primary_menu', 0 ) );
+$primary_menu   = absint( orion26_setting( 'header.primary_menu', 0 ) );
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -32,12 +32,12 @@ $primary_menu   = absint( orion26_setting( 'navigation.primary_menu', 0 ) );
 				<img class="site-brand__image site-brand__image--dark" src="<?php echo esc_url( wp_make_link_relative( $logos['dark']['url'] ) ); ?>" alt="" width="<?php echo esc_attr( $dark_width ); ?>" height="<?php echo esc_attr( $dark_height ); ?>" decoding="async" aria-hidden="true">
 			<?php else : ?>
 				<span class="orion-mark" aria-hidden="true"><i>26</i></span>
-				<span><span class="site-brand__name"><?php bloginfo( 'name' ); ?></span><span class="site-brand__tagline"><?php bloginfo( 'description' ); ?></span></span>
+				<span><span class="site-brand__name"><?php bloginfo( 'name' ); ?></span><?php if ( orion26_setting( 'header.show_tagline', true ) ) : ?><span class="site-brand__tagline"><?php bloginfo( 'description' ); ?></span><?php endif; ?></span>
 			<?php endif; ?>
 		</a>
 		<div class="site-actions">
-			<?php if ( orion26_setting( 'navigation.show_theme_toggle', true ) && orion26_option( 'dark_mode', true ) ) : ?><button class="icon-button theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="<?php esc_attr_e( 'Changer de thème', 'orion26' ); ?>"><span data-theme-icon aria-hidden="true">☾</span></button><?php endif; ?>
-			<?php if ( orion26_setting( 'navigation.show_search', true ) ) : ?><button class="icon-button" type="button" data-search-toggle aria-controls="site-search" aria-expanded="false" aria-label="<?php esc_attr_e( 'Rechercher', 'orion26' ); ?>">⌕</button>
+			<?php if ( orion26_setting( 'header.show_theme_toggle', true ) && orion26_option( 'dark_mode', true ) ) : ?><button class="icon-button theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="<?php esc_attr_e( 'Changer de thème', 'orion26' ); ?>"><span data-theme-icon aria-hidden="true">☾</span></button><?php endif; ?>
+			<?php if ( orion26_setting( 'header.show_search', true ) ) : ?><button class="icon-button" type="button" data-search-toggle aria-controls="site-search" aria-expanded="false" aria-label="<?php esc_attr_e( 'Rechercher', 'orion26' ); ?>">⌕</button>
 			<div id="site-search" class="site-search" hidden><div class="site-search__inner"><?php get_search_form(); ?></div></div><?php endif; ?>
 			<button class="menu-toggle" type="button" data-menu-toggle aria-controls="site-navigation" aria-expanded="false"><span aria-hidden="true"></span><span class="screen-reader-text"><?php esc_html_e( 'Ouvrir le menu', 'orion26' ); ?></span></button>
 		</div>

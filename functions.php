@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ORION26_VERSION', '3.0.0' );
+define( 'ORION26_VERSION', '3.5.0' );
 define( 'ORION26_DIR', __DIR__ );
-define( 'ORION26_URI', content_url( '/themes/orion-26' ) );
+define( 'ORION26_URI', get_template_directory_uri() );
 
 require_once ORION26_DIR . '/inc/settings.php';
 require_once ORION26_DIR . '/inc/consent.php';
@@ -49,6 +49,7 @@ function orion26_assets() {
 	wp_enqueue_style( 'orion26', ORION26_URI . '/style.css', array(), file_exists( $css ) ? (string) filemtime( $css ) : ORION26_VERSION );
 	wp_enqueue_style( 'orion26-presets', ORION26_URI . '/assets/css/presets.css', array( 'orion26' ), file_exists( $presets ) ? (string) filemtime( $presets ) : ORION26_VERSION );
 	wp_enqueue_script( 'orion26', ORION26_URI . '/assets/js/theme.js', array(), file_exists( $js ) ? (string) filemtime( $js ) : ORION26_VERSION, true );
+	wp_localize_script( 'orion26', 'OrionThemeConfig', array( 'externalNewTab' => (bool) orion26_setting( 'navigation.external_new_tab', true ), 'homeHost' => strtolower( (string) wp_parse_url( home_url( '/' ), PHP_URL_HOST ) ) ) );
 }
 add_action( 'wp_enqueue_scripts', 'orion26_assets' );
 
@@ -57,7 +58,7 @@ add_action( 'wp_enqueue_scripts', 'orion26_assets' );
  * Les liens internes, ancres, e-mails et numéros de téléphone restent inchangés.
  */
 function orion26_external_content_links( $content ) {
-	if ( is_admin() || ! is_singular() || ! class_exists( 'WP_HTML_Tag_Processor' ) || false === stripos( $content, '<a' ) ) {
+	if ( ! orion26_setting( 'navigation.external_new_tab', true ) || is_admin() || ! class_exists( 'WP_HTML_Tag_Processor' ) || false === stripos( $content, '<a' ) ) {
 		return $content;
 	}
 
@@ -90,6 +91,18 @@ function orion26_external_content_links( $content ) {
 }
 add_filter( 'the_content', 'orion26_external_content_links', 20 );
 
+function orion26_nav_external_attributes( $attributes ) {
+	if ( ! orion26_setting( 'navigation.external_new_tab', true ) || empty( $attributes['href'] ) ) { return $attributes; }
+	$site = preg_replace( '/^www\./', '', strtolower( (string) wp_parse_url( home_url( '/' ), PHP_URL_HOST ) ) );
+	$host = preg_replace( '/^www\./', '', strtolower( (string) wp_parse_url( $attributes['href'], PHP_URL_HOST ) ) );
+	if ( $host && $host !== $site ) {
+		$attributes['target'] = '_blank';
+		$attributes['rel'] = trim( (string) ( $attributes['rel'] ?? '' ) . ' noopener noreferrer external' );
+	}
+	return $attributes;
+}
+add_filter( 'nav_menu_link_attributes', 'orion26_nav_external_attributes' );
+
 /** Orion gère nativement les thèmes clair/sombre : ne charge pas les CSS AH19 du plugin historique. */
 function orion26_disable_legacy_theme_stylesheets() {
 	wp_dequeue_style( 'wp_user_stylesheet_switcher_files0' );
@@ -106,7 +119,7 @@ function orion26_option( $name, $fallback = '' ) {
 		'color_hover'             => 'design.accent_hover',
 		'article_font'            => 'design.article_font',
 		'dark_mode'               => 'identity.dark_mode',
-		'menu_uppercase'          => 'navigation.uppercase',
+		'menu_uppercase'          => 'header.uppercase',
 		'homepage_disc_list'      => 'homepage.featured_categories',
 		'homepage_discipline_hub' => 'homepage.hub_categories',
 		'homepage_restnews'       => 'homepage.secondary_categories',
@@ -115,11 +128,11 @@ function orion26_option( $name, $fallback = '' ) {
 		'facebook'                => 'social.facebook',
 		'insta'                   => 'social.instagram',
 		'orion26_version'         => 'footer.version_label',
-		'logo_light'              => 'identity.logo_light_id',
-		'logo_dark'               => 'identity.logo_dark_id',
-		'logo_footer'             => 'identity.logo_footer_id',
-		'logo_height'             => 'identity.logo_height',
-		'logo_footer_height'      => 'identity.footer_logo_height',
+		'logo_light'              => 'header.logo_light_id',
+		'logo_dark'               => 'header.logo_dark_id',
+		'logo_footer'             => 'footer.logo_id',
+		'logo_height'             => 'header.logo_height',
+		'logo_footer_height'      => 'footer.logo_height',
 		'var_google-site-verification' => 'consent.google_verification',
 		'var_msvalidate'          => 'consent.bing_verification',
 		'var_google-analytic'     => 'consent.google_analytics_id',
@@ -128,10 +141,10 @@ function orion26_option( $name, $fallback = '' ) {
 	);
 	if ( get_option( ORION26_SETTINGS_OPTION, null ) !== null ) {
 		if ( 'logo' === $name ) {
-			return array( 'img' => orion26_setting( 'identity.logo_light_id', 0 ), 'height' => orion26_setting( 'identity.logo_height', 40 ) );
+			return array( 'img' => orion26_setting( 'header.logo_light_id', 0 ), 'height' => orion26_setting( 'header.logo_height', 40 ) );
 		}
 		if ( 'logo_img' === $name ) {
-			return orion26_setting( 'identity.logo_light_id', $fallback );
+			return orion26_setting( 'header.logo_light_id', $fallback );
 		}
 		if ( 'var' === $name ) {
 			return array(
@@ -165,7 +178,7 @@ function orion26_settings_user_capability( $allcaps, $caps, $args, $user ) {
 		$allcaps['manage_orion26_settings'] = true;
 		return $allcaps;
 	}
-	$allowed = function_exists( 'orion26_setting' ) ? orion26_setting( 'identity.access_users', array() ) : get_option( 'options_orion26_settings_users', array() );
+	$allowed = function_exists( 'orion26_setting' ) ? orion26_setting( 'access.users', array() ) : get_option( 'options_orion26_settings_users', array() );
 	$allowed = is_array( $allowed ) ? $allowed : array( $allowed );
 	if ( in_array( (int) $user->ID, array_map( 'absint', $allowed ), true ) ) {
 		$allcaps['manage_orion26_settings'] = true;
@@ -173,38 +186,6 @@ function orion26_settings_user_capability( $allcaps, $caps, $args, $user ) {
 	return $allcaps;
 }
 add_filter( 'user_has_cap', 'orion26_settings_user_capability', 20, 4 );
-
-/** La délégation d’accès elle-même reste réservée aux administrateurs. */
-function orion26_prepare_access_field( $field ) {
-	return current_user_can( 'manage_options' ) ? $field : false;
-}
-add_filter( 'acf/prepare_field/key=field_orion26_settings_users', 'orion26_prepare_access_field' );
-
-function orion26_load_access_user_choices( $field ) {
-	$field['choices'] = array();
-	$users = get_users( array( 'orderby' => 'display_name', 'order' => 'ASC', 'fields' => array( 'ID', 'display_name', 'user_email' ) ) );
-	foreach ( $users as $user ) {
-		$field['choices'][ $user->ID ] = sprintf( '%s — %s', $user->display_name, $user->user_email );
-	}
-	return $field;
-}
-add_filter( 'acf/load_field/key=field_orion26_settings_users', 'orion26_load_access_user_choices' );
-
-function orion26_protect_access_field_value( $value ) {
-	if ( current_user_can( 'manage_options' ) ) {
-		return $value;
-	}
-	return get_option( 'options_orion26_settings_users', array() );
-}
-add_filter( 'acf/update_value/key=field_orion26_settings_users', 'orion26_protect_access_field_value' );
-
-function orion26_access_field_admin_style() {
-	if ( empty( $_GET['page'] ) || 'orion-26' !== sanitize_key( wp_unslash( $_GET['page'] ) ) ) {
-		return;
-	}
-	echo '<style id="orion26-access-admin-style">.orion26-access-list .acf-checkbox-list{max-height:230px;overflow-y:auto;margin:0;padding:7px 9px;border:1px solid #dcdcde;background:#fff}.orion26-access-list .acf-checkbox-list li{margin:0;padding:4px 0}.orion26-access-list .acf-checkbox-list label{display:block}</style>';
-}
-add_action( 'admin_head', 'orion26_access_field_admin_style' );
 
 function orion26_term_ids( $value ) {
 	$ids = array();
@@ -318,7 +299,8 @@ function orion26_configured_menu() {
 		if ( is_wp_error( $url ) || ! $url || empty( $item['title'] ) ) {
 			continue;
 		}
-		printf( '<li><a href="%1$s"%2$s>%3$s</a></li>', esc_url( $url ), 'lk' === $type ? ' target="_blank" rel="noopener noreferrer"' : '', esc_html( $item['title'] ) );
+		$attributes = orion26_nav_external_attributes( array( 'href' => $url ) );
+		printf( '<li><a href="%1$s"%2$s>%3$s</a></li>', esc_url( $url ), ! empty( $attributes['target'] ) ? ' target="_blank" rel="noopener noreferrer external"' : '', esc_html( $item['title'] ) );
 	}
 	echo orion26_more_news_menu_item();
 	echo '</ul>';
@@ -427,9 +409,11 @@ add_action( 'wp_footer', 'orion26_matomo_tag', 20 );
 function orion26_body_classes( $classes ) {
 	$classes[] = 'orion26';
 	$classes[] = 'orion-preset-' . sanitize_html_class( (string) orion26_setting( 'identity.preset', 'minimal' ) );
-	if ( orion26_setting( 'navigation.sticky', false ) ) {
+	$classes[] = 'orion-header-' . sanitize_html_class( (string) orion26_setting( 'header.layout', 'classic' ) );
+	if ( orion26_setting( 'header.sticky', false ) ) {
 		$classes[] = 'orion-sticky-header';
 	}
+	if ( orion26_setting( 'header.shadow', false ) ) { $classes[] = 'orion-header-shadow'; }
 	if ( orion26_option( 'menu_uppercase', true ) ) {
 		$classes[] = 'menu-uppercase';
 	}
@@ -494,15 +478,32 @@ function orion26_inline_colors() {
 		'--orion-quote-accent' => $color( 'design.blockquote_accent', '#b68b3d' ), '--orion-quote-style' => 'normal' === orion26_setting( 'design.blockquote_style', 'italic' ) ? 'normal' : 'italic',
 		'--orion-code-bg' => $color( 'design.code_background', '#171b24' ), '--orion-code-text' => $color( 'design.code_text', '#f1eee7' ),
 		'--orion-container-width' => max( 960, min( 1800, absint( orion26_setting( 'identity.container_width', 1240 ) ) ) ) . 'px',
+		'--orion-header-bg' => $color( 'header.background', '#ffffff' ), '--orion-header-dark-bg' => $color( 'header.dark_background', '#11141b' ),
+		'--orion-header-text' => $color( 'header.text', '#12151b' ), '--orion-header-dark-text' => $color( 'header.dark_text', '#f1eee7' ), '--orion-header-border' => $color( 'header.border', '#d9d6cf' ),
+		'--orion-header-font' => orion26_font_stack( sanitize_key( (string) orion26_setting( 'header.typography', 'system' ) ) ),
+		'--orion-header-font-size' => max( 11, min( 22, absint( orion26_setting( 'header.font_size', 14 ) ) ) ) . 'px',
+		'--orion-header-font-weight' => in_array( absint( orion26_setting( 'header.font_weight', 800 ) ), array( 400, 600, 700, 800, 900 ), true ) ? absint( orion26_setting( 'header.font_weight', 800 ) ) : 800,
+		'--orion-header-height' => max( 56, min( 180, absint( orion26_setting( 'header.height', 84 ) ) ) ) . 'px',
 	);
 	$root = '';
 	foreach ( $values as $property => $value ) { $root .= $property . ':' . $value . ';'; }
 	$dark = '--orion-bg:' . $color( 'design.dark_background', '#0b0d12' ) . ';--orion-surface:' . $color( 'design.dark_surface', '#11141b' ) . ';--orion-surface-2:' . $color( 'design.dark_surface_alt', '#171b24' ) . ';--orion-text:' . $color( 'design.dark_text', '#f1eee7' ) . ';--orion-muted:' . $color( 'design.dark_muted', '#a1a7b3' ) . ';--orion-line:' . $color( 'design.dark_line', '#2b303b' ) . ';';
+	$heading_css = '';
+	$heading_dark_css = '';
+	$heading_defaults = orion26_settings_defaults()['design']['headings'];
+	foreach ( $heading_defaults as $level => $defaults ) {
+		$style = (array) orion26_setting( 'design.headings.' . $level, $defaults );
+		$font  = orion26_font_stack( sanitize_key( (string) ( $style['font'] ?? $defaults['font'] ) ), 'display' );
+		$heading_css .= '--orion-' . $level . '-color:' . ( sanitize_hex_color( (string) ( $style['color'] ?? '' ) ) ?: $defaults['color'] ) . ';--orion-' . $level . '-font:' . $font . ';--orion-' . $level . '-size:' . max( 12, min( 96, absint( $style['size'] ?? $defaults['size'] ) ) ) . 'px;--orion-' . $level . '-weight:' . ( in_array( absint( $style['weight'] ?? 800 ), array( 400, 500, 600, 700, 800, 900 ), true ) ? absint( $style['weight'] ) : $defaults['weight'] ) . ';--orion-' . $level . '-case:' . ( 'uppercase' === ( $style['case'] ?? '' ) ? 'uppercase' : 'none' ) . ';--orion-' . $level . '-line:' . max( .8, min( 2, (float) ( $style['line_height'] ?? $defaults['line_height'] ) ) ) . ';';
+		$heading_dark_css .= '--orion-' . $level . '-color:' . ( sanitize_hex_color( (string) ( $style['dark_color'] ?? '' ) ) ?: $defaults['dark_color'] ) . ';';
+	}
 	printf(
-		'<style id="orion26-brand-color">:root{%1$s}:root[data-theme="dark"]{%2$s}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){%2$s}}.news-article .article-content h2,.news-article .article-content h3,.news-article .article-content h4,.news-article .article-content h5,.news-article .article-content h6{color:%3$s!important}.home-main .story-category,.article-header .story-category{background:%3$s!important;color:#fff!important}</style>',
-		$root, // Valeurs bornées ou issues de listes statiques.
+		'<style id="orion26-brand-color">:root{%1$s%4$s}:root[data-theme="dark"]{%2$s%5$s}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){%2$s%5$s}}.home-main .story-category,.article-header .story-category{background:%3$s!important;color:#fff!important}</style>',
+		$root,
 		$dark,
-		esc_html( $primary )
+		esc_html( $primary ),
+		$heading_css,
+		$heading_dark_css
 	);
 }
 add_action( 'wp_head', 'orion26_inline_colors', 2 );

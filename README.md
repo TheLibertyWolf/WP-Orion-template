@@ -1,63 +1,125 @@
 # Orion 26
 
-Orion 26 est un thème WordPress éditorial moderne, rapide et responsive. Il réunit une mise en page d’actualité, quatre directions visuelles, un panneau de réglages natif indépendant d’ACF, un mode clair/sombre et un gestionnaire de consentement opt-in.
+Orion 26 est un thème WordPress éditorial moderne et responsive destiné aux sites d’actualité, magazines et médias indépendants. Il associe une homepage structurée, huit identités visuelles et un panneau de réglages natif sans dépendance obligatoire à ACF.
 
-## Points forts
+[![Version](https://img.shields.io/badge/version-3.5.0-2271b1)](https://github.com/TheLibertyWolf/WP-Orion-template/releases)
+[![PHP](https://img.shields.io/badge/PHP-%3E%3D%208.1-777bb4)](https://www.php.net/)
+[![WordPress](https://img.shields.io/badge/WordPress-%3E%3D%206.5-21759b)](https://wordpress.org/)
+[![License](https://img.shields.io/badge/license-GPL--2.0--or--later-46b450)](LICENSE)
+[![Languages](https://img.shields.io/badge/languages-FR%20%7C%20EN%20%7C%20IT%20%7C%20ES%20%7C%20PT-f48120)](#langues)
+[![CI](https://github.com/TheLibertyWolf/WP-Orion-template/actions/workflows/ci.yml/badge.svg)](https://github.com/TheLibertyWolf/WP-Orion-template/actions/workflows/ci.yml)
 
-- Homepage magazine : Une, fil récent, rubriques prioritaires, hub de rubriques et sélections éditoriales.
-- Archives catégorie, tag, auteur, recherche, page d’articles et page « autres rubriques ».
-- Quatre presets : Minimal, Expressif, Éditorial et Contraste.
-- Réglages natifs sous le menu **Orion**, avec sept écrans et prévisualisation directe du design.
-- Six familles de polices locales, sans appel à un CDN.
-- Logos distincts clair, sombre et footer ; dimensions réglables.
-- Menu WordPress configurable, recherche animée, header fixe et lien final optionnel.
-- Métadonnées de rubrique natives : présentation longue et liens officiel/Facebook/Instagram/YouTube.
-- Consentement par catégories, prise en compte de GPC et chargement différé des scripts.
-- SEO de repli : données structurées `NewsArticle`, `ProfilePage` et `BreadcrumbList`, métadescription, robots et images optimisées. Le thème laisse la priorité à SEOPress lorsqu’il est présent.
-- Compatibilité optionnelle avec un post type publicitaire `ad` et les métadonnées éditoriales `sponso`, `cp`, `histo`.
+## Fonctionnalités
 
-## Prérequis
+- homepage magazine avec Une, actualités récentes, rubriques prioritaires et sélections éditoriales ;
+- pages d’article, catégorie, auteur, tag, recherche, archives et rubrique « autres actualités » ;
+- huit presets : Minimal, Expressif, Éditorial, Contraste, Velocity, Cosmos, Monolith et Aurora ;
+- modes clair et sombre avec logos distincts et préférence automatique ou imposée ;
+- panneau **Orion** natif organisé en sous-menus, indépendant d’ACF ;
+- couleurs, polices et styles détaillés pour H1, H2, H3, H4, H5 et H6 avec aperçu direct ;
+- Header configurable : logos, menu, disposition, hauteur, fonds, textes, typographie et comportement ;
+- rubriques et comptes autorisés présentés sous forme de listes à cocher filtrables ;
+- ouverture globale et sécurisée des liens externes dans un nouvel onglet ;
+- six familles de polices auto-hébergées, sans dépendance à un CDN ;
+- profils de rubrique avec présentation longue et liens officiels ou sociaux ;
+- gestionnaire de consentement optionnel par catégories avec prise en charge de GPC ;
+- SEO de repli avec `NewsArticle`, `ProfilePage`, `BreadcrumbList`, métadescriptions et règles robots ;
+- compatibilité optionnelle avec un post type publicitaire `ad` et les marqueurs `sponso`, `cp` et `histo` ;
+- interface traduite en français, anglais, italien, espagnol et portugais.
 
-- WordPress 6.5 ou supérieur (testé sur 7.0.4)
-- PHP 8.1 ou supérieur
+## Cas d’usage
+
+Orion est particulièrement adapté pour :
+
+- créer un média d’actualité à forte hiérarchie éditoriale ;
+- décliner rapidement plusieurs identités graphiques sans thème enfant ;
+- donner à une rédaction un contrôle précis de la homepage et des rubriques ;
+- remplacer progressivement un thème historique grâce à une migration non destructive ;
+- distribuer une base éditoriale réutilisable sans données propres au site d’origine.
 
 ## Installation
 
-1. Téléchargez l’archive de la dernière release.
-2. Dans WordPress, ouvrez **Apparence → Thèmes → Ajouter un thème → Téléverser**.
-3. Activez Orion 26.
-4. Ouvrez **Orion → Identité et apparence**, choisissez un preset et vos logos.
-5. Affectez vos menus dans **Orion → Navigation** et **Orion → Footer**.
+1. Télécharger `orion-26-3.5.0.zip` depuis la [dernière release](https://github.com/TheLibertyWolf/WP-Orion-template/releases/latest).
+2. Dans WordPress, ouvrir **Apparence → Thèmes → Ajouter un thème → Téléverser**.
+3. Installer puis activer **Orion 26**.
+4. Ouvrir **Orion → Identité et apparence** et choisir un preset.
+5. Configurer le menu et les logos dans **Orion → Header**.
+6. Choisir les rubriques dans **Orion → Homepage et rubriques**.
 
-Les données d’un site ne sont jamais incluses dans le dépôt. Lorsqu’Orion détecte les anciennes options France Racing/AH19 lors de sa première initialisation, il les migre dans l’option unique `orion26_settings` sans modifier les valeurs sources.
+Les réglages sont enregistrés dans l’option non autoloadée `orion26_settings`. Une migration intégrée reprend sans supprimer les anciennes valeurs Orion 26, Orion 26+ et les options AH19 compatibles.
 
-## Réglages
+## Captures d’écran
 
-| Écran | Contenu |
+### Aperçu du thème
+
+![Aperçu du thème Orion 26](screenshot.png)
+
+## Organisation des réglages
+
+| Sous-menu | Réglages principaux |
 |---|---|
-| Identité et apparence | Preset, logos, clair/sombre, largeur et délégation d’accès |
-| Couleurs / typographies | Palette complète, polices, tailles, citations, code, aperçu direct |
-| Navigation | Menu principal, recherche, header fixe, lien final |
-| Homepage et rubriques | Tag de Une, groupes de rubriques, volumes, sélections |
-| Footer | Description, rubriques, colonnes, menu, copyright dynamique |
-| Réseaux sociaux | Facebook, Instagram, X, YouTube, LinkedIn, TikTok, Twitch, RSS |
-| Consentement | Bandeau, catégories, GPC, Analytics, AdSense et scripts conditionnels |
+| Identité et apparence | Preset, clair/sombre, largeur générale |
+| Couleurs / typographies | Palette, corps de texte, H1–H6, citations et code |
+| Navigation | Liens externes, lien final et breakpoint mobile |
+| Homepage et rubriques | Une, blocs prioritaires, hub et rubriques secondaires |
+| Réseaux sociaux | Profils sociaux et RSS |
+| Consentement | Bandeau, catégories et scripts conditionnels |
+| Accès aux réglages | Comptes autorisés, réservé aux administrateurs |
+| Header | Logos, menu, disposition, couleurs, typographie et comportement |
+| Footer | Logo, rubriques, colonnes, menu et copyright dynamique |
+| À propos | Auteur, version, licence et dépôt GitHub |
 
-Consultez [la documentation des réglages](docs/SETTINGS.md), [l’architecture](docs/ARCHITECTURE.md), [le consentement](docs/CONSENT.md) et [la migration](docs/MIGRATION.md).
+La documentation détaillée se trouve dans [docs/SETTINGS.md](docs/SETTINGS.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/CONSENT.md](docs/CONSENT.md) et [docs/MIGRATION.md](docs/MIGRATION.md).
 
-## Traductions
+## Sécurité
 
-Le domaine est `orion26`. Le catalogue POT et les fichiers PO/MO sont fournis pour le français, l’anglais, l’espagnol, l’italien et le portugais. Les contributions linguistiques sont détaillées dans [TRANSLATIONS.md](TRANSLATIONS.md).
+- chaque écriture est protégée par une nonce WordPress ;
+- les droits sont revérifiés côté serveur pour chaque sous-menu ;
+- seul un administrateur peut déléguer l’accès aux réglages ;
+- les valeurs utilisent une validation adaptée à leur type et les sorties sont échappées ;
+- les champs de scripts exigent l’aptitude `unfiltered_html` ;
+- les liens externes reçoivent `noopener`, `noreferrer` et `external` ;
+- les scripts de suivi peuvent rester bloqués jusqu’au consentement ;
+- les paramètres d’un site réel, clés et contenus de suivi ne sont jamais inclus dans le dépôt.
 
-## Développement
+Consultez [SECURITY.md](SECURITY.md) avant de signaler une vulnérabilité. Le gestionnaire de consentement est un outil technique et ne constitue pas un avis juridique.
 
-```bash
-find . -name '*.php' -print0 | xargs -0 -n1 php -l
-./bin/build-release.sh
-```
+## Compatibilité
 
-Le ZIP produit dans `dist/` contient uniquement le thème installable. Les contributions suivent [CONTRIBUTING.md](CONTRIBUTING.md).
+- WordPress 6.5 ou version ultérieure ;
+- testé sur WordPress 7.0.4 ;
+- PHP 8.1 à PHP 8.4 ;
+- installation WordPress simple ;
+- SEOPress prioritaire lorsqu’il est actif ;
+- ACF et Complianz facultatifs.
 
-## Confidentialité et droit
+## Langues
 
-Le gestionnaire fourni est un outil technique et ne constitue pas un avis juridique ni une garantie de conformité. Il ne faut pas activer deux gestionnaires de consentement simultanément. Orion 26 est distribué sous licence GPL-2.0-or-later.
+Orion utilise automatiquement la langue de WordPress ou du profil utilisateur. Le français est la langue source.
+
+| Langue | Locale WordPress | Couverture | État |
+|---|---|---:|---|
+| 🇫🇷 Français | `fr_FR` | 100 % | Langue source |
+| 🇬🇧 Anglais | `en_US` | 100 % | Complet |
+| 🇮🇹 Italien | `it_IT` | 100 % | Complet |
+| 🇪🇸 Espagnol | `es_ES` | 100 % | Complet |
+| 🇵🇹 Portugais | `pt_PT` | 100 % | Complet |
+
+Les règles techniques de traduction sont détaillées dans [TRANSLATIONS.md](TRANSLATIONS.md).
+
+## Contribution et support
+
+- [Guide de contribution](CONTRIBUTING.md)
+- [Support](SUPPORT.md)
+- [Code de conduite](CODE_OF_CONDUCT.md)
+- [Historique des versions](CHANGELOG.md)
+
+## Auteur
+
+SAS Jessy System — [https://jessysystem.com](https://jessysystem.com)
+
+Développement public : [TheLibertyWolf/WP-Orion-template](https://github.com/TheLibertyWolf/WP-Orion-template)
+
+## Licence
+
+GPL-2.0-or-later. Voir [LICENSE](LICENSE).
