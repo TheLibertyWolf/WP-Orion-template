@@ -36,6 +36,12 @@
     list.querySelector('[data-orion-checklist-none]').addEventListener('click', function () { items.filter(function (item) { return !item.hidden; }).forEach(function (item) { item.querySelector('input').checked = false; }); });
   });
 
+  document.querySelectorAll('form[data-confirm]').forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!window.confirm(form.dataset.confirm)) event.preventDefault();
+    });
+  });
+
   var preview = document.querySelector('[data-orion-preview] .orion-preview-page');
   if (!preview) return;
   var fontStacks = {

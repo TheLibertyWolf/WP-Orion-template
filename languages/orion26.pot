@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Orion 26 3.5.1\n"
+"Project-Id-Version: Orion 26 3.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/TheLibertyWolf/WP-Orion-template/"
 "issues\n"
-"POT-Creation-Date: 2026-08-18 15:39+0200\n"
+"POT-Creation-Date: 2026-08-18 16:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,11 +33,11 @@ msgstr ""
 msgid "Accueil"
 msgstr ""
 
-#: inc/plugins.php:76
-msgid "Activation non autorisée."
+#: inc/plugins.php:98
+msgid "Actif"
 msgstr ""
 
-#: inc/plugins.php:47
+#: inc/plugins.php:106
 msgid "Activer"
 msgstr ""
 
@@ -208,6 +208,14 @@ msgstr ""
 msgid "Découvrir Jessy System"
 msgstr ""
 
+#: inc/plugins.php:108
+msgid "Désinstaller"
+msgstr ""
+
+#: inc/plugins.php:108
+msgid "Désinstaller définitivement ce plugin et supprimer ses fichiers ?"
+msgstr ""
+
 #: inc/admin.php:394 inc/admin.php:398
 msgid "Enregistrement non autorisé."
 msgstr ""
@@ -244,20 +252,20 @@ msgstr ""
 msgid "Hors trajectoire"
 msgstr ""
 
-#: inc/plugins.php:46
-msgid "Installation désactivée"
+#: inc/plugins.php:98
+msgid "Inactif"
 msgstr ""
 
-#: inc/plugins.php:56
+#: inc/plugins.php:100
+msgid "Indisponible"
+msgstr ""
+
+#: inc/plugins.php:119
 msgid "Installation non autorisée."
 msgstr ""
 
-#: inc/plugins.php:47
-msgid "Installer et activer"
-msgstr ""
-
-#: inc/plugins.php:46
-msgid "Installé et actif"
+#: inc/plugins.php:104
+msgid "Installer"
 msgstr ""
 
 #: inc/admin.php:121
@@ -266,6 +274,11 @@ msgstr ""
 
 #: category.php:35
 msgid "La discipline"
+msgstr ""
+
+#: inc/plugins.php:81
+msgid ""
+"La modification des fichiers est désactivée par la configuration WordPress."
 msgstr ""
 
 #: author.php:10 single.php:50
@@ -278,25 +291,24 @@ msgid ""
 "claire et un rythme suffisamment aéré sur tous les écrans."
 msgstr ""
 
-#: inc/plugins.php:38
+#: inc/plugins.php:52
+msgid "Le paquet GitHub n’a pas pu être préparé."
+msgstr ""
+
+#: inc/plugins.php:86
 msgid ""
-"Les installations sont bloquées par la politique de sécurité WordPress "
-"(DISALLOW_FILE_MODS). Les plugins déjà présents peuvent toujours être "
-"activés."
+"Les installations, mises à jour et désinstallations sont bloquées par la "
+"politique WordPress DISALLOW_FILE_MODS. Les plugins déjà présents peuvent "
+"toujours être activés."
 msgstr ""
 
 #: inc/admin.php:245
 msgid "Licence et version"
 msgstr ""
 
-#: inc/plugins.php:33
+#: inc/plugins.php:81
 msgid ""
-"L’installation de fichiers est désactivée par la configuration WordPress."
-msgstr ""
-
-#: inc/plugins.php:33
-msgid ""
-"L’installation n’a pas abouti. Vérifiez les droits d’écriture et réessayez."
+"L’opération n’a pas abouti. Vérifiez les droits d’écriture et réessayez."
 msgstr ""
 
 #: inc/admin.php:130 inc/admin.php:151
@@ -305,6 +317,10 @@ msgstr ""
 
 #: inc/consent.php:87
 msgid "Mesure d’audience"
+msgstr ""
+
+#: inc/plugins.php:107
+msgid "Mettre à jour"
 msgstr ""
 
 #: functions.php:587
@@ -325,6 +341,10 @@ msgstr ""
 
 #: inc/admin.php:121
 msgid "Niveau"
+msgstr ""
+
+#: inc/plugins.php:98
+msgid "Non installé"
 msgstr ""
 
 #: inc/admin.php:130 inc/admin.php:151
@@ -369,15 +389,23 @@ msgstr ""
 msgid "Pilote, écurie, championnat…"
 msgstr ""
 
-#: inc/plugins.php:33
+#: inc/plugins.php:81
 msgid "Plugin activé."
 msgstr ""
 
-#: inc/plugins.php:33
+#: inc/plugins.php:81
+msgid "Plugin désinstallé."
+msgstr ""
+
+#: inc/plugins.php:81
 msgid "Plugin installé et activé."
 msgstr ""
 
-#: inc/plugins.php:59
+#: inc/plugins.php:81
+msgid "Plugin mis à jour."
+msgstr ""
+
+#: inc/plugins.php:123
 msgid "Plugin non autorisé."
 msgstr ""
 
@@ -529,6 +557,14 @@ msgstr ""
 
 #: inc/admin.php:54
 msgid "Utiliser cette image"
+msgstr ""
+
+#: inc/plugins.php:100
+msgid "Version disponible"
+msgstr ""
+
+#: inc/plugins.php:100
+msgid "Version installée"
 msgstr ""
 
 #: inc/admin.php:256

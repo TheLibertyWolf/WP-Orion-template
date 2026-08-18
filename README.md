@@ -2,7 +2,7 @@
 
 Orion 26 est un thème WordPress éditorial moderne et responsive destiné aux sites d’actualité, magazines et médias indépendants. Il associe une homepage structurée, huit identités visuelles et un panneau de réglages natif sans dépendance obligatoire à ACF.
 
-[![Version](https://img.shields.io/badge/version-3.5.1-2271b1)](https://github.com/TheLibertyWolf/WP-Orion-template/releases)
+[![Version](https://img.shields.io/badge/version-3.5.2-2271b1)](https://github.com/TheLibertyWolf/WP-Orion-template/releases)
 [![PHP](https://img.shields.io/badge/PHP-%3E%3D%208.1-777bb4)](https://www.php.net/)
 [![WordPress](https://img.shields.io/badge/WordPress-%3E%3D%206.5-21759b)](https://wordpress.org/)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-46b450)](LICENSE)
@@ -25,7 +25,7 @@ Orion 26 est un thème WordPress éditorial moderne et responsive destiné aux s
 - six familles de polices auto-hébergées, sans dépendance à un CDN ;
 - profils de rubrique avec présentation longue et liens officiels ou sociaux ;
 - gestionnaire de consentement optionnel par catégories avec prise en charge de GPC ;
-- installation guidée de WP Simple PWA et WP TurnSite depuis leurs dépôts officiels ;
+- gestion de WP Simple PWA et WP TurnSite façon Avada : versions GitHub, installation, activation, mise à jour et désinstallation ;
 - SEO de repli avec `NewsArticle`, `ProfilePage`, `BreadcrumbList`, métadescriptions et règles robots ;
 - compatibilité optionnelle avec un post type publicitaire `ad` et les marqueurs `sponso`, `cp` et `histo` ;
 - interface traduite en français, anglais, italien, espagnol et portugais.
@@ -42,7 +42,7 @@ Orion est particulièrement adapté pour :
 
 ## Installation
 
-1. Télécharger `orion-26-3.5.1.zip` depuis la [dernière release](https://github.com/TheLibertyWolf/WP-Orion-template/releases/latest).
+1. Télécharger `orion-26-3.5.2.zip` depuis la [dernière release](https://github.com/TheLibertyWolf/WP-Orion-template/releases/latest).
 2. Dans WordPress, ouvrir **Apparence → Thèmes → Ajouter un thème → Téléverser**.
 3. Installer puis activer **Orion 26**.
 4. Ouvrir **Orion → Identité et apparence** et choisir un preset.
@@ -70,7 +70,7 @@ Les réglages sont enregistrés dans l’option non autoloadée `orion26_setting
 | Accès aux réglages | Comptes autorisés, réservé aux administrateurs |
 | Header | Logos, menu, disposition, couleurs, typographie et comportement |
 | Footer | Logo, rubriques, colonnes, menu et copyright dynamique |
-| Plugins recommandés | Installation et activation de WP Simple PWA et WP TurnSite |
+| Plugins recommandés | État, versions GitHub, installation, activation, mise à jour et désinstallation |
 | À propos | Auteur, version, licence et dépôt GitHub |
 
 La documentation détaillée se trouve dans [docs/SETTINGS.md](docs/SETTINGS.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/CONSENT.md](docs/CONSENT.md) et [docs/MIGRATION.md](docs/MIGRATION.md).

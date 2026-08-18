@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.5.2 — 2026-08-18
+
+- Transformation du sous-menu Plugins recommandés en gestionnaire complet inspiré d’Avada.
+- Affichage du logo et du dépôt GitHub, de l’état actif et des versions installée/disponible.
+- Ajout des actions sécurisées Installer, Activer, Mettre à jour et Désinstaller.
+- Normalisation des archives GitHub afin de préserver un dossier de plugin stable.
+- Mise en cache pendant six heures des contrôles de versions distantes.
+
 ## 3.5.1 — 2026-08-18
 
 - Correction de l’URL des assets Orion lorsque le thème actif est remplacé par utilisateur.

@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Orion 26 3.5.1\n"
+"Project-Id-Version: Orion 26 3.5.2\n"
 "Report-Msgid-Bugs-To: https://github.com/TheLibertyWolf/WP-Orion-template/issues\n"
-"POT-Creation-Date: 2026-08-18 15:39+0200\n"
+"POT-Creation-Date: 2026-08-18 16:45+0200\n"
 "PO-Revision-Date: 2026-08-18 14:55+0200\n"
 "Last-Translator: Orion Contributors\n"
 "Language-Team: none\n"
@@ -32,12 +32,11 @@ msgstr "%d min de lecture"
 msgid "Accueil"
 msgstr "Accueil"
 
-#: inc/plugins.php:76
-#, fuzzy
-msgid "Activation non autorisée."
-msgstr "Enregistrement non autorisé."
+#: inc/plugins.php:98
+msgid "Actif"
+msgstr "Actif"
 
-#: inc/plugins.php:47
+#: inc/plugins.php:106
 msgid "Activer"
 msgstr "Activer"
 
@@ -106,9 +105,8 @@ msgid "Auteur"
 msgstr "Auteur"
 
 #: inc/admin.php:139
-#, fuzzy
 msgid "Carte hors image"
-msgstr "Choisir une image"
+msgstr "Carte hors image"
 
 #: inc/admin.php:121 inc/admin.php:142
 msgid "Casse"
@@ -216,6 +214,14 @@ msgstr "Disciplines"
 msgid "Découvrir Jessy System"
 msgstr "Découvrir Jessy System"
 
+#: inc/plugins.php:108
+msgid "Désinstaller"
+msgstr "Désinstaller"
+
+#: inc/plugins.php:108
+msgid "Désinstaller définitivement ce plugin et supprimer ses fichiers ?"
+msgstr "Désinstaller définitivement ce plugin et supprimer ses fichiers ?"
+
 #: inc/admin.php:394 inc/admin.php:398
 msgid "Enregistrement non autorisé."
 msgstr "Enregistrement non autorisé."
@@ -252,22 +258,21 @@ msgstr "Gérer mes cookies"
 msgid "Hors trajectoire"
 msgstr "Hors trajectoire"
 
-#: inc/plugins.php:46
-msgid "Installation désactivée"
-msgstr "Installation désactivée"
+#: inc/plugins.php:98
+msgid "Inactif"
+msgstr "Inactif"
 
-#: inc/plugins.php:56
-#, fuzzy
+#: inc/plugins.php:100
+msgid "Indisponible"
+msgstr "Indisponible"
+
+#: inc/plugins.php:119
 msgid "Installation non autorisée."
-msgstr "Enregistrement non autorisé."
+msgstr "Installation non autorisée."
 
-#: inc/plugins.php:47
-msgid "Installer et activer"
-msgstr "Installer et activer"
-
-#: inc/plugins.php:46
-msgid "Installé et actif"
-msgstr "Installé et actif"
+#: inc/plugins.php:104
+msgid "Installer"
+msgstr "Installer"
 
 #: inc/admin.php:121
 msgid "Interligne"
@@ -276,6 +281,12 @@ msgstr "Interligne"
 #: category.php:35
 msgid "La discipline"
 msgstr "La discipline"
+
+#: inc/plugins.php:81
+msgid ""
+"La modification des fichiers est désactivée par la configuration WordPress."
+msgstr ""
+"La modification des fichiers est désactivée par la configuration WordPress."
 
 #: author.php:10 single.php:50
 msgid "La rédaction"
@@ -289,31 +300,29 @@ msgstr ""
 "Le corps de l’article doit rester agréable à lire, avec une hiérarchie "
 "claire et un rythme suffisamment aéré sur tous les écrans."
 
-#: inc/plugins.php:38
+#: inc/plugins.php:52
+msgid "Le paquet GitHub n’a pas pu être préparé."
+msgstr "Le paquet GitHub n’a pas pu être préparé."
+
+#: inc/plugins.php:86
 msgid ""
-"Les installations sont bloquées par la politique de sécurité WordPress "
-"(DISALLOW_FILE_MODS). Les plugins déjà présents peuvent toujours être "
-"activés."
+"Les installations, mises à jour et désinstallations sont bloquées par la "
+"politique WordPress DISALLOW_FILE_MODS. Les plugins déjà présents peuvent "
+"toujours être activés."
 msgstr ""
-"Les installations sont bloquées par la politique de sécurité WordPress "
-"(DISALLOW_FILE_MODS). Les plugins déjà présents peuvent toujours être "
-"activés."
+"Les installations, mises à jour et désinstallations sont bloquées par la "
+"politique WordPress DISALLOW_FILE_MODS. Les plugins déjà présents peuvent "
+"toujours être activés."
 
 #: inc/admin.php:245
 msgid "Licence et version"
 msgstr "Licence et version"
 
-#: inc/plugins.php:33
+#: inc/plugins.php:81
 msgid ""
-"L’installation de fichiers est désactivée par la configuration WordPress."
+"L’opération n’a pas abouti. Vérifiez les droits d’écriture et réessayez."
 msgstr ""
-"L’installation de fichiers est désactivée par la configuration WordPress."
-
-#: inc/plugins.php:33
-msgid ""
-"L’installation n’a pas abouti. Vérifiez les droits d’écriture et réessayez."
-msgstr ""
-"L’installation n’a pas abouti. Vérifiez les droits d’écriture et réessayez."
+"L’opération n’a pas abouti. Vérifiez les droits d’écriture et réessayez."
 
 #: inc/admin.php:130 inc/admin.php:151
 msgid "Majuscules"
@@ -322,6 +331,10 @@ msgstr "Majuscules"
 #: inc/consent.php:87
 msgid "Mesure d’audience"
 msgstr "Mesure d’audience"
+
+#: inc/plugins.php:107
+msgid "Mettre à jour"
+msgstr "Mettre à jour"
 
 #: functions.php:587
 msgid "Mis à jour"
@@ -342,6 +355,10 @@ msgstr "Navigation principale"
 #: inc/admin.php:121
 msgid "Niveau"
 msgstr "Niveau"
+
+#: inc/plugins.php:98
+msgid "Non installé"
+msgstr "Non installé"
 
 #: inc/admin.php:130 inc/admin.php:151
 msgid "Normale"
@@ -387,18 +404,25 @@ msgstr "Personnalisation"
 msgid "Pilote, écurie, championnat…"
 msgstr "Pilote, écurie, championnat…"
 
-#: inc/plugins.php:33
+#: inc/plugins.php:81
 msgid "Plugin activé."
 msgstr "Plugin activé."
 
-#: inc/plugins.php:33
+#: inc/plugins.php:81
+msgid "Plugin désinstallé."
+msgstr "Plugin désinstallé."
+
+#: inc/plugins.php:81
 msgid "Plugin installé et activé."
 msgstr "Plugin installé et activé."
 
-#: inc/plugins.php:59
-#, fuzzy
+#: inc/plugins.php:81
+msgid "Plugin mis à jour."
+msgstr "Plugin mis à jour."
+
+#: inc/plugins.php:123
 msgid "Plugin non autorisé."
-msgstr "Enregistrement non autorisé."
+msgstr "Plugin non autorisé."
 
 #: functions.php:271 page-others.php:22
 msgid "Plus d’actualités"
@@ -499,14 +523,12 @@ msgid "Titre de rubrique"
 msgstr "Titre de rubrique"
 
 #: inc/admin.php:139
-#, fuzzy
 msgid "Titre sur image"
-msgstr "Choisir une image"
+msgstr "Titre sur image"
 
 #: inc/admin.php:228
-#, fuzzy
 msgid "Titre éditorial"
-msgstr "Un grand titre éditorial"
+msgstr "Titre éditorial"
 
 #: inc/consent.php:86
 msgid "Toujours actifs"
@@ -551,6 +573,14 @@ msgstr "Une citation importante mise en évidence sans casser la lecture."
 #: inc/admin.php:54
 msgid "Utiliser cette image"
 msgstr "Utiliser cette image"
+
+#: inc/plugins.php:100
+msgid "Version disponible"
+msgstr "Version disponible"
+
+#: inc/plugins.php:100
+msgid "Version installée"
+msgstr "Version installée"
 
 #: inc/admin.php:256
 msgid "Vous n’avez pas accès aux réglages Orion."
@@ -636,6 +666,16 @@ msgstr "à l’instant"
 #: inc/admin.php:195
 msgid "— Sélectionner —"
 msgstr "— Sélectionner —"
+
+#, fuzzy
+#~ msgid "Activation non autorisée."
+#~ msgstr "Enregistrement non autorisé."
+
+#~ msgid "Installation désactivée"
+#~ msgstr "Installation désactivée"
+
+#~ msgid "Installé et actif"
+#~ msgstr "Installé et actif"
 
 #~ msgid "France Racing"
 #~ msgstr "France Racing"

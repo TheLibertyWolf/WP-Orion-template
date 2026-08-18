@@ -3,7 +3,7 @@ Contributors: thelibertywolf
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 3.5.1
+Stable tag: 3.5.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,9 @@ Orion 26 provides magazine layouts, four visual presets, native theme settings, 
 Upload the release ZIP in Appearance > Themes, activate Orion 26, then open the Orion admin menu.
 
 == Changelog ==
+
+= 3.5.2 =
+* Added an Avada-style plugin manager with GitHub logos, installed/available versions, installation, activation, update and uninstall actions.
 
 = 3.5.1 =
 * Fixed Orion admin assets when a per-user theme switcher is active.
