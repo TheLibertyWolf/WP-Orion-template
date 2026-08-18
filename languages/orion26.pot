@@ -6,7 +6,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Orion 26 3.6.0\n"
+"Project-Id-Version: Orion 26 3.6.1\n"
 "Report-Msgid-Bugs-To: https://github.com/TheLibertyWolf/WP-Orion-template/"
 "issues\n"
 "POT-Creation-Date: 2026-08-18 16:45+0200\n"

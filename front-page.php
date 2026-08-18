@@ -84,9 +84,6 @@ $posts = $featured->posts;
 	orion26_render_ads( 'home_aftersingle' );
 
 	$discipline_ids = orion26_term_ids( orion26_option( 'homepage_discipline_hub', array() ) );
-	if ( ! $discipline_ids ) {
-		$discipline_ids = $featured_category_ids;
-	}
 	$disciplines = array();
 	foreach ( array_slice( $discipline_ids, 0, 12 ) as $discipline_id ) {
 		$discipline = get_category( $discipline_id );

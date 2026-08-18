@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.6.1 — 2026-08-18
+
+- Masque le bloc de liens vers les rubriques lorsque sa sélection est vide, sans reprendre automatiquement les rubriques mises en avant.
+- Corrige l’espace supérieur excessif du bloc Disciplines, notamment avec le style Orion Expressif.
+
 ## 3.6.0 — 2026-08-18
 
 - Remplace les caractères génériques du footer par de véritables icônes SVG pour Facebook, Instagram, X, YouTube, LinkedIn, TikTok, Twitch et RSS.

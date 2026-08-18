@@ -7,7 +7,7 @@ Description: Orion 26 propulse les sites éditoriaux vers de nouvelles trajectoi
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Version: 3.6.0
+Version: 3.6.1
 Text Domain: orion26
 Domain Path: /languages
 License: GNU General Public License v2 or later
@@ -269,8 +269,8 @@ html[data-theme="dark"] .site-brand__image--dark, html[data-theme="dark"] .foote
 .navigation.pagination .page-numbers.prev, .navigation.pagination .page-numbers.next { padding-inline: 18px; }
 .discipline-hub { margin: 52px 0 18px; padding: clamp(26px, 4vw, 44px); border: 1px solid var(--orion-line); background: linear-gradient(145deg, var(--orion-surface), var(--orion-surface-2)); position: relative; overflow: hidden; }
 .discipline-hub::after { content: ""; position: absolute; width: 280px; aspect-ratio: 1; right: -155px; top: -165px; border: 1px solid color-mix(in srgb, var(--orion-gold) 42%, transparent); border-radius: 50%; pointer-events: none; }
-.discipline-hub__heading { margin-top: 0; }
-.discipline-hub__heading .section-kicker { margin-bottom: 7px; }
+.discipline-hub .discipline-hub__heading { margin-top: 0; padding-top: 0; }
+.discipline-hub__heading .section-kicker { margin: 0 0 7px; }
 .discipline-hub__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; position: relative; z-index: 1; }
 .discipline-link { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; min-height: 88px; padding: 17px; border: 1px solid var(--orion-line); background: var(--orion-bg); text-decoration: none; transition: border-color .2s ease, transform .2s ease, background-color .2s ease; }
 .discipline-link:hover { border-color: var(--orion-gold); transform: translateY(-2px); }
