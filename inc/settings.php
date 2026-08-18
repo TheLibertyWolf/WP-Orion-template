@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 const ORION26_SETTINGS_OPTION = 'orion26_settings';
-const ORION26_SETTINGS_VERSION = 2;
+const ORION26_SETTINGS_VERSION = 3;
 
 /** Valeurs neutres permettant de distribuer Orion sur un autre site. */
 function orion26_settings_defaults() {
@@ -18,6 +18,7 @@ function orion26_settings_defaults() {
 		'_version' => ORION26_SETTINGS_VERSION,
 		'identity' => array(
 			'preset'            => 'minimal',
+			'site_icon_id'       => 0,
 			'dark_mode'         => 1,
 			'default_scheme'    => 'auto',
 			'container_width'   => 1240,
@@ -51,6 +52,12 @@ function orion26_settings_defaults() {
 			'blockquote_style'    => 'italic',
 			'code_background'     => '#171b24',
 			'code_text'           => '#f1eee7',
+			'thumbnail_zoom'      => 1,
+			'title_styles'        => array(
+				'card'     => array( 'color' => '#12151b', 'dark_color' => '#f1eee7', 'font' => 'condensed', 'size' => 25, 'weight' => 800, 'case' => 'uppercase' ),
+				'overlay'  => array( 'color' => '#ffffff', 'dark_color' => '#ffffff', 'font' => 'condensed', 'size' => 25, 'weight' => 800, 'case' => 'uppercase' ),
+				'category' => array( 'color' => '#12151b', 'dark_color' => '#f1eee7', 'font' => 'condensed', 'size' => 48, 'weight' => 900, 'case' => 'uppercase' ),
+			),
 			'headings'            => array(
 				'h1' => array( 'color' => '#12151b', 'dark_color' => '#f1eee7', 'font' => 'condensed', 'size' => 52, 'weight' => 900, 'case' => 'uppercase', 'line_height' => 1.02 ),
 				'h2' => array( 'color' => '#12151b', 'dark_color' => '#f1eee7', 'font' => 'condensed', 'size' => 38, 'weight' => 900, 'case' => 'uppercase', 'line_height' => 1.08 ),
@@ -181,6 +188,7 @@ function orion26_settings_schema() {
 			'description' => 'Identité visuelle, preset global, logos et dimensions générales.',
 			'fields' => array(
 				'preset' => array( 'label' => 'Style visuel', 'type' => 'preset', 'choices' => array( 'minimal' => 'Orion Minimal', 'expressive' => 'Orion Expressif', 'editorial' => 'Orion Éditorial', 'contrast' => 'Orion Contraste', 'velocity' => 'Orion Velocity', 'cosmos' => 'Orion Cosmos', 'monolith' => 'Orion Monolith', 'aurora' => 'Orion Aurora' ) ),
+				'site_icon_id' => array( 'label' => 'Icône du site / favicon', 'type' => 'media', 'description' => 'Utilisez une image carrée d’au moins 512 × 512 pixels.' ),
 				'dark_mode' => array( 'label' => 'Activer les variantes claire et sombre', 'type' => 'checkbox' ),
 				'default_scheme' => array( 'label' => 'Mode initial', 'type' => 'select', 'choices' => array( 'auto' => 'Préférence du système', 'light' => 'Clair', 'dark' => 'Sombre' ) ),
 				'container_width' => array( 'label' => 'Largeur maximale du site', 'type' => 'number', 'min' => 960, 'max' => 1800, 'suffix' => 'px' ),
@@ -218,6 +226,8 @@ function orion26_settings_schema() {
 				'blockquote_style' => array( 'label' => 'Style des citations', 'type' => 'select', 'choices' => array( 'normal' => 'Normal', 'italic' => 'Italique' ), 'preview' => 'quote-style' ),
 				'code_background' => $color + array( 'label' => 'Fond des blocs de code' ),
 				'code_text' => $color + array( 'label' => 'Texte des blocs de code' ),
+				'thumbnail_zoom' => array( 'label' => 'Activer le zoom des miniatures au survol', 'type' => 'checkbox', 'description' => 'Anime les images de la Une, des cartes, du fil compact et des listes. La préférence système de réduction des mouvements reste prioritaire.' ),
+				'title_styles' => array( 'label' => 'Titres des cartes et rubriques', 'type' => 'title_styles', 'description' => 'Couleur claire et sombre, police, taille, graisse et casse des titres hors image, sur image et des rubriques.' ),
 				'headings' => array( 'label' => 'Styles des titres H1 à H6', 'type' => 'headings', 'description' => 'Couleur, police, taille, graisse, casse et interligne de chaque niveau de titre.' ),
 			),
 		),
@@ -349,6 +359,11 @@ function orion26_settings_schema() {
 				'show_login' => array( 'label' => 'Afficher le lien de connexion', 'type' => 'checkbox' ),
 			),
 		),
+		'plugins' => array(
+			'label' => 'Plugins recommandés', 'icon' => 'dashicons-admin-plugins', 'plugins' => true, 'capability' => 'manage_options',
+			'description' => 'Extensions complémentaires officielles pouvant être installées directement depuis leurs dépôts GitHub.',
+			'fields' => array(),
+		),
 		'about' => array(
 			'label' => 'À propos', 'icon' => 'dashicons-info-outline', 'about' => true,
 			'description' => 'Informations sur Orion, ses auteurs, sa licence et son développement public.',
@@ -408,6 +423,7 @@ function orion26_migrate_legacy_settings() {
 	};
 
 	$settings['identity']['preset']             = 'orion-26-plus' === sanitize_key( (string) get_user_meta( get_current_user_id(), 'wp_simple_template_switch_theme', true ) ) ? 'expressive' : 'minimal';
+	$settings['identity']['site_icon_id']        = absint( get_option( 'site_icon', 0 ) ) ?: absint( $legacy( 'favicon_512', 0 ) ?: $legacy( 'favicon_192', 0 ) ?: $legacy( 'favicon_32', 0 ) );
 	$settings['header']['logo_light_id']         = orion26_legacy_image_id( $legacy( 'logo_img' ) );
 	$settings['header']['logo_dark_id']          = orion26_legacy_image_id( $legacy( 'logo_dark' ) );
 	$settings['footer']['logo_id']               = orion26_legacy_image_id( $legacy( 'logo_footer' ) );
@@ -450,6 +466,9 @@ function orion26_upgrade_settings() {
 		return;
 	}
 	$stored = orion26_array_merge_settings( orion26_settings_defaults(), $stored );
+	if ( empty( $stored['identity']['site_icon_id'] ) ) {
+		$stored['identity']['site_icon_id'] = absint( get_option( 'site_icon', 0 ) ) ?: absint( get_option( 'options_favicon_512', 0 ) ?: get_option( 'options_favicon_192', 0 ) ?: get_option( 'options_favicon_32', 0 ) );
+	}
 	$stored['header']['logo_light_id'] = absint( $stored['identity']['logo_light_id'] ?? $stored['header']['logo_light_id'] );
 	$stored['header']['logo_dark_id']  = absint( $stored['identity']['logo_dark_id'] ?? $stored['header']['logo_dark_id'] );
 	$stored['header']['logo_height']   = absint( $stored['identity']['logo_height'] ?? $stored['header']['logo_height'] );

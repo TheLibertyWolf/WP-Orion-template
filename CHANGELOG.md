@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.5.1 — 2026-08-18
+
+- Correction de l’URL des assets Orion lorsque le thème actif est remplacé par utilisateur.
+- Affichage pleine largeur du tableau de réglages H1 à H6.
+- Réglages dédiés aux titres des cartes, aux titres superposés et aux titres de rubriques.
+- Rétablissement du zoom des miniatures avec option globale d’activation.
+- Migration de la favicon historique et ajout de son sélecteur natif.
+- Ajout du sous-menu d’installation de WP Simple PWA et WP TurnSite.
+
 ## 3.5.0 — 2026-08-18
 
 - Ajout de quatre presets : Velocity, Cosmos, Monolith et Aurora.

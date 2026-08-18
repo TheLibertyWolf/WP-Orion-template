@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Orion 26 3.5.0\n"
+"Project-Id-Version: Orion 26 3.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/TheLibertyWolf/WP-Orion-template/issues\n"
-"POT-Creation-Date: 2026-08-18 15:22+0200\n"
+"POT-Creation-Date: 2026-08-18 15:39+0200\n"
 "PO-Revision-Date: 2026-08-18 14:55+0200\n"
 "Last-Translator: Orion Contributors\n"
 "Language-Team: none\n"
@@ -17,19 +17,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:580
+#: functions.php:590
 #, php-format
 msgid "%d min"
 msgstr "%d min"
 
-#: functions.php:580
+#: functions.php:590
 #, php-format
 msgid "%d min de lecture"
 msgstr "%d lettura minima"
 
-#: functions.php:651
+#: functions.php:661
 msgid "Accueil"
 msgstr "Benvenuto"
+
+#: inc/plugins.php:76
+#, fuzzy
+msgid "Activation non autorisée."
+msgstr "Registrazione non autorizzata."
+
+#: inc/plugins.php:47
+msgid "Activer"
+msgstr "Attiva"
 
 #: front-page.php:136
 msgid "Actualité Gaming"
@@ -43,7 +52,7 @@ msgstr "Notizie secondarie"
 msgid "Adapte certains contenus à vos préférences."
 msgstr "Adatta determinati contenuti alle tue preferenze."
 
-#: functions.php:562
+#: functions.php:572
 msgid "Afficher la date exacte"
 msgstr "Mostra la data esatta"
 
@@ -55,11 +64,11 @@ msgstr "Vai al contenuto"
 msgid "Archives"
 msgstr "Archivi"
 
-#: functions.php:316
+#: functions.php:317
 msgid "Article historique"
 msgstr "Articolo storico"
 
-#: functions.php:314
+#: functions.php:315
 msgid "Article sponsorisé"
 msgstr "Articolo sponsorizzato"
 
@@ -91,15 +100,20 @@ msgstr "Nessuna notizia pubblicata."
 msgid "Aucune discipline n’est configurée pour cette page."
 msgstr "Nessuna disciplina configurata per questa pagina."
 
-#: inc/admin.php:219
+#: inc/admin.php:243
 msgid "Auteur"
 msgstr "Autore"
 
-#: inc/admin.php:121
+#: inc/admin.php:139
+#, fuzzy
+msgid "Carte hors image"
+msgstr "Scegli un'immagine"
+
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Casse"
 msgstr "Maiuscole/minuscole"
 
-#: functions.php:314
+#: functions.php:315
 msgid "Ce contenu a été réalisé dans le cadre d’un partenariat commercial."
 msgstr ""
 "Questo contenuto è stato prodotto come parte di una partnership commerciale."
@@ -108,7 +122,7 @@ msgstr ""
 msgid "Cet auteur n’a pas encore publié d’article."
 msgstr "Questo autore non ha ancora pubblicato un articolo."
 
-#: functions.php:315
+#: functions.php:316
 msgid "Cette information provient d’un communiqué transmis à la rédaction."
 msgstr "È quanto emerge da un comunicato inviato alla redazione."
 
@@ -132,11 +146,11 @@ msgstr "Scegliere"
 msgid "Choisir une image"
 msgstr "Scegli un'immagine"
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Clair"
 msgstr "Chiaro"
 
-#: functions.php:315
+#: functions.php:316
 msgid "Communiqué de presse"
 msgstr "Comunicato stampa"
 
@@ -144,7 +158,7 @@ msgstr "Comunicato stampa"
 msgid "Communiqués de presse"
 msgstr "Comunicati stampa"
 
-#: inc/admin.php:239
+#: inc/admin.php:263
 msgid ""
 "Complianz est actif. N’activez pas simultanément les deux bandeaux de "
 "consentement : configurez Orion, puis désactivez l’autre gestionnaire avant "
@@ -154,7 +168,7 @@ msgstr ""
 "contemporaneamente: configura Orion, quindi disattiva l'altro gestore prima "
 "di attivare questo."
 
-#: inc/admin.php:219
+#: inc/admin.php:243
 msgid "Conception, développement et maintenance du thème Orion."
 msgstr "Progettazione, sviluppo e manutenzione del tema Orion."
 
@@ -166,7 +180,7 @@ msgstr "Riservatezza"
 msgid "Connexion"
 msgstr "Connessione"
 
-#: inc/admin.php:220
+#: inc/admin.php:244
 msgid ""
 "Consultez le code source, les versions, la feuille de route et proposez vos "
 "améliorations."
@@ -174,7 +188,7 @@ msgstr ""
 "Consulta il codice sorgente, le versioni e la roadmap e proponi "
 "miglioramenti."
 
-#: inc/admin.php:179
+#: inc/admin.php:203
 msgid "Créer ou modifier les menus WordPress"
 msgstr "Crea o modifica i menu WordPress"
 
@@ -198,23 +212,23 @@ msgstr "Disciplina"
 msgid "Disciplines"
 msgstr "Discipline"
 
-#: inc/admin.php:219
+#: inc/admin.php:243
 msgid "Découvrir Jessy System"
 msgstr "Scopri Jessy System"
 
-#: inc/admin.php:351 inc/admin.php:355
+#: inc/admin.php:394 inc/admin.php:398
 msgid "Enregistrement non autorisé."
 msgstr "Registrazione non autorizzata."
 
-#: inc/admin.php:259
+#: inc/admin.php:284
 msgid "Enregistrer les réglages"
 msgstr "Salva impostazioni"
 
-#: inc/admin.php:208
+#: inc/admin.php:232
 msgid "Exemple de lien"
 msgstr "Collegamento di esempio"
 
-#: functions.php:691
+#: functions.php:701
 msgid "Fil d’Ariane"
 msgstr "Pangrattato"
 
@@ -226,7 +240,7 @@ msgstr "Filtra l’elenco…"
 msgid "Flux RSS"
 msgstr "Alimentazione RSS"
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Graisse"
 msgstr "Peso"
 
@@ -237,6 +251,23 @@ msgstr "Gestisci i miei cookie"
 #: 404.php:6
 msgid "Hors trajectoire"
 msgstr "Fuori traiettoria"
+
+#: inc/plugins.php:46
+msgid "Installation désactivée"
+msgstr "Installazione disattivata"
+
+#: inc/plugins.php:56
+#, fuzzy
+msgid "Installation non autorisée."
+msgstr "Registrazione non autorizzata."
+
+#: inc/plugins.php:47
+msgid "Installer et activer"
+msgstr "Installa e attiva"
+
+#: inc/plugins.php:46
+msgid "Installé et actif"
+msgstr "Installato e attivo"
 
 #: inc/admin.php:121
 msgid "Interligne"
@@ -250,7 +281,7 @@ msgstr "Disciplina"
 msgid "La rédaction"
 msgstr "La redazione"
 
-#: inc/admin.php:205
+#: inc/admin.php:229
 msgid ""
 "Le corps de l’article doit rester agréable à lire, avec une hiérarchie "
 "claire et un rythme suffisamment aéré sur tous les écrans."
@@ -258,11 +289,33 @@ msgstr ""
 "Il corpo dell'articolo deve rimanere piacevole da leggere, con una gerarchia"
 " chiara e un ritmo sufficientemente leggero su tutti gli schermi."
 
-#: inc/admin.php:221
+#: inc/plugins.php:38
+msgid ""
+"Les installations sont bloquées par la politique de sécurité WordPress "
+"(DISALLOW_FILE_MODS). Les plugins déjà présents peuvent toujours être "
+"activés."
+msgstr ""
+"Le installazioni sono bloccate dalla politica di sicurezza di WordPress "
+"(DISALLOW_FILE_MODS). I plugin già presenti possono comunque essere "
+"attivati."
+
+#: inc/admin.php:245
 msgid "Licence et version"
 msgstr "Licenza e versione"
 
-#: inc/admin.php:130
+#: inc/plugins.php:33
+msgid ""
+"L’installation de fichiers est désactivée par la configuration WordPress."
+msgstr ""
+"L’installazione dei file è disattivata dalla configurazione di WordPress."
+
+#: inc/plugins.php:33
+msgid ""
+"L’installation n’a pas abouti. Vérifiez les droits d’écriture et réessayez."
+msgstr ""
+"L’installazione non è riuscita. Verifica i permessi di scrittura e riprova."
+
+#: inc/admin.php:130 inc/admin.php:151
 msgid "Majuscules"
 msgstr "Maiuscolo"
 
@@ -270,19 +323,19 @@ msgstr "Maiuscolo"
 msgid "Mesure d’audience"
 msgstr "Misurazione del pubblico"
 
-#: functions.php:577
+#: functions.php:587
 msgid "Mis à jour"
 msgstr "Aggiornato"
 
-#: functions.php:39
+#: functions.php:40
 msgid "Navigation de pied de page"
 msgstr "Navigazione nel piè di pagina"
 
-#: functions.php:614
+#: functions.php:624
 msgid "Navigation des articles"
 msgstr "Posta navigazione"
 
-#: functions.php:38 header.php:45
+#: functions.php:39 header.php:45
 msgid "Navigation principale"
 msgstr "Navigazione principale"
 
@@ -290,7 +343,7 @@ msgstr "Navigazione principale"
 msgid "Niveau"
 msgstr "Livello"
 
-#: inc/admin.php:130
+#: inc/admin.php:130 inc/admin.php:151
 msgid "Normale"
 msgstr "Normale"
 
@@ -302,7 +355,7 @@ msgstr "Ci aiuta a capire come viene utilizzato il sito."
 msgid "Nécessaires"
 msgstr "Necessario"
 
-#: inc/admin.php:218
+#: inc/admin.php:242
 msgid ""
 "Orion associe vitesse, lisibilité, personnalisation et maîtrise des données "
 "pour construire des sites d’actualité singuliers."
@@ -310,7 +363,7 @@ msgstr ""
 "Orion combina velocità, leggibilità, personalizzazione e controllo dei dati "
 "per creare siti di notizie distintivi."
 
-#: inc/admin.php:220
+#: inc/admin.php:244
 msgid "Ouvrir le dépôt Orion"
 msgstr "Apri il repository Orion"
 
@@ -318,7 +371,7 @@ msgstr "Apri il repository Orion"
 msgid "Ouvrir le menu"
 msgstr "Apri il menu"
 
-#: functions.php:583
+#: functions.php:593
 msgid "Par"
 msgstr "Di"
 
@@ -335,15 +388,28 @@ msgstr "Personalizzazione"
 msgid "Pilote, écurie, championnat…"
 msgstr "Pilota, squadra, campionato…"
 
-#: functions.php:270 page-others.php:22
+#: inc/plugins.php:33
+msgid "Plugin activé."
+msgstr "Plugin attivato."
+
+#: inc/plugins.php:33
+msgid "Plugin installé et activé."
+msgstr "Plugin installato e attivato."
+
+#: inc/plugins.php:59
+#, fuzzy
+msgid "Plugin non autorisé."
+msgstr "Registrazione non autorizzata."
+
+#: functions.php:271 page-others.php:22
 msgid "Plus d’actualités"
 msgstr "Altre notizie"
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Police"
 msgstr "Carattere"
 
-#: functions.php:612
+#: functions.php:622
 msgid "Précédent"
 msgstr "Precedente"
 
@@ -351,15 +417,15 @@ msgstr "Precedente"
 msgid "Présentation détaillée"
 msgstr "Presentazione dettagliata"
 
-#: inc/admin.php:203
+#: inc/admin.php:227
 msgid "Prévisualisation en direct"
 msgstr "Anteprima dal vivo"
 
-#: functions.php:762 inc/consent.php:88
+#: functions.php:772 inc/consent.php:88
 msgid "Publicité"
 msgstr "Annuncio"
 
-#: functions.php:575
+#: functions.php:585
 msgid "Publié"
 msgstr "Pubblicato"
 
@@ -367,7 +433,7 @@ msgstr "Pubblicato"
 msgid "Recherche"
 msgstr "Ricerca"
 
-#: functions.php:676
+#: functions.php:686
 #, php-format
 msgid "Recherche : %s"
 msgstr "Cerca: %s"
@@ -393,7 +459,7 @@ msgstr "Ritorno a casa"
 msgid "Rubriques"
 msgstr "Sezioni"
 
-#: inc/admin.php:238
+#: inc/admin.php:262
 msgid "Réglages enregistrés."
 msgstr "Impostazioni salvate."
 
@@ -401,11 +467,11 @@ msgstr "Impostazioni salvate."
 msgid "Site officiel"
 msgstr "Sito ufficiale"
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Sombre"
 msgstr "Scuro"
 
-#: functions.php:613
+#: functions.php:623
 msgid "Suivant"
 msgstr "Seguente"
 
@@ -425,11 +491,20 @@ msgstr "Sicurezza, preferenze essenziali e funzionamento del sito."
 msgid "Sélections éditoriales"
 msgstr "Selezioni editoriali"
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Taille"
 msgstr "Dimensione"
 
-#: inc/admin.php:204
+#: inc/admin.php:139
+msgid "Titre de rubrique"
+msgstr "Titolo della sezione"
+
+#: inc/admin.php:139
+#, fuzzy
+msgid "Titre sur image"
+msgstr "Scegli un'immagine"
+
+#: inc/admin.php:228
 #, fuzzy
 msgid "Titre éditorial"
 msgstr "Un ottimo titolo editoriale"
@@ -454,7 +529,7 @@ msgstr "Tutto il filo"
 msgid "Toute l’actualité"
 msgstr "Tutte le novità"
 
-#: functions.php:678 home.php:7
+#: functions.php:688 home.php:7
 msgid "Toutes les actualités"
 msgstr "Tutte le novità"
 
@@ -462,15 +537,15 @@ msgstr "Tutte le novità"
 msgid "Toutes les trajectoires"
 msgstr "Tutte le traiettorie"
 
-#: inc/admin.php:218
+#: inc/admin.php:242
 msgid "Un thème éditorial libre et ambitieux"
 msgstr "Un tema editoriale libero e ambizioso"
 
-#: functions.php:316
+#: functions.php:317
 msgid "Une archive éditoriale remise en lumière pour les lecteurs."
 msgstr "Un archivio editoriale riportato alla luce per i lettori."
 
-#: inc/admin.php:206
+#: inc/admin.php:230
 msgid "Une citation importante mise en évidence sans casser la lecture."
 msgstr "Una citazione importante evidenziata senza interrompere la lettura."
 
@@ -478,11 +553,11 @@ msgstr "Una citazione importante evidenziata senza interrompere la lettura."
 msgid "Utiliser cette image"
 msgstr "Usa questa immagine"
 
-#: inc/admin.php:232
+#: inc/admin.php:256
 msgid "Vous n’avez pas accès aux réglages Orion."
 msgstr "Non hai accesso alle impostazioni di Orion."
 
-#: inc/admin.php:221
+#: inc/admin.php:245
 msgid ""
 "Vous pouvez utiliser, étudier, modifier et redistribuer Orion selon les "
 "termes de sa licence."
@@ -494,33 +569,33 @@ msgstr ""
 msgid "aucune"
 msgstr "nessuno"
 
-#: inc/admin.php:125
+#: inc/admin.php:125 inc/admin.php:146
 msgid "couleur"
 msgstr "colore"
 
-#: inc/admin.php:126
+#: inc/admin.php:126 inc/admin.php:147
 msgid "couleur sombre"
 msgstr "colore scuro"
 
-#: functions.php:541
+#: functions.php:551
 msgid "hier"
 msgstr "Ieri"
 
-#: functions.php:536
+#: functions.php:546
 #, php-format
 msgid "il y a %d heure"
 msgid_plural "il y a %d heures"
 msgstr[0] "%d un'ora fa"
 msgstr[1] "%d ore fa"
 
-#: functions.php:543
+#: functions.php:553
 #, php-format
 msgid "il y a %d jour"
 msgid_plural "il y a %d jours"
 msgstr[0] "%d giorno fa"
 msgstr[1] "%d giorni fa"
 
-#: functions.php:532
+#: functions.php:542
 #, php-format
 msgid "il y a %d minute"
 msgid_plural "il y a %d minutes"
@@ -531,11 +606,11 @@ msgstr[1] "%d minuti fa"
 msgid "interligne"
 msgstr "interlinea"
 
-#: functions.php:546
+#: functions.php:556
 msgid "la semaine dernière"
 msgstr "la settimana scorsa"
 
-#: inc/admin.php:128
+#: inc/admin.php:128 inc/admin.php:149
 msgid "taille"
 msgstr "dimensione"
 
@@ -551,11 +626,15 @@ msgstr "In primo piano"
 msgid "À propos et articles liés"
 msgstr "Informazioni e articoli correlati"
 
-#: functions.php:528
+#: inc/admin.php:142
+msgid "Élément"
+msgstr "Elemento"
+
+#: functions.php:538
 msgid "à l’instant"
 msgstr "Proprio adesso"
 
-#: inc/admin.php:171
+#: inc/admin.php:195
 msgid "— Sélectionner —"
 msgstr "- Seleziona -"
 

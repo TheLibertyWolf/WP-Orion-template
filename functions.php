@@ -9,19 +9,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ORION26_VERSION', '3.5.0' );
+define( 'ORION26_VERSION', '3.5.1' );
 define( 'ORION26_DIR', __DIR__ );
-define( 'ORION26_URI', get_template_directory_uri() );
+define( 'ORION26_URI', content_url( '/themes/' . basename( ORION26_DIR ) ) );
 
 require_once ORION26_DIR . '/inc/settings.php';
 require_once ORION26_DIR . '/inc/consent.php';
 require_once ORION26_DIR . '/inc/category-meta.php';
 if ( is_admin() ) {
+	require_once ORION26_DIR . '/inc/plugins.php';
 	require_once ORION26_DIR . '/inc/admin.php';
 }
 
 function orion26_setup() {
-	load_theme_textdomain( 'orion26', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'orion26', ORION26_DIR . '/languages' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'automatic-feed-links' );
@@ -323,17 +324,16 @@ function orion26_editorial_notices( $post_id = 0 ) {
 	}
 }
 
-/** Réutilise les favicons configurés dans AH19. */
+/** Produit les favicons Orion depuis l’icône native ou migrée du site. */
 function orion26_favicons() {
-	$icons = (array) orion26_option( 'favicon', array() );
-	foreach ( array( '16', '32', '192', '512' ) as $size ) {
-		if ( ! empty( $icons[ $size ]['url'] ) ) {
-			printf( '<link rel="icon" href="%1$s" sizes="%2$sx%2$s">', esc_url( $icons[ $size ]['url'] ), esc_attr( $size ) );
-		}
+	$icon_id = absint( orion26_setting( 'identity.site_icon_id', get_option( 'site_icon', 0 ) ) );
+	if ( ! $icon_id || ! wp_attachment_is_image( $icon_id ) ) { return; }
+	foreach ( array( 32, 192, 512 ) as $size ) {
+		$url = wp_get_attachment_image_url( $icon_id, array( $size, $size ) );
+		if ( $url ) { printf( '<link rel="icon" href="%1$s" sizes="%2$sx%2$s">', esc_url( $url ), esc_attr( $size ) ); }
 	}
-	if ( ! empty( $icons['180']['url'] ) ) {
-		printf( '<link rel="apple-touch-icon" href="%s" sizes="180x180">', esc_url( $icons['180']['url'] ) );
-	}
+	$apple = wp_get_attachment_image_url( $icon_id, array( 180, 180 ) );
+	if ( $apple ) { printf( '<link rel="apple-touch-icon" href="%s" sizes="180x180">', esc_url( $apple ) ); }
 }
 add_action( 'wp_head', 'orion26_favicons', 4 );
 
@@ -414,6 +414,7 @@ function orion26_body_classes( $classes ) {
 		$classes[] = 'orion-sticky-header';
 	}
 	if ( orion26_setting( 'header.shadow', false ) ) { $classes[] = 'orion-header-shadow'; }
+	if ( orion26_setting( 'design.thumbnail_zoom', true ) ) { $classes[] = 'orion-thumbnail-zoom'; }
 	if ( orion26_option( 'menu_uppercase', true ) ) {
 		$classes[] = 'menu-uppercase';
 	}
@@ -497,13 +498,22 @@ function orion26_inline_colors() {
 		$heading_css .= '--orion-' . $level . '-color:' . ( sanitize_hex_color( (string) ( $style['color'] ?? '' ) ) ?: $defaults['color'] ) . ';--orion-' . $level . '-font:' . $font . ';--orion-' . $level . '-size:' . max( 12, min( 96, absint( $style['size'] ?? $defaults['size'] ) ) ) . 'px;--orion-' . $level . '-weight:' . ( in_array( absint( $style['weight'] ?? 800 ), array( 400, 500, 600, 700, 800, 900 ), true ) ? absint( $style['weight'] ) : $defaults['weight'] ) . ';--orion-' . $level . '-case:' . ( 'uppercase' === ( $style['case'] ?? '' ) ? 'uppercase' : 'none' ) . ';--orion-' . $level . '-line:' . max( .8, min( 2, (float) ( $style['line_height'] ?? $defaults['line_height'] ) ) ) . ';';
 		$heading_dark_css .= '--orion-' . $level . '-color:' . ( sanitize_hex_color( (string) ( $style['dark_color'] ?? '' ) ) ?: $defaults['dark_color'] ) . ';';
 	}
+	$title_css = '';
+	$title_dark_css = '';
+	foreach ( orion26_settings_defaults()['design']['title_styles'] as $title_key => $defaults ) {
+		$style = (array) orion26_setting( 'design.title_styles.' . $title_key, $defaults );
+		$title_css .= '--orion-' . $title_key . '-title-color:' . ( sanitize_hex_color( (string) ( $style['color'] ?? '' ) ) ?: $defaults['color'] ) . ';--orion-' . $title_key . '-title-font:' . orion26_font_stack( sanitize_key( (string) ( $style['font'] ?? $defaults['font'] ) ), 'display' ) . ';--orion-' . $title_key . '-title-size:' . max( 12, min( 96, absint( $style['size'] ?? $defaults['size'] ) ) ) . 'px;--orion-' . $title_key . '-title-weight:' . ( in_array( absint( $style['weight'] ?? 800 ), array( 400, 500, 600, 700, 800, 900 ), true ) ? absint( $style['weight'] ) : $defaults['weight'] ) . ';--orion-' . $title_key . '-title-case:' . ( 'uppercase' === ( $style['case'] ?? '' ) ? 'uppercase' : 'none' ) . ';';
+		$title_dark_css .= '--orion-' . $title_key . '-title-color:' . ( sanitize_hex_color( (string) ( $style['dark_color'] ?? '' ) ) ?: $defaults['dark_color'] ) . ';';
+	}
 	printf(
-		'<style id="orion26-brand-color">:root{%1$s%4$s}:root[data-theme="dark"]{%2$s%5$s}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){%2$s%5$s}}.home-main .story-category,.article-header .story-category{background:%3$s!important;color:#fff!important}</style>',
+		'<style id="orion26-brand-color">:root{%1$s%4$s%6$s}:root[data-theme="dark"]{%2$s%5$s%7$s}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){%2$s%5$s%7$s}}.home-main .story-category,.article-header .story-category{background:%3$s!important;color:#fff!important}</style>',
 		$root,
 		$dark,
 		esc_html( $primary ),
 		$heading_css,
-		$heading_dark_css
+		$heading_dark_css,
+		$title_css,
+		$title_dark_css
 	);
 }
 add_action( 'wp_head', 'orion26_inline_colors', 2 );

@@ -134,6 +134,26 @@ function orion26_render_headings_field( $section, $key, $value ) {
 	<?php
 }
 
+function orion26_render_title_styles_field( $section, $key, $value ) {
+	$fonts = array( 'system' => 'Système', 'condensed' => 'Condensée', 'source-serif-4' => 'Source Serif 4', 'atkinson-hyperlegible-next' => 'Atkinson Hyperlegible Next', 'lora' => 'Lora', 'merriweather' => 'Merriweather', 'literata' => 'Literata', 'ibm-plex-sans' => 'IBM Plex Sans' );
+	$rows  = array( 'card' => __( 'Carte hors image', 'orion26' ), 'overlay' => __( 'Titre sur image', 'orion26' ), 'category' => __( 'Titre de rubrique', 'orion26' ) );
+	?>
+	<div class="orion-heading-styles orion-title-styles">
+		<div class="orion-heading-styles__head"><span><?php esc_html_e( 'Élément', 'orion26' ); ?></span><span><?php esc_html_e( 'Clair', 'orion26' ); ?></span><span><?php esc_html_e( 'Sombre', 'orion26' ); ?></span><span><?php esc_html_e( 'Police', 'orion26' ); ?></span><span><?php esc_html_e( 'Taille', 'orion26' ); ?></span><span><?php esc_html_e( 'Graisse', 'orion26' ); ?></span><span><?php esc_html_e( 'Casse', 'orion26' ); ?></span></div>
+		<?php foreach ( $rows as $row_key => $row_label ) : $style = (array) ( $value[ $row_key ] ?? array() ); $base = orion26_field_name( $section, $key ) . '[' . $row_key . ']'; ?>
+		<div class="orion-heading-style">
+			<strong><?php echo esc_html( $row_label ); ?></strong>
+			<input type="color" name="<?php echo esc_attr( $base ); ?>[color]" value="<?php echo esc_attr( $style['color'] ?? '#12151b' ); ?>" aria-label="<?php echo esc_attr( $row_label . ' ' . __( 'couleur', 'orion26' ) ); ?>">
+			<input type="color" name="<?php echo esc_attr( $base ); ?>[dark_color]" value="<?php echo esc_attr( $style['dark_color'] ?? '#f1eee7' ); ?>" aria-label="<?php echo esc_attr( $row_label . ' ' . __( 'couleur sombre', 'orion26' ) ); ?>">
+			<select name="<?php echo esc_attr( $base ); ?>[font]"><?php foreach ( $fonts as $font => $label ) : ?><option value="<?php echo esc_attr( $font ); ?>"<?php selected( $style['font'] ?? 'condensed', $font ); ?>><?php echo esc_html( $label ); ?></option><?php endforeach; ?></select>
+			<input type="number" min="12" max="96" name="<?php echo esc_attr( $base ); ?>[size]" value="<?php echo esc_attr( $style['size'] ?? 25 ); ?>" aria-label="<?php echo esc_attr( $row_label . ' ' . __( 'taille', 'orion26' ) ); ?>">
+			<select name="<?php echo esc_attr( $base ); ?>[weight]"><?php foreach ( array( 400, 500, 600, 700, 800, 900 ) as $weight ) : ?><option value="<?php echo esc_attr( $weight ); ?>"<?php selected( absint( $style['weight'] ?? 800 ), $weight ); ?>><?php echo esc_html( $weight ); ?></option><?php endforeach; ?></select>
+			<select name="<?php echo esc_attr( $base ); ?>[case]"><option value="none"<?php selected( $style['case'] ?? 'none', 'none' ); ?>><?php esc_html_e( 'Normale', 'orion26' ); ?></option><option value="uppercase"<?php selected( $style['case'] ?? 'none', 'uppercase' ); ?>><?php esc_html_e( 'Majuscules', 'orion26' ); ?></option></select>
+		</div><?php endforeach; ?>
+	</div>
+	<?php
+}
+
 function orion26_render_field( $section, $key, $field, $value ) {
 	$type = $field['type'] ?? 'text';
 	$id   = orion26_field_id( $section, $key );
@@ -149,6 +169,10 @@ function orion26_render_field( $section, $key, $field, $value ) {
 	}
 	if ( 'headings' === $type ) {
 		orion26_render_headings_field( $section, $key, $value );
+		return;
+	}
+	if ( 'title_styles' === $type ) {
+		orion26_render_title_styles_field( $section, $key, $value );
 		return;
 	}
 	if ( 'checkbox' === $type ) {
@@ -242,6 +266,7 @@ function orion26_render_settings_page() {
 			<span class="orion-admin-version">v<?php echo esc_html( ORION26_VERSION ); ?></span>
 		</header>
 		<?php if ( ! empty( $config['about'] ) ) { orion26_render_about_page(); echo '</div>'; return; } ?>
+		<?php if ( ! empty( $config['plugins'] ) ) { orion26_render_plugins_page(); echo '</div>'; return; } ?>
 		<div class="orion-settings-layout<?php echo ! empty( $config['preview'] ) ? ' has-preview' : ''; ?>">
 			<form class="orion-settings-form" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
 				<input type="hidden" name="action" value="orion26_save_settings">
@@ -311,6 +336,24 @@ function orion26_sanitize_setting( $value, $field, $old_value ) {
 				'weight'      => in_array( absint( $row['weight'] ?? 800 ), array( 400, 500, 600, 700, 800, 900 ), true ) ? absint( $row['weight'] ) : $defaults[ $level ]['weight'],
 				'case'        => 'uppercase' === ( $row['case'] ?? '' ) ? 'uppercase' : 'none',
 				'line_height' => max( .8, min( 2, (float) ( $row['line_height'] ?? $defaults[ $level ]['line_height'] ) ) ),
+			);
+		}
+		return $output;
+	}
+	if ( 'title_styles' === $type ) {
+		$defaults = orion26_settings_defaults()['design']['title_styles'];
+		$output   = array();
+		$fonts    = array( 'system', 'condensed', 'source-serif-4', 'atkinson-hyperlegible-next', 'lora', 'merriweather', 'literata', 'ibm-plex-sans' );
+		foreach ( $defaults as $row_key => $row_defaults ) {
+			$row  = isset( $value[ $row_key ] ) && is_array( $value[ $row_key ] ) ? $value[ $row_key ] : array();
+			$font = sanitize_key( (string) ( $row['font'] ?? $row_defaults['font'] ) );
+			$output[ $row_key ] = array(
+				'color'      => sanitize_hex_color( (string) ( $row['color'] ?? '' ) ) ?: $row_defaults['color'],
+				'dark_color' => sanitize_hex_color( (string) ( $row['dark_color'] ?? '' ) ) ?: $row_defaults['dark_color'],
+				'font'       => in_array( $font, $fonts, true ) ? $font : $row_defaults['font'],
+				'size'       => max( 12, min( 96, absint( $row['size'] ?? $row_defaults['size'] ) ) ),
+				'weight'     => in_array( absint( $row['weight'] ?? 800 ), array( 400, 500, 600, 700, 800, 900 ), true ) ? absint( $row['weight'] ) : $row_defaults['weight'],
+				'case'       => 'uppercase' === ( $row['case'] ?? '' ) ? 'uppercase' : 'none',
 			);
 		}
 		return $output;

@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Orion 26 3.5.0\n"
+"Project-Id-Version: Orion 26 3.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/TheLibertyWolf/WP-Orion-template/"
 "issues\n"
-"POT-Creation-Date: 2026-08-18 15:22+0200\n"
+"POT-Creation-Date: 2026-08-18 15:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,18 +19,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: functions.php:580
+#: functions.php:590
 #, php-format
 msgid "%d min"
 msgstr ""
 
-#: functions.php:580
+#: functions.php:590
 #, php-format
 msgid "%d min de lecture"
 msgstr ""
 
-#: functions.php:651
+#: functions.php:661
 msgid "Accueil"
+msgstr ""
+
+#: inc/plugins.php:76
+msgid "Activation non autorisée."
+msgstr ""
+
+#: inc/plugins.php:47
+msgid "Activer"
 msgstr ""
 
 #: front-page.php:136
@@ -45,7 +53,7 @@ msgstr ""
 msgid "Adapte certains contenus à vos préférences."
 msgstr ""
 
-#: functions.php:562
+#: functions.php:572
 msgid "Afficher la date exacte"
 msgstr ""
 
@@ -57,11 +65,11 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: functions.php:316
+#: functions.php:317
 msgid "Article historique"
 msgstr ""
 
-#: functions.php:314
+#: functions.php:315
 msgid "Article sponsorisé"
 msgstr ""
 
@@ -93,15 +101,19 @@ msgstr ""
 msgid "Aucune discipline n’est configurée pour cette page."
 msgstr ""
 
-#: inc/admin.php:219
+#: inc/admin.php:243
 msgid "Auteur"
 msgstr ""
 
-#: inc/admin.php:121
+#: inc/admin.php:139
+msgid "Carte hors image"
+msgstr ""
+
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Casse"
 msgstr ""
 
-#: functions.php:314
+#: functions.php:315
 msgid "Ce contenu a été réalisé dans le cadre d’un partenariat commercial."
 msgstr ""
 
@@ -109,7 +121,7 @@ msgstr ""
 msgid "Cet auteur n’a pas encore publié d’article."
 msgstr ""
 
-#: functions.php:315
+#: functions.php:316
 msgid "Cette information provient d’un communiqué transmis à la rédaction."
 msgstr ""
 
@@ -131,11 +143,11 @@ msgstr ""
 msgid "Choisir une image"
 msgstr ""
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Clair"
 msgstr ""
 
-#: functions.php:315
+#: functions.php:316
 msgid "Communiqué de presse"
 msgstr ""
 
@@ -143,14 +155,14 @@ msgstr ""
 msgid "Communiqués de presse"
 msgstr ""
 
-#: inc/admin.php:239
+#: inc/admin.php:263
 msgid ""
 "Complianz est actif. N’activez pas simultanément les deux bandeaux de "
 "consentement : configurez Orion, puis désactivez l’autre gestionnaire avant "
 "d’activer celui-ci."
 msgstr ""
 
-#: inc/admin.php:219
+#: inc/admin.php:243
 msgid "Conception, développement et maintenance du thème Orion."
 msgstr ""
 
@@ -162,13 +174,13 @@ msgstr ""
 msgid "Connexion"
 msgstr ""
 
-#: inc/admin.php:220
+#: inc/admin.php:244
 msgid ""
 "Consultez le code source, les versions, la feuille de route et proposez vos "
 "améliorations."
 msgstr ""
 
-#: inc/admin.php:179
+#: inc/admin.php:203
 msgid "Créer ou modifier les menus WordPress"
 msgstr ""
 
@@ -192,23 +204,23 @@ msgstr ""
 msgid "Disciplines"
 msgstr ""
 
-#: inc/admin.php:219
+#: inc/admin.php:243
 msgid "Découvrir Jessy System"
 msgstr ""
 
-#: inc/admin.php:351 inc/admin.php:355
+#: inc/admin.php:394 inc/admin.php:398
 msgid "Enregistrement non autorisé."
 msgstr ""
 
-#: inc/admin.php:259
+#: inc/admin.php:284
 msgid "Enregistrer les réglages"
 msgstr ""
 
-#: inc/admin.php:208
+#: inc/admin.php:232
 msgid "Exemple de lien"
 msgstr ""
 
-#: functions.php:691
+#: functions.php:701
 msgid "Fil d’Ariane"
 msgstr ""
 
@@ -220,7 +232,7 @@ msgstr ""
 msgid "Flux RSS"
 msgstr ""
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Graisse"
 msgstr ""
 
@@ -230,6 +242,22 @@ msgstr ""
 
 #: 404.php:6
 msgid "Hors trajectoire"
+msgstr ""
+
+#: inc/plugins.php:46
+msgid "Installation désactivée"
+msgstr ""
+
+#: inc/plugins.php:56
+msgid "Installation non autorisée."
+msgstr ""
+
+#: inc/plugins.php:47
+msgid "Installer et activer"
+msgstr ""
+
+#: inc/plugins.php:46
+msgid "Installé et actif"
 msgstr ""
 
 #: inc/admin.php:121
@@ -244,17 +272,34 @@ msgstr ""
 msgid "La rédaction"
 msgstr ""
 
-#: inc/admin.php:205
+#: inc/admin.php:229
 msgid ""
 "Le corps de l’article doit rester agréable à lire, avec une hiérarchie "
 "claire et un rythme suffisamment aéré sur tous les écrans."
 msgstr ""
 
-#: inc/admin.php:221
+#: inc/plugins.php:38
+msgid ""
+"Les installations sont bloquées par la politique de sécurité WordPress "
+"(DISALLOW_FILE_MODS). Les plugins déjà présents peuvent toujours être "
+"activés."
+msgstr ""
+
+#: inc/admin.php:245
 msgid "Licence et version"
 msgstr ""
 
-#: inc/admin.php:130
+#: inc/plugins.php:33
+msgid ""
+"L’installation de fichiers est désactivée par la configuration WordPress."
+msgstr ""
+
+#: inc/plugins.php:33
+msgid ""
+"L’installation n’a pas abouti. Vérifiez les droits d’écriture et réessayez."
+msgstr ""
+
+#: inc/admin.php:130 inc/admin.php:151
 msgid "Majuscules"
 msgstr ""
 
@@ -262,19 +307,19 @@ msgstr ""
 msgid "Mesure d’audience"
 msgstr ""
 
-#: functions.php:577
+#: functions.php:587
 msgid "Mis à jour"
 msgstr ""
 
-#: functions.php:39
+#: functions.php:40
 msgid "Navigation de pied de page"
 msgstr ""
 
-#: functions.php:614
+#: functions.php:624
 msgid "Navigation des articles"
 msgstr ""
 
-#: functions.php:38 header.php:45
+#: functions.php:39 header.php:45
 msgid "Navigation principale"
 msgstr ""
 
@@ -282,7 +327,7 @@ msgstr ""
 msgid "Niveau"
 msgstr ""
 
-#: inc/admin.php:130
+#: inc/admin.php:130 inc/admin.php:151
 msgid "Normale"
 msgstr ""
 
@@ -294,13 +339,13 @@ msgstr ""
 msgid "Nécessaires"
 msgstr ""
 
-#: inc/admin.php:218
+#: inc/admin.php:242
 msgid ""
 "Orion associe vitesse, lisibilité, personnalisation et maîtrise des données "
 "pour construire des sites d’actualité singuliers."
 msgstr ""
 
-#: inc/admin.php:220
+#: inc/admin.php:244
 msgid "Ouvrir le dépôt Orion"
 msgstr ""
 
@@ -308,7 +353,7 @@ msgstr ""
 msgid "Ouvrir le menu"
 msgstr ""
 
-#: functions.php:583
+#: functions.php:593
 msgid "Par"
 msgstr ""
 
@@ -324,15 +369,27 @@ msgstr ""
 msgid "Pilote, écurie, championnat…"
 msgstr ""
 
-#: functions.php:270 page-others.php:22
+#: inc/plugins.php:33
+msgid "Plugin activé."
+msgstr ""
+
+#: inc/plugins.php:33
+msgid "Plugin installé et activé."
+msgstr ""
+
+#: inc/plugins.php:59
+msgid "Plugin non autorisé."
+msgstr ""
+
+#: functions.php:271 page-others.php:22
 msgid "Plus d’actualités"
 msgstr ""
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Police"
 msgstr ""
 
-#: functions.php:612
+#: functions.php:622
 msgid "Précédent"
 msgstr ""
 
@@ -340,15 +397,15 @@ msgstr ""
 msgid "Présentation détaillée"
 msgstr ""
 
-#: inc/admin.php:203
+#: inc/admin.php:227
 msgid "Prévisualisation en direct"
 msgstr ""
 
-#: functions.php:762 inc/consent.php:88
+#: functions.php:772 inc/consent.php:88
 msgid "Publicité"
 msgstr ""
 
-#: functions.php:575
+#: functions.php:585
 msgid "Publié"
 msgstr ""
 
@@ -356,7 +413,7 @@ msgstr ""
 msgid "Recherche"
 msgstr ""
 
-#: functions.php:676
+#: functions.php:686
 #, php-format
 msgid "Recherche : %s"
 msgstr ""
@@ -382,7 +439,7 @@ msgstr ""
 msgid "Rubriques"
 msgstr ""
 
-#: inc/admin.php:238
+#: inc/admin.php:262
 msgid "Réglages enregistrés."
 msgstr ""
 
@@ -390,11 +447,11 @@ msgstr ""
 msgid "Site officiel"
 msgstr ""
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Sombre"
 msgstr ""
 
-#: functions.php:613
+#: functions.php:623
 msgid "Suivant"
 msgstr ""
 
@@ -414,11 +471,19 @@ msgstr ""
 msgid "Sélections éditoriales"
 msgstr ""
 
-#: inc/admin.php:121
+#: inc/admin.php:121 inc/admin.php:142
 msgid "Taille"
 msgstr ""
 
-#: inc/admin.php:204
+#: inc/admin.php:139
+msgid "Titre de rubrique"
+msgstr ""
+
+#: inc/admin.php:139
+msgid "Titre sur image"
+msgstr ""
+
+#: inc/admin.php:228
 msgid "Titre éditorial"
 msgstr ""
 
@@ -442,7 +507,7 @@ msgstr ""
 msgid "Toute l’actualité"
 msgstr ""
 
-#: functions.php:678 home.php:7
+#: functions.php:688 home.php:7
 msgid "Toutes les actualités"
 msgstr ""
 
@@ -450,15 +515,15 @@ msgstr ""
 msgid "Toutes les trajectoires"
 msgstr ""
 
-#: inc/admin.php:218
+#: inc/admin.php:242
 msgid "Un thème éditorial libre et ambitieux"
 msgstr ""
 
-#: functions.php:316
+#: functions.php:317
 msgid "Une archive éditoriale remise en lumière pour les lecteurs."
 msgstr ""
 
-#: inc/admin.php:206
+#: inc/admin.php:230
 msgid "Une citation importante mise en évidence sans casser la lecture."
 msgstr ""
 
@@ -466,11 +531,11 @@ msgstr ""
 msgid "Utiliser cette image"
 msgstr ""
 
-#: inc/admin.php:232
+#: inc/admin.php:256
 msgid "Vous n’avez pas accès aux réglages Orion."
 msgstr ""
 
-#: inc/admin.php:221
+#: inc/admin.php:245
 msgid ""
 "Vous pouvez utiliser, étudier, modifier et redistribuer Orion selon les "
 "termes de sa licence."
@@ -480,33 +545,33 @@ msgstr ""
 msgid "aucune"
 msgstr ""
 
-#: inc/admin.php:125
+#: inc/admin.php:125 inc/admin.php:146
 msgid "couleur"
 msgstr ""
 
-#: inc/admin.php:126
+#: inc/admin.php:126 inc/admin.php:147
 msgid "couleur sombre"
 msgstr ""
 
-#: functions.php:541
+#: functions.php:551
 msgid "hier"
 msgstr ""
 
-#: functions.php:536
+#: functions.php:546
 #, php-format
 msgid "il y a %d heure"
 msgid_plural "il y a %d heures"
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions.php:543
+#: functions.php:553
 #, php-format
 msgid "il y a %d jour"
 msgid_plural "il y a %d jours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: functions.php:532
+#: functions.php:542
 #, php-format
 msgid "il y a %d minute"
 msgid_plural "il y a %d minutes"
@@ -517,11 +582,11 @@ msgstr[1] ""
 msgid "interligne"
 msgstr ""
 
-#: functions.php:546
+#: functions.php:556
 msgid "la semaine dernière"
 msgstr ""
 
-#: inc/admin.php:128
+#: inc/admin.php:128 inc/admin.php:149
 msgid "taille"
 msgstr ""
 
@@ -537,10 +602,14 @@ msgstr ""
 msgid "À propos et articles liés"
 msgstr ""
 
-#: functions.php:528
+#: inc/admin.php:142
+msgid "Élément"
+msgstr ""
+
+#: functions.php:538
 msgid "à l’instant"
 msgstr ""
 
-#: inc/admin.php:171
+#: inc/admin.php:195
 msgid "— Sélectionner —"
 msgstr ""
