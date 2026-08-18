@@ -104,12 +104,22 @@ function orion26_dynamic_choices( $type ) {
 function orion26_render_checklist( $section, $key, $type, $value ) {
 	$choices  = orion26_dynamic_choices( $type );
 	$selected = array_map( 'absint', (array) $value );
+	if ( 'categories' === $type && $selected ) {
+		$ordered = array();
+		foreach ( $selected as $selected_id ) {
+			if ( isset( $choices[ $selected_id ] ) ) {
+				$ordered[ $selected_id ] = $choices[ $selected_id ];
+			}
+		}
+		$choices = $ordered + $choices;
+	}
 	?>
-	<fieldset class="orion-checklist" data-orion-checklist>
+	<fieldset class="orion-checklist<?php echo 'categories' === $type ? ' orion-checklist--sortable' : ''; ?>" data-orion-checklist<?php echo 'categories' === $type ? ' data-orion-sortable' : ''; ?>>
 		<div class="orion-checklist__tools"><input type="search" class="regular-text" placeholder="<?php esc_attr_e( 'Filtrer la liste…', 'orion26' ); ?>" data-orion-checklist-search><button type="button" class="button-link" data-orion-checklist-all><?php esc_html_e( 'Tout cocher', 'orion26' ); ?></button><button type="button" class="button-link" data-orion-checklist-none><?php esc_html_e( 'Tout décocher', 'orion26' ); ?></button></div>
 		<div class="orion-checklist__items">
-		<?php foreach ( $choices as $choice_value => $label ) : ?><label><input type="checkbox" name="<?php echo esc_attr( orion26_field_name( $section, $key ) ); ?>[]" value="<?php echo esc_attr( $choice_value ); ?>"<?php checked( in_array( absint( $choice_value ), $selected, true ) ); ?>><span><?php echo esc_html( $label ); ?></span></label><?php endforeach; ?>
+		<?php foreach ( $choices as $choice_value => $label ) : ?><label<?php echo 'categories' === $type ? ' draggable="true"' : ''; ?>><?php if ( 'categories' === $type ) : ?><span class="orion-checklist__handle dashicons dashicons-menu" aria-hidden="true"></span><?php endif; ?><input type="checkbox" name="<?php echo esc_attr( orion26_field_name( $section, $key ) ); ?>[]" value="<?php echo esc_attr( $choice_value ); ?>"<?php checked( in_array( absint( $choice_value ), $selected, true ) ); ?>><span><?php echo esc_html( $label ); ?></span><?php if ( 'categories' === $type ) : ?><span class="orion-checklist__moves"><button type="button" class="button-link" data-orion-move="up" aria-label="<?php esc_attr_e( 'Monter', 'orion26' ); ?>">↑</button><button type="button" class="button-link" data-orion-move="down" aria-label="<?php esc_attr_e( 'Descendre', 'orion26' ); ?>">↓</button></span><?php endif; ?></label><?php endforeach; ?>
 		</div>
+		<?php if ( 'categories' === $type ) : ?><p class="description orion-checklist__hint"><?php esc_html_e( 'Les rubriques cochées sont affichées dans cet ordre. Glissez-les ou utilisez les flèches, puis enregistrez.', 'orion26' ); ?></p><?php endif; ?>
 	</fieldset>
 	<?php
 }

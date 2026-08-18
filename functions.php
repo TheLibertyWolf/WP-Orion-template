@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ORION26_VERSION', '3.5.3' );
+define( 'ORION26_VERSION', '3.6.0' );
 define( 'ORION26_DIR', __DIR__ );
 define( 'ORION26_URI', content_url( '/themes/' . basename( ORION26_DIR ) ) );
 
@@ -103,6 +103,60 @@ function orion26_nav_external_attributes( $attributes ) {
 	return $attributes;
 }
 add_filter( 'nav_menu_link_attributes', 'orion26_nav_external_attributes' );
+
+/** Icônes SVG accessibles et indépendantes de toute police d’icônes. */
+function orion26_social_icon( $network ) {
+	$icons = array(
+		'facebook'  => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.7 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.8 1.8-1.8h1.9V2.4c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.4H7V13h2.9v9h3.8Z"/></svg>',
+		'instagram' => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm-.1 2A3.1 3.1 0 0 0 4 7.1v9.8A3.1 3.1 0 0 0 7.1 20h9.8a3.1 3.1 0 0 0 3.1-3.1V7.1A3.1 3.1 0 0 0 16.9 4H7.1Zm10.2 1.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>',
+		'x'         => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.9 2H22l-6.8 7.8L23.2 22H17l-4.9-6.4L6.5 22H3.4l7.2-8.3L2.9 2h6.4l4.4 5.8L18.9 2Zm-1.1 17.8h1.7L8.4 4.1H6.6l11.2 15.7Z"/></svg>',
+		'youtube'   => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/></svg>',
+		'linkedin'  => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.4 7.7H1.8V22h3.6V7.7ZM3.6 2A2.1 2.1 0 1 0 3.6 6.2 2.1 2.1 0 0 0 3.6 2ZM22 13.8c0-4.3-2.3-6.4-5.4-6.4a4.7 4.7 0 0 0-4.3 2.4h-.1V7.7H8.7V22h3.6v-7.1c0-1.9.4-3.7 2.7-3.7 2.3 0 2.3 2.1 2.3 3.8v7H22v-8.2Z"/></svg>',
+		'tiktok'    => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.7 2c.3 2.5 1.7 4 4.3 4.2v3.1a8.3 8.3 0 0 1-4.3-1.1v7.1a6.7 6.7 0 1 1-5.8-6.6v3.4a3.4 3.4 0 1 0 2.4 3.2V2h3.4Z"/></svg>',
+		'twitch'    => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 2h20v14l-5.7 5.7h-4.1L9.5 24H7v-2.3H2V2Zm2 2v15.4h4.7v2.1l2.1-2.1h5L20 15.2V4H4Zm5 3h2v6H9V7Zm5 0h2v6h-2V7Z"/></svg>',
+		'rss'       => '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 17.5A2.5 2.5 0 1 1 5 22a2.5 2.5 0 0 1 0-4.5ZM2 9.4v3.4A9.2 9.2 0 0 1 11.2 22h3.4A12.6 12.6 0 0 0 2 9.4ZM2 2v3.4A16.6 16.6 0 0 1 18.6 22H22A20 20 0 0 0 2 2Z"/></svg>',
+	);
+	return $icons[ sanitize_key( $network ) ] ?? '';
+}
+
+/** Rubriques du footer selon la hiérarchie éditoriale configurée. */
+function orion26_footer_categories( $count ) {
+	$count = absint( $count );
+	if ( ! $count ) {
+		return array();
+	}
+	$order = sanitize_key( (string) orion26_setting( 'footer.category_order', 'homepage' ) );
+	if ( 'homepage' !== $order ) {
+		return get_categories( array( 'hide_empty' => true, 'orderby' => 'alphabetical' === $order ? 'name' : 'count', 'order' => 'alphabetical' === $order ? 'ASC' : 'DESC', 'number' => $count ) );
+	}
+	$ids = array();
+	foreach ( array( 'featured_categories', 'hub_categories', 'secondary_categories', 'other_categories' ) as $group ) {
+		foreach ( orion26_term_ids( orion26_setting( 'homepage.' . $group, array() ) ) as $term_id ) {
+			if ( ! in_array( $term_id, $ids, true ) ) {
+				$ids[] = $term_id;
+			}
+		}
+	}
+	$categories = array();
+	foreach ( $ids as $term_id ) {
+		$term = get_category( $term_id );
+		if ( $term instanceof WP_Term && $term->count > 0 ) {
+			$categories[] = $term;
+		}
+		if ( count( $categories ) >= $count ) {
+			return $categories;
+		}
+	}
+	foreach ( get_categories( array( 'hide_empty' => true, 'orderby' => 'count', 'order' => 'DESC' ) ) as $term ) {
+		if ( ! in_array( (int) $term->term_id, $ids, true ) ) {
+			$categories[] = $term;
+		}
+		if ( count( $categories ) >= $count ) {
+			break;
+		}
+	}
+	return $categories;
+}
 
 /** Orion gère nativement les thèmes clair/sombre : ne charge pas les CSS AH19 du plugin historique. */
 function orion26_disable_legacy_theme_stylesheets() {
@@ -485,10 +539,13 @@ function orion26_inline_colors() {
 		'--orion-header-font-size' => max( 11, min( 22, absint( orion26_setting( 'header.font_size', 14 ) ) ) ) . 'px',
 		'--orion-header-font-weight' => in_array( absint( orion26_setting( 'header.font_weight', 800 ) ), array( 400, 600, 700, 800, 900 ), true ) ? absint( orion26_setting( 'header.font_weight', 800 ) ) : 800,
 		'--orion-header-height' => max( 56, min( 180, absint( orion26_setting( 'header.height', 84 ) ) ) ) . 'px',
+		'--orion-footer-bg' => $color( 'footer.background', '#ffffff' ), '--orion-footer-text' => $color( 'footer.text', '#12151b' ),
+		'--orion-footer-heading' => $color( 'footer.heading', '#b68b3d' ), '--orion-footer-border' => $color( 'footer.border', '#d9d6cf' ),
+		'--orion-footer-copyright-bg' => $color( 'footer.copyright_background', '#eeece6' ), '--orion-footer-copyright-text' => $color( 'footer.copyright_text', '#626873' ),
 	);
 	$root = '';
 	foreach ( $values as $property => $value ) { $root .= $property . ':' . $value . ';'; }
-	$dark = '--orion-bg:' . $color( 'design.dark_background', '#0b0d12' ) . ';--orion-surface:' . $color( 'design.dark_surface', '#11141b' ) . ';--orion-surface-2:' . $color( 'design.dark_surface_alt', '#171b24' ) . ';--orion-text:' . $color( 'design.dark_text', '#f1eee7' ) . ';--orion-muted:' . $color( 'design.dark_muted', '#a1a7b3' ) . ';--orion-line:' . $color( 'design.dark_line', '#2b303b' ) . ';';
+	$dark = '--orion-bg:' . $color( 'design.dark_background', '#0b0d12' ) . ';--orion-surface:' . $color( 'design.dark_surface', '#11141b' ) . ';--orion-surface-2:' . $color( 'design.dark_surface_alt', '#171b24' ) . ';--orion-text:' . $color( 'design.dark_text', '#f1eee7' ) . ';--orion-muted:' . $color( 'design.dark_muted', '#a1a7b3' ) . ';--orion-line:' . $color( 'design.dark_line', '#2b303b' ) . ';--orion-footer-bg:' . $color( 'footer.dark_background', '#11141b' ) . ';--orion-footer-text:' . $color( 'footer.dark_text', '#f1eee7' ) . ';--orion-footer-heading:' . $color( 'footer.dark_heading', '#b68b3d' ) . ';--orion-footer-border:' . $color( 'footer.dark_border', '#2b303b' ) . ';--orion-footer-copyright-bg:' . $color( 'footer.copyright_dark_background', '#0b0d12' ) . ';--orion-footer-copyright-text:' . $color( 'footer.copyright_dark_text', '#a1a7b3' ) . ';';
 	$heading_css = '';
 	$heading_dark_css = '';
 	$heading_defaults = orion26_settings_defaults()['design']['headings'];

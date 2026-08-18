@@ -7,7 +7,7 @@ Description: Orion 26 propulse les sites éditoriaux vers de nouvelles trajectoi
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 8.1
-Version: 3.5.3
+Version: 3.6.0
 Text Domain: orion26
 Domain Path: /languages
 License: GNU General Public License v2 or later
@@ -83,6 +83,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .skip-link { position: fixed; z-index: 9999; top: -100px; left: 16px; padding: 10px 16px; background: var(--orion-text); color: var(--orion-bg); font-weight: 700; }
 .skip-link:focus { top: 16px; }
 .orion-container { width: min(100% - 40px, var(--orion-container-width, 1240px)); margin-inline: auto; }
+.orion-layout-width--full { width: 100%; margin-inline: auto; padding-inline: clamp(20px, 3vw, 56px); }
 .site-accent { height: 5px; background: linear-gradient(90deg, var(--orion-accent) 0 18%, var(--orion-gold) 18% 22%, transparent 22%); }
 .site-header { position: relative; z-index: 50; border-bottom: 1px solid var(--orion-header-border,var(--orion-line)); background: color-mix(in srgb,var(--orion-header-bg,var(--orion-bg)) 94%,transparent); color:var(--orion-header-text,var(--orion-text)); backdrop-filter: blur(16px); }
 :root[data-theme="dark"] .site-header{background:color-mix(in srgb,var(--orion-header-dark-bg,var(--orion-bg)) 94%,transparent);color:var(--orion-header-dark-text,var(--orion-text))}
@@ -348,20 +349,24 @@ html[data-theme="dark"] .site-brand__image--dark, html[data-theme="dark"] .foote
 .orion-ad__creative { display: block; max-width: 100%; }
 .orion-ad__creative img { max-height: 250px; margin: auto; object-fit: contain; }
 .article-sidebar .orion-ad { width: 100%; min-height: 250px; margin: 0; }
-.site-footer { margin-top: 30px; padding-top: 48px; background: var(--orion-surface); color: var(--orion-text); border-top: 1px solid var(--orion-line); transition: background-color .22s ease, color .22s ease; }
+.site-footer { margin-top: 30px; padding-top: 48px; background: var(--orion-footer-bg,var(--orion-surface)); color: var(--orion-footer-text,var(--orion-text)); transition: background-color .22s ease, color .22s ease; }
+.site-footer.has-top-border { border-top: 1px solid var(--orion-footer-border,var(--orion-line)); }
 .site-footer__grid { display: grid; grid-template-columns: minmax(220px, 1.45fr) repeat(auto-fit, minmax(150px, 1fr)); gap: 42px; padding-bottom: 44px; }
+.site-footer.has-column-separators .site-footer__grid > * + * { padding-left: 32px; border-left: 1px solid var(--orion-footer-border,var(--orion-line)); }
 .footer-brand__image { width: auto; height: var(--orion-footer-logo-height, 48px); max-width: 100%; object-fit: contain; }
-.site-footer h2 { margin: 0 0 13px; color: var(--orion-gold); font: 800 1rem var(--orion-display); letter-spacing: .1em; text-transform: uppercase; }
-.site-footer p { max-width: 430px; color: var(--orion-muted); font-size: .82rem; }
+.site-footer h2 { margin: 0 0 13px; color: var(--orion-footer-heading,var(--orion-gold)); font: 800 1rem var(--orion-display); letter-spacing: .1em; text-transform: uppercase; }
+.site-footer p { max-width: 430px; color: color-mix(in srgb,var(--orion-footer-text,var(--orion-text)) 72%,transparent); font-size: .82rem; }
 .site-footer ul { margin: 0; padding: 0; list-style: none; }
 .site-footer li + li { margin-top: 7px; }
 .site-footer a { text-decoration: none; }
 .footer-socials--inline { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px !important; }
 .footer-socials--inline li + li { margin-top: 0; }
-.footer-socials--inline a { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--orion-line); border-radius: 50%; color: var(--orion-text); transition: border-color .2s ease, color .2s ease, transform .2s ease; }
+.footer-socials--inline a { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--orion-footer-border,var(--orion-line)); border-radius: 50%; color: var(--orion-footer-text,var(--orion-text)); transition: border-color .2s ease, color .2s ease, transform .2s ease; }
 .footer-socials--inline a:hover { border-color: var(--orion-accent); color: var(--orion-accent); transform: translateY(-2px); }
 .footer-socials--inline svg { width: 18px; height: 18px; fill: currentColor; }
-.site-footer__bottom { min-height: 64px; display: flex; align-items: center; justify-content: center; gap: 20px; border-top: 1px solid var(--orion-line); color: var(--orion-muted); font-size: .68rem; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
+.site-footer__copyright { background: var(--orion-footer-copyright-bg,var(--orion-surface-2)); color: var(--orion-footer-copyright-text,var(--orion-muted)); }
+.site-footer.has-copyright-border .site-footer__copyright { border-top: 1px solid var(--orion-footer-border,var(--orion-line)); }
+.site-footer__bottom { min-height: 64px; display: flex; align-items: center; justify-content: center; gap: 20px; font-size: .68rem; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
 .home-main .story-card:not(.story-card--overlay) h2,.home-main .latest-compact__item h3{color:var(--orion-card-title-color);font-family:var(--orion-card-title-font);font-size:var(--orion-card-title-size);font-weight:var(--orion-card-title-weight);text-transform:var(--orion-card-title-case)}
 .home-main .story-card:not(.story-card--overlay) h2 a,.home-main .latest-compact__item h3 a{color:inherit}
 .home-main .latest-compact__item h3{font-size:calc(var(--orion-card-title-size) * .64)}
@@ -388,6 +393,7 @@ html[data-theme="dark"] .site-brand__image--dark, html[data-theme="dark"] .foote
 	.article-sidebar .orion-ad { min-height: 180px; }
 	.site-footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.site-footer__identity { grid-column: 1 / -1; }
+	.site-footer.has-column-separators .site-footer__grid > * + * { padding-left: 0; border-left: 0; }
 }
 
 @media (min-width: 761px) {
@@ -396,6 +402,7 @@ html[data-theme="dark"] .site-brand__image--dark, html[data-theme="dark"] .foote
 
 @media (max-width: 760px) {
 	.orion-container { width: min(100% - 28px, 1240px); }
+	.orion-layout-width--full { padding-inline: 14px; }
 	.site-header__main { min-height: 72px; }
 	.orion-header-centered .site-brand { margin-inline: 0; }
 	.orion-header-centered .site-actions { position: static; }

@@ -9,6 +9,7 @@ $dark_width = absint( $logos['dark']['width'] ?? $light_width );
 $dark_height = absint( $logos['dark']['height'] ?? $light_height );
 $default_scheme = orion26_setting( 'identity.default_scheme', 'auto' );
 $primary_menu   = absint( orion26_setting( 'header.primary_menu', 0 ) );
+$header_width   = 'full' === orion26_setting( 'header.width', 'contained' ) ? 'orion-layout-width--full' : 'orion-container';
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -25,7 +26,7 @@ $primary_menu   = absint( orion26_setting( 'header.primary_menu', 0 ) );
 <a class="skip-link" href="#main-content"><?php esc_html_e( 'Aller au contenu', 'orion26' ); ?></a>
 <div class="site-accent" aria-hidden="true"></div>
 <header class="site-header">
-	<div class="site-header__main orion-container">
+	<div class="site-header__main <?php echo esc_attr( $header_width ); ?>">
 		<a class="site-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> — Accueil" style="--orion-header-logo-height:<?php echo esc_attr( $logo_height ); ?>px">
 			<?php if ( ! empty( $logos['light']['url'] ) ) : ?>
 				<img class="site-brand__image site-brand__image--light" src="<?php echo esc_url( wp_make_link_relative( $logos['light']['url'] ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="<?php echo esc_attr( $light_width ); ?>" height="<?php echo esc_attr( $light_height ); ?>" decoding="async">
@@ -43,7 +44,7 @@ $primary_menu   = absint( orion26_setting( 'header.primary_menu', 0 ) );
 		</div>
 	</div>
 	<nav id="site-navigation" class="site-navigation" aria-label="<?php esc_attr_e( 'Navigation principale', 'orion26' ); ?>" hidden>
-		<div class="orion-container">
+		<div class="<?php echo esc_attr( $header_width ); ?>">
 		<?php
 		if ( $primary_menu || has_nav_menu( 'primary' ) ) {
 			wp_nav_menu( array( 'menu' => $primary_menu ?: '', 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'primary-menu', 'depth' => 2, 'fallback_cb' => false ) );

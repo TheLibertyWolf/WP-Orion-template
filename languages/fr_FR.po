@@ -682,3 +682,12 @@ msgstr "— Sélectionner —"
 
 #~ msgid "Rechercher sur France Racing"
 #~ msgstr "Rechercher sur France Racing"
+
+msgid "Monter"
+msgstr "Monter"
+
+msgid "Descendre"
+msgstr "Descendre"
+
+msgid "Les rubriques cochées sont affichées dans cet ordre. Glissez-les ou utilisez les flèches, puis enregistrez."
+msgstr "Les rubriques cochées sont affichées dans cet ordre. Glissez-les ou utilisez les flèches, puis enregistrez."

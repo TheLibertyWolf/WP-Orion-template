@@ -27,6 +27,7 @@
 
   document.querySelectorAll('[data-orion-checklist]').forEach(function (list) {
     var items = Array.from(list.querySelectorAll('.orion-checklist__items label'));
+    var itemsContainer = list.querySelector('.orion-checklist__items');
     var search = list.querySelector('[data-orion-checklist-search]');
     search.addEventListener('input', function () {
       var query = search.value.toLocaleLowerCase().trim();
@@ -34,6 +35,28 @@
     });
     list.querySelector('[data-orion-checklist-all]').addEventListener('click', function () { items.filter(function (item) { return !item.hidden; }).forEach(function (item) { item.querySelector('input').checked = true; }); });
     list.querySelector('[data-orion-checklist-none]').addEventListener('click', function () { items.filter(function (item) { return !item.hidden; }).forEach(function (item) { item.querySelector('input').checked = false; }); });
+    if (list.hasAttribute('data-orion-sortable')) {
+      var dragged = null;
+      items.forEach(function (item) {
+        item.addEventListener('dragstart', function () { dragged = item; item.classList.add('is-dragging'); });
+        item.addEventListener('dragend', function () { item.classList.remove('is-dragging'); dragged = null; });
+        item.addEventListener('dragover', function (event) {
+          if (!dragged || dragged === item) return;
+          event.preventDefault();
+          var box = item.getBoundingClientRect();
+          itemsContainer.insertBefore(dragged, event.clientY < box.top + box.height / 2 ? item : item.nextSibling);
+        });
+      });
+      list.addEventListener('click', function (event) {
+        var move = event.target.closest('[data-orion-move]');
+        if (!move) return;
+        event.preventDefault();
+        event.stopPropagation();
+        var row = move.closest('label');
+        if ('up' === move.dataset.orionMove && row.previousElementSibling) itemsContainer.insertBefore(row, row.previousElementSibling);
+        if ('down' === move.dataset.orionMove && row.nextElementSibling) itemsContainer.insertBefore(row.nextElementSibling, row);
+      });
+    }
   });
 
   document.querySelectorAll('form[data-confirm]').forEach(function (form) {

@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 const ORION26_SETTINGS_OPTION = 'orion26_settings';
-const ORION26_SETTINGS_VERSION = 3;
+const ORION26_SETTINGS_VERSION = 4;
 
 /** Valeurs neutres permettant de distribuer Orion sur un autre site. */
 function orion26_settings_defaults() {
@@ -80,6 +80,7 @@ function orion26_settings_defaults() {
 			'logo_height'        => 40,
 			'primary_menu'       => 0,
 			'layout'             => 'classic',
+			'width'              => 'contained',
 			'height'             => 84,
 			'background'         => '#ffffff',
 			'dark_background'    => '#11141b',
@@ -113,13 +114,32 @@ function orion26_settings_defaults() {
 		'footer' => array(
 			'logo_id'            => 0,
 			'logo_height'        => 48,
-			'show_description'   => 1,
+			'description_mode'   => 'site',
+			'description'        => '',
 			'show_categories'    => 1,
 			'category_count'     => 14,
+			'category_order'     => 'homepage',
 			'columns'            => 4,
+			'width'              => 'contained',
+			'background'         => '#ffffff',
+			'dark_background'    => '#11141b',
+			'text'               => '#12151b',
+			'dark_text'          => '#f1eee7',
+			'heading'            => '#b68b3d',
+			'dark_heading'       => '#b68b3d',
+			'border'             => '#d9d6cf',
+			'dark_border'        => '#2b303b',
+			'top_border'         => 1,
+			'column_separators'  => 0,
 			'footer_menu'        => 0,
 			'copyright'          => '© {year} {site_name}',
 			'version_label'      => '',
+			'copyright_width'    => 'contained',
+			'copyright_background'      => '#eeece6',
+			'copyright_dark_background' => '#0b0d12',
+			'copyright_text'             => '#626873',
+			'copyright_dark_text'        => '#a1a7b3',
+			'copyright_border'           => 1,
 			'show_login'         => 1,
 		),
 		'social' => array(
@@ -326,6 +346,7 @@ function orion26_settings_schema() {
 				'logo_height' => array( 'label' => 'Hauteur du logo', 'type' => 'number', 'min' => 20, 'max' => 180, 'suffix' => 'px' ),
 				'primary_menu' => array( 'label' => 'Menu principal', 'type' => 'menus' ),
 				'layout' => array( 'label' => 'Disposition', 'type' => 'select', 'choices' => array( 'classic' => 'Logo à gauche, actions à droite', 'centered' => 'Logo centré', 'compact' => 'Header compact' ) ),
+				'width' => array( 'label' => 'Largeur du contenu du header', 'type' => 'select', 'choices' => array( 'contained' => 'Largeur du site', 'full' => 'Pleine largeur' ) ),
 				'height' => array( 'label' => 'Hauteur minimale', 'type' => 'number', 'min' => 56, 'max' => 180, 'suffix' => 'px' ),
 				'background' => $color + array( 'label' => 'Fond clair' ),
 				'dark_background' => $color + array( 'label' => 'Fond sombre' ),
@@ -345,17 +366,36 @@ function orion26_settings_schema() {
 		),
 		'footer' => array(
 			'label' => 'Footer', 'icon' => 'dashicons-editor-insertmore',
-			'description' => 'Contenu, colonnes et mentions du pied de page.',
+			'description' => 'Contenu, apparence, colonnes et mentions du pied de page.',
 			'fields' => array(
 				'logo_id' => array( 'label' => 'Logo du footer', 'type' => 'media' ),
 				'logo_height' => array( 'label' => 'Hauteur du logo du footer', 'type' => 'number', 'min' => 20, 'max' => 180, 'suffix' => 'px' ),
-				'show_description' => array( 'label' => 'Afficher la description du site', 'type' => 'checkbox' ),
+				'description_mode' => array( 'label' => 'Description affichée', 'type' => 'select', 'choices' => array( 'site' => 'Description générale de WordPress', 'custom' => 'Description personnalisée', 'none' => 'Aucune description' ) ),
+				'description' => array( 'label' => 'Description personnalisée', 'type' => 'textarea', 'description' => 'Utilisée lorsque « Description personnalisée » est sélectionnée ci-dessus.' ),
 				'show_categories' => array( 'label' => 'Afficher les rubriques', 'type' => 'checkbox' ),
 				'category_count' => array( 'label' => 'Nombre de rubriques', 'type' => 'number', 'min' => 0, 'max' => 40 ),
+				'category_order' => array( 'label' => 'Ordre des rubriques', 'type' => 'select', 'choices' => array( 'homepage' => 'Ordre éditorial de la homepage', 'popular' => 'Popularité', 'alphabetical' => 'Alphabétique' ), 'description' => 'L’ordre éditorial suit : mises en avant, bloc de liens, secondaires, puis page « autres ».' ),
 				'columns' => array( 'label' => 'Nombre de colonnes', 'type' => 'number', 'min' => 1, 'max' => 6 ),
+				'width' => array( 'label' => 'Largeur du contenu du footer', 'type' => 'select', 'choices' => array( 'contained' => 'Largeur du site', 'full' => 'Pleine largeur' ) ),
+				'background' => $color + array( 'label' => 'Fond clair du footer' ),
+				'dark_background' => $color + array( 'label' => 'Fond sombre du footer' ),
+				'text' => $color + array( 'label' => 'Texte clair du footer' ),
+				'dark_text' => $color + array( 'label' => 'Texte sombre du footer' ),
+				'heading' => $color + array( 'label' => 'Titres du footer — mode clair' ),
+				'dark_heading' => $color + array( 'label' => 'Titres du footer — mode sombre' ),
+				'border' => $color + array( 'label' => 'Séparateurs — mode clair' ),
+				'dark_border' => $color + array( 'label' => 'Séparateurs — mode sombre' ),
+				'top_border' => array( 'label' => 'Ligne de démarcation avec le contenu', 'type' => 'checkbox' ),
+				'column_separators' => array( 'label' => 'Séparer visuellement les colonnes', 'type' => 'checkbox' ),
 				'footer_menu' => array( 'label' => 'Menu du footer', 'type' => 'menus' ),
 				'copyright' => array( 'label' => 'Copyright', 'type' => 'text', 'description' => 'Variables : {year}, {site_name}.' ),
 				'version_label' => array( 'label' => 'Libellé de version', 'type' => 'text' ),
+				'copyright_width' => array( 'label' => 'Largeur du contenu de la zone copyright', 'type' => 'select', 'choices' => array( 'contained' => 'Largeur du site', 'full' => 'Pleine largeur' ) ),
+				'copyright_background' => $color + array( 'label' => 'Fond copyright — mode clair' ),
+				'copyright_dark_background' => $color + array( 'label' => 'Fond copyright — mode sombre' ),
+				'copyright_text' => $color + array( 'label' => 'Texte copyright — mode clair' ),
+				'copyright_dark_text' => $color + array( 'label' => 'Texte copyright — mode sombre' ),
+				'copyright_border' => array( 'label' => 'Ligne au-dessus de la zone copyright', 'type' => 'checkbox' ),
 				'show_login' => array( 'label' => 'Afficher le lien de connexion', 'type' => 'checkbox' ),
 			),
 		),
@@ -465,7 +505,15 @@ function orion26_upgrade_settings() {
 	if ( ! is_array( $stored ) || (int) ( $stored['_version'] ?? 0 ) >= ORION26_SETTINGS_VERSION ) {
 		return;
 	}
+	$previous_version = (int) ( $stored['_version'] ?? 0 );
+	$legacy_footer_description = $stored['footer']['show_description'] ?? null;
 	$stored = orion26_array_merge_settings( orion26_settings_defaults(), $stored );
+	if ( $previous_version < 4 && false !== $legacy_footer_description && 0 !== $legacy_footer_description ) {
+		$stored['footer']['description_mode'] = 'site';
+	} elseif ( $previous_version < 4 && null !== $legacy_footer_description ) {
+		$stored['footer']['description_mode'] = 'none';
+	}
+	unset( $stored['footer']['show_description'] );
 	if ( empty( $stored['identity']['site_icon_id'] ) ) {
 		$stored['identity']['site_icon_id'] = absint( get_option( 'site_icon', 0 ) ) ?: absint( get_option( 'options_favicon_512', 0 ) ?: get_option( 'options_favicon_192', 0 ) ?: get_option( 'options_favicon_32', 0 ) );
 	}

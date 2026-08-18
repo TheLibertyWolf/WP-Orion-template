@@ -2,7 +2,7 @@
 
 Orion 26 est un thème WordPress éditorial moderne et responsive destiné aux sites d’actualité, magazines et médias indépendants. Il associe une homepage structurée, huit identités visuelles et un panneau de réglages natif sans dépendance obligatoire à ACF.
 
-[![Version](https://img.shields.io/badge/version-3.5.3-2271b1)](https://github.com/TheLibertyWolf/WP-Orion-template/releases)
+[![Version](https://img.shields.io/badge/version-3.6.0-2271b1)](https://github.com/TheLibertyWolf/WP-Orion-template/releases)
 [![PHP](https://img.shields.io/badge/PHP-%3E%3D%208.1-777bb4)](https://www.php.net/)
 [![WordPress](https://img.shields.io/badge/WordPress-%3E%3D%206.5-21759b)](https://wordpress.org/)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-46b450)](LICENSE)
@@ -42,7 +42,7 @@ Orion est particulièrement adapté pour :
 
 ## Installation
 
-1. Télécharger `orion-26-3.5.3.zip` depuis la [dernière release](https://github.com/TheLibertyWolf/WP-Orion-template/releases/latest).
+1. Télécharger `orion-26-3.6.0.zip` depuis la [dernière release](https://github.com/TheLibertyWolf/WP-Orion-template/releases/latest).
 2. Dans WordPress, ouvrir **Apparence → Thèmes → Ajouter un thème → Téléverser**.
 3. Installer puis activer **Orion 26**.
 4. Ouvrir **Orion → Identité et apparence** et choisir un preset.

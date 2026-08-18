@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.6.0 — 2026-08-18
+
+- Remplace les caractères génériques du footer par de véritables icônes SVG pour Facebook, Instagram, X, YouTube, LinkedIn, TikTok, Twitch et RSS.
+- Ajoute le choix de la description du footer : description WordPress, texte personnalisé ou aucune description.
+- Ajoute les réglages complets d’apparence du footer : fonds clair/sombre, textes, titres, séparateurs, démarcations et zone copyright.
+- Ajoute les modes pleine largeur ou largeur du site pour le header, le footer et la zone copyright.
+- Ordonne les rubriques du footer selon la hiérarchie éditoriale de la homepage et permet de réordonner les listes de rubriques par glisser-déposer ou avec les flèches.
+
 ## 3.5.3 — 2026-08-18
 
 - Déplacement de toutes les notifications Orion dans une zone indépendante au-dessus du bandeau-titre.

@@ -681,3 +681,12 @@ msgstr "- Selecione -"
 
 #~ msgid "Rechercher sur France Racing"
 #~ msgstr "Pesquise na France Racing"
+
+msgid "Monter"
+msgstr "Mover para cima"
+
+msgid "Descendre"
+msgstr "Mover para baixo"
+
+msgid "Les rubriques cochées sont affichées dans cet ordre. Glissez-les ou utilisez les flèches, puis enregistrez."
+msgstr "As secções selecionadas são apresentadas por esta ordem. Arraste-as ou utilize as setas e guarde."
