@@ -1,0 +1,449 @@
+# English translations for Orion 26 package.
+# Copyright (C) 2026 THE Orion 26'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Orion 26 package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Orion 26 3.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/TheLibertyWolf/WP-Orion-template/"
+"issues\n"
+"POT-Creation-Date: 2026-08-18 15:03+0200\n"
+"PO-Revision-Date: 2026-08-18 14:55+0200\n"
+"Last-Translator: Orion Contributors\n"
+"Language-Team: none\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: functions.php:579
+#, php-format
+msgid "%d min"
+msgstr "%d min"
+
+#: functions.php:579
+#, php-format
+msgid "%d min de lecture"
+msgstr "%d min reading"
+
+#: functions.php:650
+msgid "Accueil"
+msgstr "Welcome"
+
+#: front-page.php:136
+msgid "Actualité Gaming"
+msgstr "Gaming News"
+
+#: front-page.php:117
+msgid "Actualités secondaires"
+msgstr "Secondary news"
+
+#: inc/consent.php:89
+msgid "Adapte certains contenus à vos préférences."
+msgstr "Adapts certain content to your preferences."
+
+#: functions.php:561
+msgid "Afficher la date exacte"
+msgstr "Show exact date"
+
+#: header.php:25
+msgid "Aller au contenu"
+msgstr "Go to content"
+
+#: archive.php:8
+msgid "Archives"
+msgstr "Archives"
+
+#: functions.php:334
+msgid "Article historique"
+msgstr "Historical article"
+
+#: functions.php:332
+msgid "Article sponsorisé"
+msgstr "Sponsored article"
+
+#: front-page.php:138
+msgid "Articles historiques"
+msgstr "Historical articles"
+
+#: tag.php:9
+msgid "Aucun article associé à ce sujet."
+msgstr "No articles associated with this topic."
+
+#: archive.php:13
+msgid "Aucun article trouvé."
+msgstr "No items found."
+
+#: search.php:9
+msgid "Aucun résultat. Essayez avec un pilote, une écurie ou un championnat."
+msgstr "No results. Try with a driver, a team or a championship."
+
+#: category.php:42
+msgid "Aucune actualité dans cette rubrique."
+msgstr "No news in this section."
+
+#: home.php:8
+msgid "Aucune actualité publiée."
+msgstr "No news published."
+
+#: page-others.php:41
+msgid "Aucune discipline n’est configurée pour cette page."
+msgstr "No disciplines are configured for this page."
+
+#: functions.php:332
+msgid "Ce contenu a été réalisé dans le cadre d’un partenariat commercial."
+msgstr "This content was produced as part of a commercial partnership."
+
+#: author.php:13
+msgid "Cet auteur n’a pas encore publié d’article."
+msgstr "This author has not yet published an article."
+
+#: functions.php:333
+msgid "Cette information provient d’un communiqué transmis à la rédaction."
+msgstr ""
+"This information comes from a press release sent to the editorial staff."
+
+#: 404.php:6
+msgid ""
+"Cette page n’existe plus ou son adresse a changé. Retrouvez la piste depuis "
+"l’accueil ou lancez une recherche."
+msgstr ""
+"This page no longer exists or its address has changed. Find the track from "
+"the home page or start a search."
+
+#: header.php:39
+msgid "Changer de thème"
+msgstr "Change theme"
+
+#: inc/admin.php:76
+msgid "Choisir"
+msgstr "Choose"
+
+#: inc/admin.php:52
+msgid "Choisir une image"
+msgstr "Choose an image"
+
+#: functions.php:333
+msgid "Communiqué de presse"
+msgstr "Press release"
+
+#: front-page.php:137
+msgid "Communiqués de presse"
+msgstr "Press releases"
+
+#: inc/admin.php:189
+msgid ""
+"Complianz est actif. N’activez pas simultanément les deux bandeaux de "
+"consentement : configurez Orion, puis désactivez l’autre gestionnaire avant "
+"d’activer celui-ci."
+msgstr ""
+"Complianz is active. Do not activate both consent banners simultaneously: "
+"configure Orion, then deactivate the other manager before activating this "
+"one."
+
+#: inc/consent.php:82
+msgid "Confidentialité"
+msgstr "Confidentiality"
+
+#: footer.php:38
+msgid "Connexion"
+msgstr "Connection"
+
+#: inc/admin.php:137
+msgid "Créer ou modifier les menus WordPress"
+msgstr "Create or edit WordPress menus"
+
+#: single.php:60
+msgid "Derniers articles"
+msgstr "Latest articles"
+
+#: front-page.php:107
+msgid "Dernière actu :"
+msgstr "Latest news:"
+
+#: front-page.php:51
+msgid "Dernières actualités"
+msgstr "Latest news"
+
+#: category.php:9
+msgid "Discipline"
+msgstr "Discipline"
+
+#: front-page.php:101
+msgid "Disciplines"
+msgstr "Disciplines"
+
+#: inc/admin.php:258
+msgid "Enregistrement non autorisé."
+msgstr "Unauthorized recording."
+
+#: inc/admin.php:203
+msgid "Enregistrer les réglages"
+msgstr "Save settings"
+
+#: inc/admin.php:166
+msgid "Exemple de lien"
+msgstr "Example link"
+
+#: functions.php:690
+msgid "Fil d’Ariane"
+msgstr "Breadcrumbs"
+
+#: footer.php:34
+msgid "Flux RSS"
+msgstr "RSS feed"
+
+#: inc/consent.php:105
+msgid "Gérer mes cookies"
+msgstr "Manage my cookies"
+
+#: 404.php:6
+msgid "Hors trajectoire"
+msgstr "Off trajectory"
+
+#: category.php:35
+msgid "La discipline"
+msgstr "Discipline"
+
+#: author.php:10 single.php:50
+msgid "La rédaction"
+msgstr "The editorial staff"
+
+#: inc/admin.php:163
+msgid ""
+"Le corps de l’article doit rester agréable à lire, avec une hiérarchie "
+"claire et un rythme suffisamment aéré sur tous les écrans."
+msgstr ""
+"The body of the article must remain pleasant to read, with a clear hierarchy "
+"and a sufficiently light pace on all screens."
+
+#: inc/consent.php:87
+msgid "Mesure d’audience"
+msgstr "Audience measurement"
+
+#: functions.php:576
+msgid "Mis à jour"
+msgstr "Updated"
+
+#: functions.php:39
+msgid "Navigation de pied de page"
+msgstr "Footer navigation"
+
+#: functions.php:613
+msgid "Navigation des articles"
+msgstr "Post navigation"
+
+#: functions.php:38 header.php:45
+msgid "Navigation principale"
+msgstr "Main navigation"
+
+#: inc/consent.php:87
+msgid "Nous aide à comprendre l’utilisation du site."
+msgstr "Helps us understand how the site is used."
+
+#: inc/consent.php:86
+msgid "Nécessaires"
+msgstr "Necessary"
+
+#: header.php:42
+msgid "Ouvrir le menu"
+msgstr "Open menu"
+
+#: functions.php:582
+msgid "Par"
+msgstr "By"
+
+#: inc/consent.php:88
+msgid "Permet l’affichage et la mesure des contenus publicitaires."
+msgstr "Allows the display and measurement of advertising content."
+
+#: inc/consent.php:89
+msgid "Personnalisation"
+msgstr "Personalization"
+
+#: searchform.php:3
+msgid "Pilote, écurie, championnat…"
+msgstr "Driver, team, championship…"
+
+#: functions.php:289 page-others.php:22
+msgid "Plus d’actualités"
+msgstr "More news"
+
+#: functions.php:611
+msgid "Précédent"
+msgstr "Previous"
+
+#: inc/category-meta.php:7
+msgid "Présentation détaillée"
+msgstr "Detailed presentation"
+
+#: inc/admin.php:161
+msgid "Prévisualisation en direct"
+msgstr "Live preview"
+
+#: functions.php:761 inc/consent.php:88
+msgid "Publicité"
+msgstr "Advertisement"
+
+#: functions.php:574
+msgid "Publié"
+msgstr "Published"
+
+#: search.php:7
+msgid "Recherche"
+msgstr "Research"
+
+#: functions.php:675
+#, php-format
+msgid "Recherche : %s"
+msgstr "Search: %s"
+
+#: header.php:40 searchform.php:3
+msgid "Rechercher"
+msgstr "To research"
+
+#: searchform.php:2
+#, php-format
+msgid "Rechercher sur %s"
+msgstr "Search %s"
+
+#: inc/admin.php:54 inc/admin.php:76
+msgid "Retirer"
+msgstr "Withdraw"
+
+#: 404.php:6
+msgid "Retour à l’accueil"
+msgstr "Return to home"
+
+#: footer.php:37
+msgid "Rubriques"
+msgstr "Sections"
+
+#: inc/admin.php:188
+msgid "Réglages enregistrés."
+msgstr "Saved settings."
+
+#: inc/category-meta.php:8
+msgid "Site officiel"
+msgstr "Official website"
+
+#: functions.php:612
+msgid "Suivant"
+msgstr "Following"
+
+#: tag.php:7
+msgid "Sujet"
+msgstr "Subject"
+
+#: single.php:43
+msgid "Sujets :"
+msgstr "Topics:"
+
+#: inc/consent.php:86
+msgid "Sécurité, préférences essentielles et fonctionnement du site."
+msgstr "Security, essential preferences and operation of the site."
+
+#: front-page.php:140
+msgid "Sélections éditoriales"
+msgstr "Editorial selections"
+
+#: inc/consent.php:86
+msgid "Toujours actifs"
+msgstr "Always active"
+
+#: front-page.php:51
+msgid "Tout le fil"
+msgstr "All the thread"
+
+#: front-page.php:76 page-others.php:34
+msgid "Toute l’actualité"
+msgstr "All the news"
+
+#: functions.php:677 home.php:7
+msgid "Toutes les actualités"
+msgstr "All news"
+
+#: front-page.php:101
+msgid "Toutes les trajectoires"
+msgstr "All trajectories"
+
+#: inc/admin.php:162
+msgid "Un grand titre éditorial"
+msgstr "A great editorial title"
+
+#: functions.php:334
+msgid "Une archive éditoriale remise en lumière pour les lecteurs."
+msgstr "An editorial archive brought back into focus for readers."
+
+#: inc/admin.php:164
+msgid "Une citation importante mise en évidence sans casser la lecture."
+msgstr "An important quote highlighted without interrupting the reading."
+
+#: inc/admin.php:53
+msgid "Utiliser cette image"
+msgstr "Use this image"
+
+#: inc/admin.php:175
+msgid "Vous n’avez pas accès aux réglages Orion."
+msgstr "You do not have access to Orion settings."
+
+#: front-page.php:107
+msgid "aucune"
+msgstr "none"
+
+#: functions.php:540
+msgid "hier"
+msgstr "yesterday"
+
+#: functions.php:535
+#, php-format
+msgid "il y a %d heure"
+msgid_plural "il y a %d heures"
+msgstr[0] "%d hour ago"
+msgstr[1] "%d hours ago"
+
+#: functions.php:542
+#, php-format
+msgid "il y a %d jour"
+msgid_plural "il y a %d jours"
+msgstr[0] "%d day ago"
+msgstr[1] "%d days ago"
+
+#: functions.php:531
+#, php-format
+msgid "il y a %d minute"
+msgid_plural "il y a %d minutes"
+msgstr[0] "%d minute ago"
+msgstr[1] "%d minutes ago"
+
+#: functions.php:545
+msgid "la semaine dernière"
+msgstr "last week"
+
+#: footer.php:37
+msgid "À découvrir"
+msgstr "To discover"
+
+#: front-page.php:22 front-page.php:25
+msgid "À la une"
+msgstr "Featured"
+
+#: single.php:46
+msgid "À propos et articles liés"
+msgstr "About and related articles"
+
+#: functions.php:527
+msgid "à l’instant"
+msgstr "right now"
+
+#: inc/admin.php:129
+msgid "— Sélectionner —"
+msgstr "- Select -"
+
+#~ msgid "France Racing"
+#~ msgstr "France Racing"
+
+#~ msgid "Rechercher sur France Racing"
+#~ msgstr "Search on France Racing"

@@ -1,0 +1,449 @@
+# French translations for Orion 26 package
+# Traductions françaises du paquet Orion 26.
+# Copyright (C) 2026 THE Orion 26'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Orion 26 package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Orion 26 3.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/TheLibertyWolf/WP-Orion-template/"
+"issues\n"
+"POT-Creation-Date: 2026-08-18 15:03+0200\n"
+"PO-Revision-Date: 2026-08-18 14:55+0200\n"
+"Last-Translator: Orion Contributors\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: functions.php:579
+#, php-format
+msgid "%d min"
+msgstr "%d min"
+
+#: functions.php:579
+#, php-format
+msgid "%d min de lecture"
+msgstr "%d min de lecture"
+
+#: functions.php:650
+msgid "Accueil"
+msgstr "Accueil"
+
+#: front-page.php:136
+msgid "Actualité Gaming"
+msgstr "Actualité Gaming"
+
+#: front-page.php:117
+msgid "Actualités secondaires"
+msgstr "Actualités secondaires"
+
+#: inc/consent.php:89
+msgid "Adapte certains contenus à vos préférences."
+msgstr "Adapte certains contenus à vos préférences."
+
+#: functions.php:561
+msgid "Afficher la date exacte"
+msgstr "Afficher la date exacte"
+
+#: header.php:25
+msgid "Aller au contenu"
+msgstr "Aller au contenu"
+
+#: archive.php:8
+msgid "Archives"
+msgstr "Archives"
+
+#: functions.php:334
+msgid "Article historique"
+msgstr "Article historique"
+
+#: functions.php:332
+msgid "Article sponsorisé"
+msgstr "Article sponsorisé"
+
+#: front-page.php:138
+msgid "Articles historiques"
+msgstr "Articles historiques"
+
+#: tag.php:9
+msgid "Aucun article associé à ce sujet."
+msgstr "Aucun article associé à ce sujet."
+
+#: archive.php:13
+msgid "Aucun article trouvé."
+msgstr "Aucun article trouvé."
+
+#: search.php:9
+msgid "Aucun résultat. Essayez avec un pilote, une écurie ou un championnat."
+msgstr "Aucun résultat. Essayez avec un pilote, une écurie ou un championnat."
+
+#: category.php:42
+msgid "Aucune actualité dans cette rubrique."
+msgstr "Aucune actualité dans cette rubrique."
+
+#: home.php:8
+msgid "Aucune actualité publiée."
+msgstr "Aucune actualité publiée."
+
+#: page-others.php:41
+msgid "Aucune discipline n’est configurée pour cette page."
+msgstr "Aucune discipline n’est configurée pour cette page."
+
+#: functions.php:332
+msgid "Ce contenu a été réalisé dans le cadre d’un partenariat commercial."
+msgstr "Ce contenu a été réalisé dans le cadre d’un partenariat commercial."
+
+#: author.php:13
+msgid "Cet auteur n’a pas encore publié d’article."
+msgstr "Cet auteur n’a pas encore publié d’article."
+
+#: functions.php:333
+msgid "Cette information provient d’un communiqué transmis à la rédaction."
+msgstr "Cette information provient d’un communiqué transmis à la rédaction."
+
+#: 404.php:6
+msgid ""
+"Cette page n’existe plus ou son adresse a changé. Retrouvez la piste depuis "
+"l’accueil ou lancez une recherche."
+msgstr ""
+"Cette page n’existe plus ou son adresse a changé. Retrouvez la piste depuis "
+"l’accueil ou lancez une recherche."
+
+#: header.php:39
+msgid "Changer de thème"
+msgstr "Changer de thème"
+
+#: inc/admin.php:76
+msgid "Choisir"
+msgstr "Choisir"
+
+#: inc/admin.php:52
+msgid "Choisir une image"
+msgstr "Choisir une image"
+
+#: functions.php:333
+msgid "Communiqué de presse"
+msgstr "Communiqué de presse"
+
+#: front-page.php:137
+msgid "Communiqués de presse"
+msgstr "Communiqués de presse"
+
+#: inc/admin.php:189
+msgid ""
+"Complianz est actif. N’activez pas simultanément les deux bandeaux de "
+"consentement : configurez Orion, puis désactivez l’autre gestionnaire avant "
+"d’activer celui-ci."
+msgstr ""
+"Complianz est actif. N’activez pas simultanément les deux bandeaux de "
+"consentement : configurez Orion, puis désactivez l’autre gestionnaire avant "
+"d’activer celui-ci."
+
+#: inc/consent.php:82
+msgid "Confidentialité"
+msgstr "Confidentialité"
+
+#: footer.php:38
+msgid "Connexion"
+msgstr "Connexion"
+
+#: inc/admin.php:137
+msgid "Créer ou modifier les menus WordPress"
+msgstr "Créer ou modifier les menus WordPress"
+
+#: single.php:60
+msgid "Derniers articles"
+msgstr "Derniers articles"
+
+#: front-page.php:107
+msgid "Dernière actu :"
+msgstr "Dernière actu :"
+
+#: front-page.php:51
+msgid "Dernières actualités"
+msgstr "Dernières actualités"
+
+#: category.php:9
+msgid "Discipline"
+msgstr "Discipline"
+
+#: front-page.php:101
+msgid "Disciplines"
+msgstr "Disciplines"
+
+#: inc/admin.php:258
+msgid "Enregistrement non autorisé."
+msgstr "Enregistrement non autorisé."
+
+#: inc/admin.php:203
+msgid "Enregistrer les réglages"
+msgstr "Enregistrer les réglages"
+
+#: inc/admin.php:166
+msgid "Exemple de lien"
+msgstr "Exemple de lien"
+
+#: functions.php:690
+msgid "Fil d’Ariane"
+msgstr "Fil d’Ariane"
+
+#: footer.php:34
+msgid "Flux RSS"
+msgstr "Flux RSS"
+
+#: inc/consent.php:105
+msgid "Gérer mes cookies"
+msgstr "Gérer mes cookies"
+
+#: 404.php:6
+msgid "Hors trajectoire"
+msgstr "Hors trajectoire"
+
+#: category.php:35
+msgid "La discipline"
+msgstr "La discipline"
+
+#: author.php:10 single.php:50
+msgid "La rédaction"
+msgstr "La rédaction"
+
+#: inc/admin.php:163
+msgid ""
+"Le corps de l’article doit rester agréable à lire, avec une hiérarchie "
+"claire et un rythme suffisamment aéré sur tous les écrans."
+msgstr ""
+"Le corps de l’article doit rester agréable à lire, avec une hiérarchie "
+"claire et un rythme suffisamment aéré sur tous les écrans."
+
+#: inc/consent.php:87
+msgid "Mesure d’audience"
+msgstr "Mesure d’audience"
+
+#: functions.php:576
+msgid "Mis à jour"
+msgstr "Mis à jour"
+
+#: functions.php:39
+msgid "Navigation de pied de page"
+msgstr "Navigation de pied de page"
+
+#: functions.php:613
+msgid "Navigation des articles"
+msgstr "Navigation des articles"
+
+#: functions.php:38 header.php:45
+msgid "Navigation principale"
+msgstr "Navigation principale"
+
+#: inc/consent.php:87
+msgid "Nous aide à comprendre l’utilisation du site."
+msgstr "Nous aide à comprendre l’utilisation du site."
+
+#: inc/consent.php:86
+msgid "Nécessaires"
+msgstr "Nécessaires"
+
+#: header.php:42
+msgid "Ouvrir le menu"
+msgstr "Ouvrir le menu"
+
+#: functions.php:582
+msgid "Par"
+msgstr "Par"
+
+#: inc/consent.php:88
+msgid "Permet l’affichage et la mesure des contenus publicitaires."
+msgstr "Permet l’affichage et la mesure des contenus publicitaires."
+
+#: inc/consent.php:89
+msgid "Personnalisation"
+msgstr "Personnalisation"
+
+#: searchform.php:3
+msgid "Pilote, écurie, championnat…"
+msgstr "Pilote, écurie, championnat…"
+
+#: functions.php:289 page-others.php:22
+msgid "Plus d’actualités"
+msgstr "Plus d’actualités"
+
+#: functions.php:611
+msgid "Précédent"
+msgstr "Précédent"
+
+#: inc/category-meta.php:7
+msgid "Présentation détaillée"
+msgstr "Présentation détaillée"
+
+#: inc/admin.php:161
+msgid "Prévisualisation en direct"
+msgstr "Prévisualisation en direct"
+
+#: functions.php:761 inc/consent.php:88
+msgid "Publicité"
+msgstr "Publicité"
+
+#: functions.php:574
+msgid "Publié"
+msgstr "Publié"
+
+#: search.php:7
+msgid "Recherche"
+msgstr "Recherche"
+
+#: functions.php:675
+#, php-format
+msgid "Recherche : %s"
+msgstr "Recherche : %s"
+
+#: header.php:40 searchform.php:3
+msgid "Rechercher"
+msgstr "Rechercher"
+
+#: searchform.php:2
+#, php-format
+msgid "Rechercher sur %s"
+msgstr "Rechercher sur %s"
+
+#: inc/admin.php:54 inc/admin.php:76
+msgid "Retirer"
+msgstr "Retirer"
+
+#: 404.php:6
+msgid "Retour à l’accueil"
+msgstr "Retour à l’accueil"
+
+#: footer.php:37
+msgid "Rubriques"
+msgstr "Rubriques"
+
+#: inc/admin.php:188
+msgid "Réglages enregistrés."
+msgstr "Réglages enregistrés."
+
+#: inc/category-meta.php:8
+msgid "Site officiel"
+msgstr "Site officiel"
+
+#: functions.php:612
+msgid "Suivant"
+msgstr "Suivant"
+
+#: tag.php:7
+msgid "Sujet"
+msgstr "Sujet"
+
+#: single.php:43
+msgid "Sujets :"
+msgstr "Sujets :"
+
+#: inc/consent.php:86
+msgid "Sécurité, préférences essentielles et fonctionnement du site."
+msgstr "Sécurité, préférences essentielles et fonctionnement du site."
+
+#: front-page.php:140
+msgid "Sélections éditoriales"
+msgstr "Sélections éditoriales"
+
+#: inc/consent.php:86
+msgid "Toujours actifs"
+msgstr "Toujours actifs"
+
+#: front-page.php:51
+msgid "Tout le fil"
+msgstr "Tout le fil"
+
+#: front-page.php:76 page-others.php:34
+msgid "Toute l’actualité"
+msgstr "Toute l’actualité"
+
+#: functions.php:677 home.php:7
+msgid "Toutes les actualités"
+msgstr "Toutes les actualités"
+
+#: front-page.php:101
+msgid "Toutes les trajectoires"
+msgstr "Toutes les trajectoires"
+
+#: inc/admin.php:162
+msgid "Un grand titre éditorial"
+msgstr "Un grand titre éditorial"
+
+#: functions.php:334
+msgid "Une archive éditoriale remise en lumière pour les lecteurs."
+msgstr "Une archive éditoriale remise en lumière pour les lecteurs."
+
+#: inc/admin.php:164
+msgid "Une citation importante mise en évidence sans casser la lecture."
+msgstr "Une citation importante mise en évidence sans casser la lecture."
+
+#: inc/admin.php:53
+msgid "Utiliser cette image"
+msgstr "Utiliser cette image"
+
+#: inc/admin.php:175
+msgid "Vous n’avez pas accès aux réglages Orion."
+msgstr "Vous n’avez pas accès aux réglages Orion."
+
+#: front-page.php:107
+msgid "aucune"
+msgstr "aucune"
+
+#: functions.php:540
+msgid "hier"
+msgstr "hier"
+
+#: functions.php:535
+#, php-format
+msgid "il y a %d heure"
+msgid_plural "il y a %d heures"
+msgstr[0] "il y a %d heure"
+msgstr[1] "il y a %d heures"
+
+#: functions.php:542
+#, php-format
+msgid "il y a %d jour"
+msgid_plural "il y a %d jours"
+msgstr[0] "il y a %d jour"
+msgstr[1] "il y a %d jours"
+
+#: functions.php:531
+#, php-format
+msgid "il y a %d minute"
+msgid_plural "il y a %d minutes"
+msgstr[0] "il y a %d minute"
+msgstr[1] "il y a %d minutes"
+
+#: functions.php:545
+msgid "la semaine dernière"
+msgstr "la semaine dernière"
+
+#: footer.php:37
+msgid "À découvrir"
+msgstr "À découvrir"
+
+#: front-page.php:22 front-page.php:25
+msgid "À la une"
+msgstr "À la une"
+
+#: single.php:46
+msgid "À propos et articles liés"
+msgstr "À propos et articles liés"
+
+#: functions.php:527
+msgid "à l’instant"
+msgstr "à l’instant"
+
+#: inc/admin.php:129
+msgid "— Sélectionner —"
+msgstr "— Sélectionner —"
+
+#~ msgid "France Racing"
+#~ msgstr "France Racing"
+
+#~ msgid "Rechercher sur France Racing"
+#~ msgstr "Rechercher sur France Racing"

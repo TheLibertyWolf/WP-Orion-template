@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": { "contentSize": "760px", "wideSize": "1180px" },
+    "color": {
+      "palette": [
+        { "slug": "ink", "name": "Encre", "color": "#0b0d12" },
+        { "slug": "paper", "name": "Papier", "color": "#f4f1ea" },
+        { "slug": "red", "name": "Rouge Orion", "color": "#ed2438" },
+        { "slug": "gold", "name": "Or stellaire", "color": "#c9a45c" }
+      ]
+    },
+    "typography": { "fluid": true, "dropCap": false },
+    "spacing": { "units": ["px", "rem", "vw", "%"] }
+  },
+  "styles": {
+    "typography": { "fontFamily": "Inter, system-ui, sans-serif", "lineHeight": "1.65" },
+    "elements": { "link": { "color": { "text": "var:preset|color|red" } } }
+  }
+}

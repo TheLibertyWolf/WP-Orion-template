@@ -1,0 +1,436 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Orion 26 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Orion 26 3.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/TheLibertyWolf/WP-Orion-template/"
+"issues\n"
+"POT-Creation-Date: 2026-08-18 15:03+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: functions.php:579
+#, php-format
+msgid "%d min"
+msgstr ""
+
+#: functions.php:579
+#, php-format
+msgid "%d min de lecture"
+msgstr ""
+
+#: functions.php:650
+msgid "Accueil"
+msgstr ""
+
+#: front-page.php:136
+msgid "Actualité Gaming"
+msgstr ""
+
+#: front-page.php:117
+msgid "Actualités secondaires"
+msgstr ""
+
+#: inc/consent.php:89
+msgid "Adapte certains contenus à vos préférences."
+msgstr ""
+
+#: functions.php:561
+msgid "Afficher la date exacte"
+msgstr ""
+
+#: header.php:25
+msgid "Aller au contenu"
+msgstr ""
+
+#: archive.php:8
+msgid "Archives"
+msgstr ""
+
+#: functions.php:334
+msgid "Article historique"
+msgstr ""
+
+#: functions.php:332
+msgid "Article sponsorisé"
+msgstr ""
+
+#: front-page.php:138
+msgid "Articles historiques"
+msgstr ""
+
+#: tag.php:9
+msgid "Aucun article associé à ce sujet."
+msgstr ""
+
+#: archive.php:13
+msgid "Aucun article trouvé."
+msgstr ""
+
+#: search.php:9
+msgid "Aucun résultat. Essayez avec un pilote, une écurie ou un championnat."
+msgstr ""
+
+#: category.php:42
+msgid "Aucune actualité dans cette rubrique."
+msgstr ""
+
+#: home.php:8
+msgid "Aucune actualité publiée."
+msgstr ""
+
+#: page-others.php:41
+msgid "Aucune discipline n’est configurée pour cette page."
+msgstr ""
+
+#: functions.php:332
+msgid "Ce contenu a été réalisé dans le cadre d’un partenariat commercial."
+msgstr ""
+
+#: author.php:13
+msgid "Cet auteur n’a pas encore publié d’article."
+msgstr ""
+
+#: functions.php:333
+msgid "Cette information provient d’un communiqué transmis à la rédaction."
+msgstr ""
+
+#: 404.php:6
+msgid ""
+"Cette page n’existe plus ou son adresse a changé. Retrouvez la piste depuis "
+"l’accueil ou lancez une recherche."
+msgstr ""
+
+#: header.php:39
+msgid "Changer de thème"
+msgstr ""
+
+#: inc/admin.php:76
+msgid "Choisir"
+msgstr ""
+
+#: inc/admin.php:52
+msgid "Choisir une image"
+msgstr ""
+
+#: functions.php:333
+msgid "Communiqué de presse"
+msgstr ""
+
+#: front-page.php:137
+msgid "Communiqués de presse"
+msgstr ""
+
+#: inc/admin.php:189
+msgid ""
+"Complianz est actif. N’activez pas simultanément les deux bandeaux de "
+"consentement : configurez Orion, puis désactivez l’autre gestionnaire avant "
+"d’activer celui-ci."
+msgstr ""
+
+#: inc/consent.php:82
+msgid "Confidentialité"
+msgstr ""
+
+#: footer.php:38
+msgid "Connexion"
+msgstr ""
+
+#: inc/admin.php:137
+msgid "Créer ou modifier les menus WordPress"
+msgstr ""
+
+#: single.php:60
+msgid "Derniers articles"
+msgstr ""
+
+#: front-page.php:107
+msgid "Dernière actu :"
+msgstr ""
+
+#: front-page.php:51
+msgid "Dernières actualités"
+msgstr ""
+
+#: category.php:9
+msgid "Discipline"
+msgstr ""
+
+#: front-page.php:101
+msgid "Disciplines"
+msgstr ""
+
+#: inc/admin.php:258
+msgid "Enregistrement non autorisé."
+msgstr ""
+
+#: inc/admin.php:203
+msgid "Enregistrer les réglages"
+msgstr ""
+
+#: inc/admin.php:166
+msgid "Exemple de lien"
+msgstr ""
+
+#: functions.php:690
+msgid "Fil d’Ariane"
+msgstr ""
+
+#: footer.php:34
+msgid "Flux RSS"
+msgstr ""
+
+#: inc/consent.php:105
+msgid "Gérer mes cookies"
+msgstr ""
+
+#: 404.php:6
+msgid "Hors trajectoire"
+msgstr ""
+
+#: category.php:35
+msgid "La discipline"
+msgstr ""
+
+#: author.php:10 single.php:50
+msgid "La rédaction"
+msgstr ""
+
+#: inc/admin.php:163
+msgid ""
+"Le corps de l’article doit rester agréable à lire, avec une hiérarchie "
+"claire et un rythme suffisamment aéré sur tous les écrans."
+msgstr ""
+
+#: inc/consent.php:87
+msgid "Mesure d’audience"
+msgstr ""
+
+#: functions.php:576
+msgid "Mis à jour"
+msgstr ""
+
+#: functions.php:39
+msgid "Navigation de pied de page"
+msgstr ""
+
+#: functions.php:613
+msgid "Navigation des articles"
+msgstr ""
+
+#: functions.php:38 header.php:45
+msgid "Navigation principale"
+msgstr ""
+
+#: inc/consent.php:87
+msgid "Nous aide à comprendre l’utilisation du site."
+msgstr ""
+
+#: inc/consent.php:86
+msgid "Nécessaires"
+msgstr ""
+
+#: header.php:42
+msgid "Ouvrir le menu"
+msgstr ""
+
+#: functions.php:582
+msgid "Par"
+msgstr ""
+
+#: inc/consent.php:88
+msgid "Permet l’affichage et la mesure des contenus publicitaires."
+msgstr ""
+
+#: inc/consent.php:89
+msgid "Personnalisation"
+msgstr ""
+
+#: searchform.php:3
+msgid "Pilote, écurie, championnat…"
+msgstr ""
+
+#: functions.php:289 page-others.php:22
+msgid "Plus d’actualités"
+msgstr ""
+
+#: functions.php:611
+msgid "Précédent"
+msgstr ""
+
+#: inc/category-meta.php:7
+msgid "Présentation détaillée"
+msgstr ""
+
+#: inc/admin.php:161
+msgid "Prévisualisation en direct"
+msgstr ""
+
+#: functions.php:761 inc/consent.php:88
+msgid "Publicité"
+msgstr ""
+
+#: functions.php:574
+msgid "Publié"
+msgstr ""
+
+#: search.php:7
+msgid "Recherche"
+msgstr ""
+
+#: functions.php:675
+#, php-format
+msgid "Recherche : %s"
+msgstr ""
+
+#: header.php:40 searchform.php:3
+msgid "Rechercher"
+msgstr ""
+
+#: searchform.php:2
+#, php-format
+msgid "Rechercher sur %s"
+msgstr ""
+
+#: inc/admin.php:54 inc/admin.php:76
+msgid "Retirer"
+msgstr ""
+
+#: 404.php:6
+msgid "Retour à l’accueil"
+msgstr ""
+
+#: footer.php:37
+msgid "Rubriques"
+msgstr ""
+
+#: inc/admin.php:188
+msgid "Réglages enregistrés."
+msgstr ""
+
+#: inc/category-meta.php:8
+msgid "Site officiel"
+msgstr ""
+
+#: functions.php:612
+msgid "Suivant"
+msgstr ""
+
+#: tag.php:7
+msgid "Sujet"
+msgstr ""
+
+#: single.php:43
+msgid "Sujets :"
+msgstr ""
+
+#: inc/consent.php:86
+msgid "Sécurité, préférences essentielles et fonctionnement du site."
+msgstr ""
+
+#: front-page.php:140
+msgid "Sélections éditoriales"
+msgstr ""
+
+#: inc/consent.php:86
+msgid "Toujours actifs"
+msgstr ""
+
+#: front-page.php:51
+msgid "Tout le fil"
+msgstr ""
+
+#: front-page.php:76 page-others.php:34
+msgid "Toute l’actualité"
+msgstr ""
+
+#: functions.php:677 home.php:7
+msgid "Toutes les actualités"
+msgstr ""
+
+#: front-page.php:101
+msgid "Toutes les trajectoires"
+msgstr ""
+
+#: inc/admin.php:162
+msgid "Un grand titre éditorial"
+msgstr ""
+
+#: functions.php:334
+msgid "Une archive éditoriale remise en lumière pour les lecteurs."
+msgstr ""
+
+#: inc/admin.php:164
+msgid "Une citation importante mise en évidence sans casser la lecture."
+msgstr ""
+
+#: inc/admin.php:53
+msgid "Utiliser cette image"
+msgstr ""
+
+#: inc/admin.php:175
+msgid "Vous n’avez pas accès aux réglages Orion."
+msgstr ""
+
+#: front-page.php:107
+msgid "aucune"
+msgstr ""
+
+#: functions.php:540
+msgid "hier"
+msgstr ""
+
+#: functions.php:535
+#, php-format
+msgid "il y a %d heure"
+msgid_plural "il y a %d heures"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:542
+#, php-format
+msgid "il y a %d jour"
+msgid_plural "il y a %d jours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:531
+#, php-format
+msgid "il y a %d minute"
+msgid_plural "il y a %d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:545
+msgid "la semaine dernière"
+msgstr ""
+
+#: footer.php:37
+msgid "À découvrir"
+msgstr ""
+
+#: front-page.php:22 front-page.php:25
+msgid "À la une"
+msgstr ""
+
+#: single.php:46
+msgid "À propos et articles liés"
+msgstr ""
+
+#: functions.php:527
+msgid "à l’instant"
+msgstr ""
+
+#: inc/admin.php:129
+msgid "— Sélectionner —"
+msgstr ""

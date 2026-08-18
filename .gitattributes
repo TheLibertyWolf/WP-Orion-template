@@ -1,0 +1,11 @@
+*.po linguist-detectable=true
+*.pot linguist-detectable=true
+*.mo binary
+*.woff2 binary
+*.png binary
+export-ignore .github
+export-ignore docs
+export-ignore CONTRIBUTING.md
+export-ignore SECURITY.md
+export-ignore TRANSLATIONS.md
+export-ignore .gitignore
