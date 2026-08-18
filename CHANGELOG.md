@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.5.3 — 2026-08-18
+
+- Déplacement de toutes les notifications Orion dans une zone indépendante au-dessus du bandeau-titre.
+- Harmonisation du placement des confirmations d’enregistrement et des alertes du gestionnaire de plugins.
+
 ## 3.5.2 — 2026-08-18
 
 - Transformation du sous-menu Plugins recommandés en gestionnaire complet inspiré d’Avada.

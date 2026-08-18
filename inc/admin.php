@@ -258,9 +258,12 @@ function orion26_render_settings_page() {
 	$settings= orion26_get_settings();
 	$values  = $settings[ $section ] ?? array();
 	?>
-	<div class="wrap orion-admin-wrap">
+	<div class="orion-admin-notices">
 		<?php if ( isset( $_GET['updated'] ) && '1' === sanitize_text_field( wp_unslash( $_GET['updated'] ) ) ) : ?><div class="notice notice-success is-dismissible orion-save-notice"><p><?php esc_html_e( 'Réglages enregistrés.', 'orion26' ); ?></p></div><?php endif; ?>
 		<?php if ( 'consent' === $section && ( defined( 'cmplz_plugin' ) || function_exists( 'cmplz_get_value' ) ) ) : ?><div class="notice notice-warning"><p><?php esc_html_e( 'Complianz est actif. N’activez pas simultanément les deux bandeaux de consentement : configurez Orion, puis désactivez l’autre gestionnaire avant d’activer celui-ci.', 'orion26' ); ?></p></div><?php endif; ?>
+		<?php if ( 'plugins' === $section ) { orion26_render_plugin_notices(); } ?>
+	</div>
+	<div class="wrap orion-admin-wrap">
 		<header class="orion-admin-header">
 			<div><span class="orion-admin-brand">ORION</span><h1><?php echo esc_html( $config['label'] ); ?></h1><p><?php echo esc_html( $config['description'] ); ?></p></div>
 			<span class="orion-admin-version">v<?php echo esc_html( ORION26_VERSION ); ?></span>

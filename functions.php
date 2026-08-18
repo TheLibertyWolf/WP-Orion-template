@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ORION26_VERSION', '3.5.2' );
+define( 'ORION26_VERSION', '3.5.3' );
 define( 'ORION26_DIR', __DIR__ );
 define( 'ORION26_URI', content_url( '/themes/' . basename( ORION26_DIR ) ) );
 

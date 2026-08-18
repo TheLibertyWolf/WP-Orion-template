@@ -76,7 +76,7 @@ function orion26_run_plugin_package( $slug, $config, $overwrite = false ) {
 	return $result;
 }
 
-function orion26_render_plugins_page() {
+function orion26_render_plugin_notices() {
 	$result = isset( $_GET['plugin_result'] ) ? sanitize_key( wp_unslash( $_GET['plugin_result'] ) ) : '';
 	$messages = array( 'installed' => __( 'Plugin installé et activé.', 'orion26' ), 'activated' => __( 'Plugin activé.', 'orion26' ), 'updated' => __( 'Plugin mis à jour.', 'orion26' ), 'uninstalled' => __( 'Plugin désinstallé.', 'orion26' ), 'failed' => __( 'L’opération n’a pas abouti. Vérifiez les droits d’écriture et réessayez.', 'orion26' ), 'disabled' => __( 'La modification des fichiers est désactivée par la configuration WordPress.', 'orion26' ) );
 	if ( isset( $messages[ $result ] ) ) {
@@ -84,6 +84,11 @@ function orion26_render_plugins_page() {
 	}
 	$file_mods_allowed = ! defined( 'DISALLOW_FILE_MODS' ) || ! DISALLOW_FILE_MODS;
 	if ( ! $file_mods_allowed ) { echo '<div class="notice notice-warning"><p>' . esc_html__( 'Les installations, mises à jour et désinstallations sont bloquées par la politique WordPress DISALLOW_FILE_MODS. Les plugins déjà présents peuvent toujours être activés.', 'orion26' ) . '</p></div>'; }
+	return $file_mods_allowed;
+}
+
+function orion26_render_plugins_page() {
+	$file_mods_allowed = ! defined( 'DISALLOW_FILE_MODS' ) || ! DISALLOW_FILE_MODS;
 	?>
 	<div class="orion-plugin-grid">
 	<?php foreach ( orion26_recommended_plugins() as $slug => $config ) :
